@@ -1,3 +1,4 @@
+import { IconContext } from 'react-icons';
 import { FiSearch } from 'react-icons/fi';
 import { NavLink } from 'react-router-dom';
 
@@ -15,7 +16,9 @@ const Header = () => {
         <form className="Header-left-form">
           <input type="text" placeholder="Commune de la sortie" />
           <button type="submit">
-            <FiSearch className="search-logo" />
+            <IconContext.Provider value={{ size: '1.2rem' }}>
+              <FiSearch className="search-logo" />
+            </IconContext.Provider>
           </button>
         </form>
       </div>
