@@ -46,6 +46,10 @@
         .search-logo {
           width: 20px;
         }
+
+        &:hover {
+          background-color: v.$primaryColorDark;
+        }
       }
     }
   }
