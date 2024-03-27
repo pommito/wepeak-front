@@ -1,0 +1,6 @@
+@use '/src/styles/variables' as v;
+
+.header__title {
+  font-family: v.$textFont;
+  font-weight: 400;
+}
