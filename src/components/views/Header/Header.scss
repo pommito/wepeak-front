@@ -2,10 +2,15 @@
 
 .Header {
   align-items: center;
+  background-color: v.$backgroundColor;
+  border-bottom: solid 1px v.$secondaryColor;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   height: 4rem;
   justify-content: space-between;
   padding: 0 1rem;
+  position: fixed;
+  width: 100%;
 
   &-left {
     align-items: center;
@@ -58,7 +63,30 @@
   }
 
   &-nav-links {
+    align-items: center;
     display: flex;
+    font-size: 0.9rem;
+    font-weight: 700;
     gap: 2rem;
+
+    .Header-nav-link-connect {
+      &:hover {
+        color: v.$accentColorDark;
+      }
+    }
+
+    .Header-nav-link-register {
+      align-items: center;
+      background-color: v.$accentColorDark;
+      border-radius: v.$borderRadius;
+      color: v.$backgroundColor;
+      display: flex;
+      height: 2.3rem;
+      padding: 0.5rem 1rem;
+
+      &:hover {
+        background-color: v.$accentColor;
+      }
+    }
   }
 }
