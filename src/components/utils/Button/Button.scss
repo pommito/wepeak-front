@@ -1,0 +1,20 @@
+@use '/src/styles/variables' as v;
+
+.Button {
+  padding: 0.75rem 1.25rem;
+  border-radius: v.$borderRadius;
+  display: inline-block;
+  font-size: v.$textSize;
+}
+
+.primary {
+  background-color: v.$primaryColor;
+}
+
+.secondary {
+  background-color: v.$secondaryColor;
+}
+
+.accent {
+  background-color: v.$accentColor;
+}
