@@ -14,7 +14,39 @@
 
     &-logo {
       max-height: 4rem;
-      margin-right: 1rem;
+      margin-right: 1.5rem;
+    }
+
+    &-form {
+      width: 23rem;
+      input {
+        border: 1px solid v.$secondaryColor;
+        border-radius: v.$borderRadius 0 0 v.$borderRadius;
+        font-family: v.$textFont;
+        height: 2.7rem;
+        padding: 1rem;
+        width: 85%;
+
+        &:hover {
+          border-color: v.$textColor;
+        }
+
+        &::placeholder {
+          color: v.$secondaryColor;
+        }
+      }
+      button {
+        background-color: v.$primaryColor;
+        border: none;
+        color: v.$backgroundColor;
+        border-radius: 0 v.$borderRadius v.$borderRadius 0;
+        height: 2.7rem;
+        width: 2.7rem;
+
+        .search-logo {
+          width: 20px;
+        }
+      }
     }
   }
 

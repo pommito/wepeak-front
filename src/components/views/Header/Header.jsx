@@ -1,4 +1,4 @@
-import { CiSearch } from 'react-icons/ci';
+import { FiSearch } from 'react-icons/fi';
 import { NavLink } from 'react-router-dom';
 
 import './Header.scss';
@@ -12,10 +12,10 @@ const Header = () => {
           src="/src/assets/Logo_BW.svg"
           alt="Logo de WePeak"
         />
-        <form action="">
-          <input type="text" />
+        <form className="Header-left-form">
+          <input type="text" placeholder="Commune de la sortie" />
           <button type="submit">
-            <CiSearch />
+            <FiSearch className="search-logo" />
           </button>
         </form>
       </div>
