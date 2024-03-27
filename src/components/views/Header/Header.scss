@@ -23,6 +23,11 @@
   &-logo {
     max-height: 4rem;
     order: 1;
+
+    @media (max-width: 576px) {
+      clip-path: inset(0 67% 0 0);
+      width: 30%;
+    }
   }
 
   &-form {
@@ -84,10 +89,16 @@
       width: 50%;
     }
 
+    @media (max-width: 576px) {
+      margin-bottom: 0.2rem;
+      order: 2;
+      width: 70%;
+    }
+
     &-links {
       align-items: center;
       display: flex;
-      font-size: 0.9rem;
+      font-size: v.$textSize;
       font-weight: 700;
       gap: 2rem;
 
