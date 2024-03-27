@@ -112,6 +112,15 @@
           background-color: v.$accentColor;
         }
       }
+
+      .Header-nav-link-messages,
+      .Header-nav-link-profile {
+        color: v.$accentColorDark;
+
+        &:hover {
+          color: v.$accentColor;
+        }
+      }
     }
   }
 }
