@@ -6,86 +6,109 @@
   border-bottom: solid 1px v.$secondaryColor;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
-  height: 4rem;
   justify-content: space-between;
-  padding: 0 1rem;
-  position: fixed;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.5rem;
+  position: sticky;
+  top: 0;
   width: 100%;
 
-  &-left {
-    align-items: center;
-    display: flex;
+  @media (max-width: 992px) {
+    flex-wrap: wrap;
+  }
 
-    &-logo {
-      max-height: 4rem;
-      margin-right: 1.5rem;
+  align-items: center;
+  display: flex;
+
+  &-logo {
+    max-height: 4rem;
+    order: 1;
+  }
+
+  &-form {
+    display: flex;
+    justify-content: center;
+    order: 2;
+    width: 50%;
+
+    @media (max-width: 992px) {
+      order: 3;
+      width: 100%;
     }
 
-    &-form {
-      display: flex;
-      width: 23rem;
+    input {
+      border: 1px solid v.$secondaryColor;
+      border-right: none;
+      border-radius: v.$borderRadius 0 0 v.$borderRadius;
+      font-family: v.$textFont;
+      height: 2.5rem;
+      padding: 1rem;
+      width: 85%;
 
-      input {
-        border: 1px solid v.$secondaryColor;
-        border-radius: v.$borderRadius 0 0 v.$borderRadius;
-        font-family: v.$textFont;
-        height: 2.5rem;
-        padding: 1rem;
-        width: 85%;
-
-        &:hover {
-          border-color: v.$textColor;
-        }
-
-        &::placeholder {
-          color: v.$secondaryColor;
-          font-size: 1rem;
-        }
+      &:hover {
+        border-color: v.$textColor;
       }
 
-      button {
-        background-color: v.$primaryColor;
-        border: none;
+      &::placeholder {
+        color: v.$secondaryColor;
+        font-size: 1rem;
+      }
+    }
+
+    button {
+      background-color: v.$primaryColor;
+      border: none;
+      color: v.$backgroundColor;
+      border-radius: 0 v.$borderRadius v.$borderRadius 0;
+      height: 2.5rem;
+      width: 2.5rem;
+
+      .search-logo {
         color: v.$backgroundColor;
-        border-radius: 0 v.$borderRadius v.$borderRadius 0;
-        height: 2.5rem;
-        width: 2.5rem;
+      }
 
-        .search-logo {
-          color: v.$backgroundColor;
-        }
-
-        &:hover {
-          background-color: v.$primaryColorDark;
-        }
+      &:hover {
+        background-color: v.$primaryColorDark;
       }
     }
   }
 
-  &-nav-links {
-    align-items: center;
+  &-nav {
     display: flex;
-    font-size: 0.9rem;
-    font-weight: 700;
-    gap: 2rem;
+    justify-content: end;
+    order: 3;
+    width: 25%;
 
-    .Header-nav-link-connect {
-      &:hover {
-        color: v.$accentColorDark;
-      }
+    @media (max-width: 992px) {
+      order: 2;
+      width: 50%;
     }
 
-    .Header-nav-link-register {
+    &-links {
       align-items: center;
-      background-color: v.$accentColorDark;
-      border-radius: v.$borderRadius;
-      color: v.$backgroundColor;
       display: flex;
-      height: 2.3rem;
-      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      gap: 2rem;
 
-      &:hover {
-        background-color: v.$accentColor;
+      .Header-nav-link-connect {
+        &:hover {
+          color: v.$accentColorDark;
+        }
+      }
+
+      .Header-nav-link-register {
+        align-items: center;
+        background-color: v.$accentColorDark;
+        border-radius: v.$borderRadius;
+        color: v.$backgroundColor;
+        display: flex;
+        height: 2.3rem;
+        padding: 0.5rem 1rem;
+
+        &:hover {
+          background-color: v.$accentColor;
+        }
       }
     }
   }
