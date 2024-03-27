@@ -1,6 +1,25 @@
 @use '/src/styles/variables' as v;
 
 .Header {
+  align-items: center;
   display: flex;
   height: 4rem;
+  justify-content: space-between;
+
+  padding: 0 1rem;
+
+  &-left {
+    align-items: center;
+    display: flex;
+
+    &-logo {
+      max-height: 4rem;
+      margin-right: 1rem;
+    }
+  }
+
+  &-nav-links {
+    display: flex;
+    gap: 2rem;
+  }
 }
