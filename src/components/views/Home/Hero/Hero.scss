@@ -59,3 +59,33 @@
     }
   }
 }
+
+/* Media Queries */
+
+@media (max-width: v.$tablet) {
+  .Hero {
+    &-content {
+      width: 80%;
+    }
+
+    &-gallery {
+      height: 50%;
+      &-image {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  }
+
+  @media (max-width: v.$mobile) {
+    .Hero {
+      &-content {
+        width: 90%;
+
+        &-title {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
