@@ -5,7 +5,7 @@ import './Home.scss';
 const Home = () => {
   return (
     <div className="Home">
-      {/* <Hero /> */}
+      <Hero />
       <Activities />
     </div>
   );
