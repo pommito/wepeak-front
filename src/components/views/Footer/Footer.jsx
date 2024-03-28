@@ -1,3 +1,9 @@
+import { IconContext } from 'react-icons';
+import { FaSquareFacebook } from 'react-icons/fa6';
+import { FaSquareXTwitter } from 'react-icons/fa6';
+import { FaSquareInstagram } from 'react-icons/fa6';
+import { FaLinkedin } from 'react-icons/fa';
+
 import { Link } from 'react-router-dom';
 
 import './Footer.scss';
@@ -12,11 +18,34 @@ const Footer = () => {
             mauris sed ma
           </p>
           <ul className="Footer-main-socials-logos">
-            <li>Facebook</li>
-            <li>X</li>
-            <li>Instagram</li>
-            <li>TikTok</li>
-            <li>Linkedin</li>
+            <li>
+              <Link to="https://www.facebook.com/" target="_blank">
+                <IconContext.Provider value={{ size: '1.5rem' }}>
+                  <FaSquareFacebook />
+                </IconContext.Provider>
+              </Link>
+            </li>
+            <li>
+              <Link to="https://www.twitter.com/" target="_blank">
+                <IconContext.Provider value={{ size: '1.5rem' }}>
+                  <FaSquareXTwitter />
+                </IconContext.Provider>
+              </Link>
+            </li>
+            <li>
+              <Link to="https://www.instagram.com/" target="_blank">
+                <IconContext.Provider value={{ size: '1.5rem' }}>
+                  <FaSquareInstagram />
+                </IconContext.Provider>
+              </Link>
+            </li>
+            <li>
+              <Link to="https://www.linkedin.com/" target="_blank">
+                <IconContext.Provider value={{ size: '1.5rem' }}>
+                  <FaLinkedin />
+                </IconContext.Provider>
+              </Link>
+            </li>
           </ul>
         </div>
 
