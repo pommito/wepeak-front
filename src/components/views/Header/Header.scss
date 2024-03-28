@@ -1,0 +1,130 @@
+@use '/src/styles/variables' as v;
+
+.Header {
+  align-items: center;
+  background-color: v.$backgroundColor;
+  border-bottom: solid 1px v.$secondaryColor;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.5rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
+
+  @media (max-width: v.$tablet) {
+    flex-wrap: wrap;
+  }
+
+  .Header-logo-container {
+    @media (max-width: v.$mobile) {
+      max-width: 4rem;
+      overflow: hidden;
+    }
+  }
+
+  &-logo {
+    max-height: 4rem;
+    order: 1;
+  }
+
+  &-form {
+    display: flex;
+    justify-content: center;
+    order: 2;
+    width: 50%;
+
+    @media (max-width: v.$tablet) {
+      order: 3;
+      width: 100%;
+    }
+
+    // search input location
+    input {
+      border: 1px solid v.$secondaryColor;
+      border-right: none;
+      border-radius: v.$borderRadius 0 0 v.$borderRadius;
+      font-family: v.$textFont;
+      height: 2.5rem;
+      padding: 1rem;
+      width: 85%;
+
+      &:hover {
+        border-color: v.$textColor;
+      }
+
+      &::placeholder {
+        color: v.$secondaryColor;
+        font-size: 1rem;
+      }
+    }
+
+    // submit search button
+    button {
+      background-color: v.$primaryColor;
+      border: none;
+      color: v.$backgroundColor;
+      border-radius: 0 v.$borderRadius v.$borderRadius 0;
+      height: 2.5rem;
+      width: 2.5rem;
+
+      .search-logo {
+        color: v.$backgroundColor;
+      }
+
+      &:hover {
+        background-color: v.$primaryColorDark;
+      }
+    }
+  }
+
+  &-nav {
+    display: flex;
+    justify-content: end;
+    order: 3;
+
+    @media (max-width: v.$tablet) {
+      order: 2;
+    }
+
+    &-links {
+      align-items: center;
+      display: flex;
+      font-size: v.$textSize;
+      font-weight: 700;
+      gap: 2rem;
+
+      .connect:hover {
+        color: v.$accentColorDark;
+      }
+
+      .register {
+        align-items: center;
+        background-color: v.$accentColorDark;
+        border-radius: v.$borderRadius;
+        color: v.$backgroundColor;
+        display: flex;
+        height: 2.3rem;
+        padding: 0.5rem 1rem;
+
+        &:hover {
+          background-color: v.$accentColor;
+        }
+      }
+
+      .messages,
+      .profile {
+        color: v.$textColor;
+
+        &:hover {
+          color: v.$secondaryColorDark;
+        }
+      }
+
+      .messages {
+        margin-top: 0.1rem;
+      }
+    }
+  }
+}
