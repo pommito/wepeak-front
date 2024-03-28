@@ -1,0 +1,13 @@
+@use '/src/styles/variables' as v;
+
+.Activities {
+  min-height: 100dvh;
+  width: 80%;
+
+  &-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
