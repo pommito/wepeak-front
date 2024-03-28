@@ -26,11 +26,12 @@ const Activity = () => {
       </div>
 
       <div className="Activity-illustration">
-        <img
-          className="Activity-illustration-picture"
-          src="https://www.ski-libre.com/pictures/2019/01/IMG_7053.png"
-          alt=""
-        />
+        <div className="Activity-illustration-imgContainer">
+          <img
+            src="https://www.ski-libre.com/pictures/2019/01/IMG_7053.png"
+            alt=""
+          />
+        </div>
 
         <div className="Activity-illustration-mapCard">
           <div className="Activity-illustration-mapCard-info">

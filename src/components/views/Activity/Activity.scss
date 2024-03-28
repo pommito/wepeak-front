@@ -52,4 +52,20 @@
       }
     }
   }
+
+  &-illustration {
+    display: flex;
+
+    &-imgContainer {
+      border-radius: v.$borderRadius;
+      height: 20rem;
+      overflow: hidden;
+      width: 20rem;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
 }
