@@ -51,9 +51,12 @@ const Header = () => {
             </li>
             <li className="Header-nav-link profile">
               <NavLink to="/profile">
-                <IconContext.Provider value={{ size: '3.5rem' }}>
-                  <PiUserCircle />
-                </IconContext.Provider>
+                <div className="profile-picture-container">
+                  <img
+                    src="https://ca.slack-edge.com/T060RPZMDH6-U061SDTH4TF-c278721b6e6d-512"
+                    alt=""
+                  />
+                </div>
               </NavLink>
             </li>
           </ul>

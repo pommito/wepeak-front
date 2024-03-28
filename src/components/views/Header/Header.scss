@@ -19,7 +19,7 @@
 
   .Header-logo-container {
     @media (max-width: v.$mobile) {
-      max-width: 4rem;
+      max-width: 3.5rem;
       overflow: hidden;
     }
   }
@@ -116,6 +116,22 @@
       .messages,
       .profile {
         color: v.$textColor;
+
+        &-picture-container {
+          align-items: center;
+          border: v.$backgroundColorDark solid 1px;
+          border-radius: 50%;
+          display: flex;
+          height: 3.3rem;
+          justify-content: center;
+          overflow: hidden;
+          width: 3.3rem;
+
+          img {
+            height: 100%;
+            width: 100%;
+          }
+        }
 
         &:hover {
           color: v.$secondaryColorDark;
