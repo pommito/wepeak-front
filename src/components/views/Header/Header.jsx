@@ -32,26 +32,26 @@ const Header = () => {
       <nav className="Header-nav">
         {isLogged && (
           <ul className="Header-nav-links">
-            <li className="Header-nav-link Header-nav-link-connect">
+            <li className="Header-nav-link connect">
               <NavLink to="/login">Se connecter</NavLink>
             </li>
-            <li className="Header-nav-link Header-nav-link-register">
+            <li className="Header-nav-link register">
               <NavLink to="/register">S&apos;inscrire</NavLink>
             </li>
           </ul>
         )}
         {!isLogged && (
           <ul className="Header-nav-links">
-            <li className="Header-nav-link Header-nav-link-messages">
+            <li className="Header-nav-link messages">
               <NavLink to="/messages">
-                <IconContext.Provider value={{ size: '2.2rem' }}>
+                <IconContext.Provider value={{ size: '1.5rem' }}>
                   <FaRegMessage />
                 </IconContext.Provider>
               </NavLink>
             </li>
-            <li className="Header-nav-link Header-nav-link-profile">
+            <li className="Header-nav-link profile">
               <NavLink to="/profile">
-                <IconContext.Provider value={{ size: '3rem' }}>
+                <IconContext.Provider value={{ size: '3.5rem' }}>
                   <PiUserCircle />
                 </IconContext.Provider>
               </NavLink>
