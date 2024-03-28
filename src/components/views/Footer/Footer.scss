@@ -1,0 +1,15 @@
+@use '/src/styles/variables' as v;
+
+.Footer {
+  background-color: v.$secondaryColor;
+  padding-top: 1rem;
+
+  &-main {
+    border-top: 1px solid v.$secondaryColorLight;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 1rem 0;
+    width: 95%;
+  }
+}
