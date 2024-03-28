@@ -1,21 +1,26 @@
 import { IconContext } from 'react-icons';
-import { FaSquareFacebook } from 'react-icons/fa6';
-import { FaSquareXTwitter } from 'react-icons/fa6';
-import { FaSquareInstagram } from 'react-icons/fa6';
 import { FaLinkedin } from 'react-icons/fa';
+import {
+  FaSquareFacebook,
+  FaSquareXTwitter,
+  FaSquareInstagram,
+} from 'react-icons/fa6';
 
 import { Link } from 'react-router-dom';
 
 import './Footer.scss';
 
 const Footer = () => {
+  const isLogged = true;
+
   return (
     <footer className="Footer">
       <div className="Footer-main">
         <div className="Footer-main-socials">
           <p className="Footer-main-socials-message">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam
-            mauris sed ma
+            Explorez, partagez et découvrez de nouvelles aventures outdoor avec
+            WePeak - la plateforme ultime pour les passionnés de sport et de
+            nature.
           </p>
           <ul className="Footer-main-socials-logos">
             <li>
@@ -61,8 +66,7 @@ const Footer = () => {
               <Link to="/login">Connexion</Link>
             </li>
             <li>
-              {/* todo: conditionner la redirection sur connexion si pas loggé */}
-              <Link to="/profile">Profil</Link>
+              <Link to={isLogged ? '/profile' : '/login'}>Profil</Link>
             </li>
           </ul>
         </div>
@@ -75,10 +79,10 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/privacy">Privacy</Link>
+              <Link to="/privacy">Vie privée</Link>
             </li>
             <li>
-              <Link to="/legal-mention">Connexion</Link>
+              <Link to="/legal-notices">Mentions légales</Link>
             </li>
             <li>
               <Link to="/about">&#xC0; propos</Link>
