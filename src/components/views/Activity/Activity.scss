@@ -1,11 +1,12 @@
 @use '/src/styles/variables' as v;
 
 .Activity {
+  text-align: left;
+
   &-header {
     border-bottom: solid 1px v.$secondaryColorLight;
     margin-bottom: 1.5rem;
     padding: 0 1.5rem 1rem 1.5rem;
-    text-align: left;
 
     &-name {
       color: v.$textColor;
@@ -55,17 +56,54 @@
 
   &-illustration {
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding: 0 1.5rem;
 
     &-imgContainer {
       border-radius: v.$borderRadius;
-      height: 20rem;
+      height: 25rem;
       overflow: hidden;
-      width: 20rem;
+      width: 55%;
 
       img {
         height: 100%;
         width: 100%;
+        object-fit: cover;
       }
     }
+
+    &-mapCard {
+      background-color: v.$primaryColor;
+      border-radius: v.$borderRadius;
+      overflow: hidden;
+      height: 25rem;
+
+      width: 35%;
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        font-size: v.$textSize;
+        gap: 0.5rem;
+        line-height: 1.2rem;
+        padding: 1rem;
+        text-align: left;
+
+        &-date,
+        &-location {
+          align-items: center;
+          display: flex;
+          gap: 1rem;
+
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  &-detailsAndApply {
   }
 }

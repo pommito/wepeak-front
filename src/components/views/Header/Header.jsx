@@ -1,3 +1,4 @@
+// React-icons imports
 import { IconContext } from 'react-icons';
 import { FiSearch } from 'react-icons/fi';
 import { FaRegMessage } from 'react-icons/fa6';
