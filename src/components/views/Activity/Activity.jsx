@@ -11,8 +11,17 @@ const Activity = () => {
         <h3 className="Activity-header-sport">Ski de randonnée</h3>
 
         <div className="Activity-header-host">
-          <p className="Activity-header-host-by">Organisée par</p>
-          <p className="Activity-header-host-name">Victor Lebecq</p>
+          <div className="Activity-header-host-imgContainer">
+            <img
+              src="https://ca.slack-edge.com/T060RPZMDH6-U0618RK2TDZ-75fbfe1c1df7-512"
+              alt=""
+            />
+          </div>
+
+          <div className="Activity-header-host-by">
+            <p className="Activity-header-host-by-text">Organisée par</p>
+            <p className="Activity-header-host-by-name">Victor Lebecq</p>
+          </div>
         </div>
       </div>
 
@@ -70,7 +79,10 @@ const Activity = () => {
 
         <div className="Activity-people-card">
           <div className="Activity-people-card-imgContainer">
-            <img src="" alt="" />
+            <img
+              src="https://ca.slack-edge.com/T060RPZMDH6-U06160CTFNZ-5a4cda8a8782-512"
+              alt=""
+            />
           </div>
 
           <p className="Activity-people-name">Melvin</p>
