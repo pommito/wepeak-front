@@ -40,7 +40,7 @@ const Activity = () => {
       <div className="Activity-illustration">
         <div className="Activity-illustration-imgContainer">
           <img
-            src="https://idata.over-blog.com/0/08/49/95/Ski-de-Rando-2011/P1000321-2.jpg"
+            src="https://idata.over-blog.com/0/08/49/95/Ski-de-Rando-2011/P1000329.jpg"
             alt=""
           />
         </div>

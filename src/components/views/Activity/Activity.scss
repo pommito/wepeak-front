@@ -3,6 +3,7 @@
 .Activity {
   text-align: left;
 
+  // 1/4 Block - Activity header
   &-header {
     border-bottom: solid 1px v.$secondaryColorLight;
     margin-bottom: 1.5rem;
@@ -54,6 +55,7 @@
     }
   }
 
+  // 2/4 Block - Illustrations (main picture and map)
   &-illustration {
     display: flex;
     justify-content: space-between;
@@ -104,6 +106,12 @@
     }
   }
 
+  // 3/4 Block - Details and Apply (description and button to apply)
   &-detailsAndApply {
+    display: flex;
+    justify-content: space-between;
+
+    &-description {
+    }
   }
 }
