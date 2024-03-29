@@ -1,0 +1,71 @@
+@use '/src/styles/variables' as v;
+
+.Activities {
+  min-height: 100dvh;
+  width: 80%;
+
+  &-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+
+    &-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      text-align: start;
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+      background-color: v.$secondaryColorLight;
+      border: solid 1px v.$secondaryColor;
+      border-radius: calc(v.$borderRadius / 5);
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: v.$textColor;
+      padding: 0.2rem 0.4rem;
+
+      background-color: v.$secondaryColor;
+      border-color: v.$secondaryColorDark;
+      color: v.$backgroundColor;
+
+      &:hover {
+        background-color: v.$secondaryColorDark;
+      }
+    }
+  }
+
+  &-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+@media (max-width: v.$tablet) {
+  .Activities {
+    &-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+    }
+  }
+  @media (max-width: v.$mobile) {
+    .Activities {
+      &-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+      }
+
+      &-top {
+        &-title {
+          font-size: 1rem;
+        }
+
+        &-link {
+          font-size: 0.5rem;
+        }
+      }
+    }
+  }
+}

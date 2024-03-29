@@ -24,7 +24,7 @@ const Header = () => {
       <form className="Header-form">
         <input type="text" placeholder="Ville ou code postal" />
         <button type="submit">
-          <IconContext.Provider value={{ size: '1.2rem' }}>
+          <IconContext.Provider value={{ size: '1.25rem' }}>
             <FiSearch className="search-logo" />
           </IconContext.Provider>
         </button>
