@@ -10,3 +10,12 @@ body {
   color: v.$textColor;
   background-color: v.$backgroundColor;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: v.$titleFont;
+}

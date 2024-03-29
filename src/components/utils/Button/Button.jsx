@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import './Button.scss';
 
 const Button = ({ text, className, url }) => {
   return (
-    <a href={url} className={`Button ${className}`}>
+    <Link to={url} target="_blank" className={`Button ${className}`}>
       {text}
-    </a>
+    </Link>
   );
 };
 
