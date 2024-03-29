@@ -6,6 +6,7 @@ import Activity from '../views/Activity/Activity';
 import Footer from '../views/Footer/Footer';
 
 import './App.scss';
+import Activities from '../views/Activities/Activities';
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/activity" element={<Activity />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/activities/single" element={<Activity />} />
       </Routes>
       <Footer />
     </div>

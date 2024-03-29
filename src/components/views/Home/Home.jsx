@@ -1,5 +1,5 @@
 import Faq from '../../utils/Faq/Faq';
-import Activities from './Activities/Activities';
+import ActivityGrid from './AcitivityGrid/ActivityGrid';
 import CtaBanner from './CtaBanner/CtaBanner';
 import DoubleCta from './DoubleCta/DoubleCta';
 import Hero from './Hero/Hero';
@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <main className="Home">
       <Hero />
-      <Activities />
+      <ActivityGrid />
       <CtaBanner />
       <Faq />
       <DoubleCta />
