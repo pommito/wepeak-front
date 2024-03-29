@@ -90,6 +90,9 @@ const Footer = () => {
               <Link to="/about">&#xC0; propos</Link>
             </li>
             <li>
+              <Link to="/contact">Nous contacter</Link>
+            </li>
+            <li>
               <Link to="/legal-notices">Mentions légales</Link>
             </li>
             <li>
