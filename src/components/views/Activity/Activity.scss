@@ -3,7 +3,7 @@
 .Activity {
   text-align: left;
 
-  // 1/4 Block - Activity header
+  // 1/5 Block - Activity header
   &-header {
     border-bottom: solid 1px v.$secondaryColorLight;
     margin-bottom: 1.5rem;
@@ -13,13 +13,15 @@
       color: v.$textColor;
       margin-bottom: 0.5rem;
       font-size: 2rem;
+      font-family: v.$titleFont;
       font-weight: 700;
     }
 
     &-sport {
       color: v.$textColor;
       margin-bottom: 1.5rem;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
+      font-family: v.$titleFont;
       font-weight: 600;
     }
 
@@ -55,7 +57,7 @@
     }
   }
 
-  // 2/4 Block - Illustrations (main picture and map)
+  // 2/5 Block - Illustrations (main picture and map)
   &-illustration {
     display: flex;
     justify-content: space-between;
@@ -76,7 +78,7 @@
     }
 
     &-mapCard {
-      background-color: v.$primaryColor;
+      background-color: v.$accentColor;
       border-radius: v.$borderRadius;
       overflow: hidden;
       height: 25rem;
@@ -106,12 +108,113 @@
     }
   }
 
-  // 3/4 Block - Details and Apply (description and button to apply)
+  // 3/5 Block - Details and Apply (description and button to apply)
   &-detailsAndApply {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding: 0 1.5rem;
 
     &-description {
+      width: 55%;
+
+      // Description
+      h3 {
+        color: v.$textColor;
+        font-size: 1.3rem;
+        font-family: v.$titleFont;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      // Description text
+      p {
+        color: v.$textColor;
+        font-size: v.$textSize;
+        line-height: 1.2rem;
+      }
+    }
+
+    &-apply {
+      align-items: center;
+      background-color: v.$accentColor;
+      border-radius: v.$borderRadius;
+      border: none;
+      color: v.$textColor;
+      display: flex;
+      font-family: v.$textFont;
+      font-weight: 600;
+      height: 3rem;
+      justify-content: center;
+      width: 35%;
+
+      &:hover {
+        background-color: v.$accentColorLight;
+      }
+    }
+  }
+
+  // 4/5 Block - People
+  &-people {
+    margin-bottom: 1.5rem;
+    padding: 0 1.5rem;
+
+    // People
+    h3 {
+      color: v.$textColor;
+      font-size: 1.3rem;
+      font-family: v.$titleFont;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    &-cards {
+      display: flex;
+      gap: 3rem;
+      justify-content: left;
+
+      &-card {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 4rem;
+
+        &-imgContainer {
+          border: v.$backgroundColorDark solid 1px;
+          border-radius: 50%;
+          height: 3.3rem;
+          overflow: hidden;
+          width: 3.3rem;
+
+          img {
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        &-name {
+          color: v.$textColor;
+          font-size: v.$textSize;
+          font-weight: 600;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  // 5/5 Block - Pictures
+  &-pictures {
+    margin-bottom: 1.5rem;
+    padding: 0 1.5rem;
+
+    // Pictures
+    h3 {
+      color: v.$textColor;
+      font-size: 1.3rem;
+      font-family: v.$titleFont;
+      font-weight: 600;
+      margin-bottom: 1rem;
     }
   }
 }

@@ -94,24 +94,24 @@
       align-items: center;
       display: flex;
       font-size: v.$textSize;
-      font-weight: 700;
+      font-weight: 600;
       gap: 2rem;
 
       .connect:hover {
-        color: v.$accentColorDark;
+        color: v.$textColorLight;
       }
 
       .register {
         align-items: center;
-        background-color: v.$accentColorDark;
+        background-color: v.$accentColor;
         border-radius: v.$borderRadius;
-        color: v.$backgroundColor;
+        color: v.$textColor;
         display: flex;
         height: 2.3rem;
         padding: 0.5rem 1rem;
 
         &:hover {
-          background-color: v.$accentColor;
+          background-color: v.$accentColorLight;
         }
       }
 
