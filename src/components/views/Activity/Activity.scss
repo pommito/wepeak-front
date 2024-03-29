@@ -64,11 +64,20 @@
     margin-bottom: 1.5rem;
     padding: 0 1.5rem;
 
+    @media (max-width: v.$tablet) {
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
     &-imgContainer {
       border-radius: v.$borderRadius;
       height: 25rem;
       overflow: hidden;
       width: 55%;
+
+      @media (max-width: v.$tablet) {
+        width: 100%;
+      }
 
       img {
         height: 100%;
@@ -82,8 +91,11 @@
       border-radius: v.$borderRadius;
       overflow: hidden;
       height: 25rem;
-
       width: 35%;
+
+      @media (max-width: v.$tablet) {
+        width: 100%;
+      }
 
       &-info {
         display: flex;
@@ -94,6 +106,11 @@
         padding: 1rem;
         text-align: left;
 
+        @media (max-width: v.$tablet) {
+          flex-direction: row;
+          justify-content: space-around;
+        }
+
         &-date,
         &-location {
           align-items: center;
@@ -103,6 +120,16 @@
           span {
             font-weight: 600;
           }
+        }
+      }
+
+      .map-container {
+        height: 29vh;
+        width: 100%;
+
+        @media (max-width: v.$tablet) {
+          // important was the only way to override the inline style
+          height: 34vh !important;
         }
       }
     }
@@ -215,6 +242,26 @@
       font-family: v.$titleFont;
       font-weight: 600;
       margin-bottom: 1rem;
+    }
+
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: left;
+
+      &-imgContainer {
+        border-radius: v.$borderRadius;
+        height: 10rem;
+        overflow: hidden;
+        width: 10rem;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
     }
   }
 }

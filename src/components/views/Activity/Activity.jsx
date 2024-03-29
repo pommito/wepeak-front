@@ -69,9 +69,9 @@ const Activity = () => {
 
           <div className="Activity-illustration-mapCard-map">
             <MapContainer
+              className="map-container"
               center={[45.923156, 6.48366]}
               zoom={15}
-              style={{ height: '16.5rem', width: '100%' }}
             >
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -137,6 +137,56 @@ const Activity = () => {
 
       <div className="Activity-pictures">
         <h3>Photos</h3>
+        <div className="Activity-pictures-list">
+          <div className="Activity-pictures-list-imgContainer">
+            <img
+              src="https://media.camptocamp.org/c2corg-active/1330583993_39809741MI.jpg"
+              alt=""
+            />
+          </div>
+          <div className="Activity-pictures-list-imgContainer">
+            <img
+              src="https://media.camptocamp.org/c2corg-active/1611435102_1936019507MI.jpg"
+              alt=""
+            />
+          </div>
+          <div className="Activity-pictures-list-imgContainer">
+            <img
+              src="https://media.camptocamp.org/c2corg-active/1708877680_1511906860MI.jpg"
+              alt=""
+            />
+          </div>
+          <div className="Activity-pictures-list-imgContainer">
+            <img
+              src="https://media.camptocamp.org/c2corg-active/1708877681_956623990MI.jpg"
+              alt=""
+            />
+          </div>
+          <div className="Activity-pictures-list-imgContainer">
+            <img
+              src="https://media.camptocamp.org/c2corg-active/1330583993_39809741MI.jpg"
+              alt=""
+            />
+          </div>
+          <div className="Activity-pictures-list-imgContainer">
+            <img
+              src="https://media.camptocamp.org/c2corg-active/1611435102_1936019507MI.jpg"
+              alt=""
+            />
+          </div>
+          <div className="Activity-pictures-list-imgContainer">
+            <img
+              src="https://media.camptocamp.org/c2corg-active/1708877680_1511906860MI.jpg"
+              alt=""
+            />
+          </div>
+          <div className="Activity-pictures-list-imgContainer">
+            <img
+              src="https://media.camptocamp.org/c2corg-active/1708877681_956623990MI.jpg"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
     </main>
   );
