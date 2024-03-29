@@ -1,3 +1,4 @@
+import Faq from '../../utils/Faq/Faq';
 import Activities from './Activities/Activities';
 import CtaBanner from './CtaBanner/CtaBanner';
 import Hero from './Hero/Hero';
@@ -8,7 +9,8 @@ const Home = () => {
     <div className="Home">
       {/* <Hero /> */}
       {/* <Activities /> */}
-      <CtaBanner />
+      {/* <CtaBanner /> */}
+      <Faq />
     </div>
   );
 };
