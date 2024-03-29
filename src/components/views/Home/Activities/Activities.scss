@@ -13,6 +13,7 @@
       font-family: v.$titleFont;
       font-size: 1.5rem;
       font-weight: 600;
+      text-align: start;
     }
 
     &-link {
@@ -55,6 +56,16 @@
       &-grid {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 1fr);
+      }
+
+      &-top {
+        &-title {
+          font-size: 1rem;
+        }
+
+        &-link {
+          font-size: 0.5rem;
+        }
       }
     }
   }
