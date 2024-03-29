@@ -1,4 +1,12 @@
 @use '/src/styles/variables' as v;
 
 .ContactDirect {
+  margin: auto;
+  width: 80%;
+
+  &-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0rem auto 1rem auto;
+  }
 }
