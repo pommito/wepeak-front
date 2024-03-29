@@ -1,0 +1,13 @@
+@use '/src/styles/variables' as v;
+
+.FilterButton {
+  &-button {
+    &:hover {
+    }
+  }
+
+  &-dropdown {
+    background-color: blue;
+    width: 100%;
+  }
+}

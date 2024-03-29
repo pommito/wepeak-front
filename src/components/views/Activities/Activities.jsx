@@ -1,14 +1,16 @@
 import Button from '../../utils/Button/Button';
 import EventCard from '../../utils/EventCard/EventCard';
+import FilterButton from './FilterButton/FilterButton';
+
 import './Activities.scss';
 
 const Activities = () => {
   return (
     <div className="Activities">
-      <h1 className="Activities-title">
-        Evènements à proximité du seul Olympique
-      </h1>
-      <div className="Activities-filters"></div>
+      <h1 className="Activities-title">Evènements à proximité de [ville]</h1>
+      <div className="Activities-filters">
+        <FilterButton />
+      </div>
       <div className="Activities-grid">
         <EventCard />
         <EventCard />
