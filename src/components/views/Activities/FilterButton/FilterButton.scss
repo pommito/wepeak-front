@@ -1,13 +1,26 @@
 @use '/src/styles/variables' as v;
 
 .FilterButton {
+  position: relative;
   &-button {
     &:hover {
     }
   }
 
   &-dropdown {
+    position: absolute;
+    top: 100%;
     background-color: blue;
+    max-height: 0;
+    overflow: hidden;
     width: 100%;
+    z-index: 9999;
+    transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+
+    &.show {
+      height: auto;
+      max-height: 9999px;
+      transition: all 0.5s cubic-bezier(1, 0, 1, 0);
+    }
   }
 }
