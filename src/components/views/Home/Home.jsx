@@ -7,13 +7,13 @@ import './Home.scss';
 
 const Home = () => {
   return (
-    <div className="Home">
+    <main className="Home">
       <Hero />
       <Activities />
       <CtaBanner />
       <Faq />
       <DoubleCta />
-    </div>
+    </main>
   );
 };
 

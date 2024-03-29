@@ -5,7 +5,7 @@ import './Button.scss';
 
 const Button = ({ text, className, url }) => {
   return (
-    <Link to={url} target="_blank" className={`Button ${className}`}>
+    <Link to={url} className={`Button ${className}`}>
       {text}
     </Link>
   );

@@ -19,7 +19,7 @@ const EventCard = () => {
         <h3 className="EventCard-content-title">
           Responsive design: Cross-device experience
         </h3>
-        <Link to="/" target="_blank" className="EventCard-content-link">
+        <Link to="/" className="EventCard-content-link">
           <span>Lire plus</span>
           <IconContext.Provider value={{ size: '.6rem' }}>
             <FiArrowRight />

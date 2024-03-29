@@ -8,7 +8,7 @@ const Activities = () => {
     <div className="Activities">
       <div className="Activities-top">
         <h2 className="Activities-top-title">Evènements à venir</h2>
-        <Link to="/activities" target="_blank" className="Activities-top-link">
+        <Link to="/activities" className="Activities-top-link">
           Voir tous les évènements
         </Link>
       </div>
