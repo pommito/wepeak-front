@@ -6,7 +6,6 @@
   border: solid 1px v.$secondaryColor;
   border-radius: calc(v.$borderRadius / 2);
   flex-direction: column;
-  gap: 1rem;
   padding: 0.5rem 1rem;
   text-align: start;
   width: 100%;
@@ -14,6 +13,7 @@
   &-question {
     cursor: pointer;
     display: flex;
+    padding: 0.5rem 0;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
@@ -24,6 +24,11 @@
 
     &-icon {
       font-size: 1rem;
+      transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      &.show {
+        transform: rotate(135deg);
+      }
     }
   }
 

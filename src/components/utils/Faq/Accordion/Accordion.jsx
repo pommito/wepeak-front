@@ -19,7 +19,11 @@ const Accordion = () => {
         }}
       >
         <h3 className="Accordion-question-title">Question n°1</h3>
-        <FiPlus className="Accordion-question-icon" />
+        <FiPlus
+          className={
+            isOpen ? `Accordion-question-icon show` : `Accordion-question-icon`
+          }
+        />
       </div>
 
       <div className={isOpen ? `Accordion-answer show` : `Accordion-answer`}>
