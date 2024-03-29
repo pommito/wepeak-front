@@ -2,7 +2,6 @@
 import { IconContext } from 'react-icons';
 import { FiSearch } from 'react-icons/fi';
 import { FaRegMessage } from 'react-icons/fa6';
-import { PiUserCircle } from 'react-icons/pi';
 
 import { NavLink, Link } from 'react-router-dom';
 
@@ -31,7 +30,7 @@ const Header = () => {
         </button>
       </form>
       <nav className="Header-nav">
-        {isLogged && (
+        {!isLogged && (
           <ul className="Header-nav-links">
             <li className="Header-nav-link connect">
               <NavLink to="/login">Se connecter</NavLink>
@@ -41,7 +40,7 @@ const Header = () => {
             </li>
           </ul>
         )}
-        {!isLogged && (
+        {isLogged && (
           <ul className="Header-nav-links">
             <li className="Header-nav-link messages">
               <NavLink to="/messages">
