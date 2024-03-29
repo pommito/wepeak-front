@@ -7,7 +7,7 @@ import { NavLink, Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = false;
+  const isLogged = true;
 
   return (
     <header className="Header">
@@ -23,7 +23,7 @@ const Header = () => {
       <form className="Header-form">
         <input type="text" placeholder="Ville ou code postal" />
         <button type="submit">
-          <IconContext.Provider value={{ size: '1.2rem' }}>
+          <IconContext.Provider value={{ size: '1.25rem' }}>
             <FiSearch className="search-logo" />
           </IconContext.Provider>
         </button>

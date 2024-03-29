@@ -9,7 +9,7 @@
   justify-content: space-between;
   margin-bottom: 1rem;
   padding: 0.5rem 1.5rem;
-  position: sticky;
+  // position: sticky;
   top: 0;
   width: 100%;
 
@@ -71,7 +71,7 @@
       width: 2.5rem;
 
       .search-logo {
-        color: v.$backgroundColor;
+        color: v.$textColor;
       }
 
       &:hover {
