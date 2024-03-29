@@ -11,16 +11,24 @@ import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 const Footer = () => {
-  const isLogged = true;
+  const isLogged = false;
 
   return (
     <footer className="Footer">
       <div className="Footer-main">
         <div className="Footer-main-socials">
+          <Link to="/">
+            <div className="Footer-main-socials-logoContainer">
+              <img
+                className="Footer-main-socials-logoContainer-logo"
+                src="/src/assets/Logo_BW.svg"
+                alt="Logo de WePeak"
+              />
+            </div>
+          </Link>
           <p className="Footer-main-socials-message">
             Explorez, partagez et découvrez de nouvelles aventures outdoor avec
-            WePeak - la plateforme ultime pour les passionnés de sport et de
-            nature.
+            WePeak.
           </p>
           <ul className="Footer-main-socials-logos">
             <li>
@@ -55,7 +63,7 @@ const Footer = () => {
         </div>
 
         <div className="Footer-main-account">
-          <ul className="Footer-main-account-list">
+          <nav className="Footer-main-account-list">
             <li>
               <h4>Account</h4>
             </li>
@@ -68,26 +76,26 @@ const Footer = () => {
             <li>
               <Link to={isLogged ? '/profile' : '/login'}>Profil</Link>
             </li>
-          </ul>
+          </nav>
         </div>
 
         <div className="Footer-main-wepeak">
-          <ul className="Footer-main-wepeak-list">
+          <nav className="Footer-main-wepeak-list">
             <li>
               <Link to="/">
                 <h4>WePeak</h4>
               </Link>
             </li>
             <li>
-              <Link to="/privacy">Vie privée</Link>
+              <Link to="/about">&#xC0; propos</Link>
             </li>
             <li>
               <Link to="/legal-notices">Mentions légales</Link>
             </li>
             <li>
-              <Link to="/about">&#xC0; propos</Link>
+              <Link to="/privacy">Confidentialité</Link>
             </li>
-          </ul>
+          </nav>
         </div>
       </div>
 
