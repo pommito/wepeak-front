@@ -33,6 +33,10 @@
     text-align: left;
     width: 65%;
 
+    @media (max-width: v.$mobile) {
+      width: 90%;
+    }
+
     &-icon {
       font-size: 2.3rem;
     }

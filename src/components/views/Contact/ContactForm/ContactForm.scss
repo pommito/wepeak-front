@@ -17,6 +17,10 @@
     flex-direction: column;
     width: 47.5%;
 
+    @media (max-width: v.$tablet) {
+      width: 100%;
+    }
+
     label {
       color: v.$textColor;
       font-weight: 600;
@@ -65,6 +69,10 @@
     font-size: v.$textSize;
     padding: 0.75rem;
     width: 30%;
+
+    @media (max-width: v.$mobile) {
+      width: 40%;
+    }
 
     &:hover {
       background-color: v.$accentColor;
