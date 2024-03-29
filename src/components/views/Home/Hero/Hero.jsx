@@ -6,11 +6,11 @@ const Hero = () => {
     <div className="Hero">
       <div className="Hero-content">
         <h1 className="Hero-content-title">
-          Discover the key to grow your business
+          Partagez et découvrez de nouvelles aventures !
         </h1>
         <p className="Hero-content-description">
-          Lorem ipsum dolor sit amet consectetur adipiscing elidolor mattis sit
-          phasellus mollis sit aliquam sit nullam neques.
+          Explorez ensemble de nouveaux horizons et partagez des expériences
+          inoubliables avec la communauté WePeak !
         </p>
         <div className="Hero-content-buttons">
           <Button text="Get started" className="primary" url="#" />
