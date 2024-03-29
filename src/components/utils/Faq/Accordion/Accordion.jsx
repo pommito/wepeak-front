@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { FiPlus } from 'react-icons/fi';
+import PropTypes from 'prop-types';
 
+import { FiPlus } from 'react-icons/fi';
 import './Accordion.scss';
 
-const Accordion = () => {
+const Accordion = ({ question, answer, index }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
@@ -17,8 +18,10 @@ const Accordion = () => {
         onClick={() => {
           toggle();
         }}
+        role="textbox"
+        tabIndex={index}
       >
-        <h3 className="Accordion-question-title">Question n°1</h3>
+        <h3 className="Accordion-question-title">{question}</h3>
         <FiPlus
           className={
             isOpen ? `Accordion-question-icon show` : `Accordion-question-icon`
@@ -27,15 +30,16 @@ const Accordion = () => {
       </div>
 
       <div className={isOpen ? `Accordion-answer show` : `Accordion-answer`}>
-        <p className="Accordion-answer-text">
-          Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit
-          phasellus mollis sit aliquam sit nullam. Lorem ipsum dolor sit amet
-          consectetur adipiscing eli mattis sit phasellus mollis sit aliquam sit
-          nullam.
-        </p>
+        <p className="Accordion-answer-text">{answer}</p>
       </div>
     </div>
   );
+};
+
+Accordion.propTypes = {
+  question: PropTypes.string.isRequired,
+  answer: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Accordion;
