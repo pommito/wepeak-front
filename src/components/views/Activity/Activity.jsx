@@ -104,7 +104,7 @@ const Activity = () => {
       </div>
 
       <div className="Activity-people">
-        <h3>Participants [2]</h3>
+        <h3>Participants [6]</h3>
         <div className="Activity-people-cards">
           <Link to="/user/id">
             <div className="Activity-people-cards-card">
@@ -127,9 +127,55 @@ const Activity = () => {
                 />
               </div>
 
-              <p className="Activity-people-cards-card-name">
-                Nicolas-Guillaume
-              </p>
+              <p className="Activity-people-cards-card-name">Nicolas</p>
+            </div>
+          </Link>
+          <Link to="/user/id">
+            <div className="Activity-people-cards-card">
+              <div className="Activity-people-cards-card-imgContainer">
+                <img
+                  src="https://ca.slack-edge.com/T060RPZMDH6-U06160CTFNZ-5a4cda8a8782-512"
+                  alt=""
+                />
+              </div>
+
+              <p className="Activity-people-cards-card-name">Melvin</p>
+            </div>
+          </Link>
+          <Link to="/user/id">
+            <div className="Activity-people-cards-card">
+              <div className="Activity-people-cards-card-imgContainer">
+                <img
+                  src="https://ca.slack-edge.com/T060RPZMDH6-U0619H5V5DG-7ee094234be2-512"
+                  alt=""
+                />
+              </div>
+
+              <p className="Activity-people-cards-card-name">Nicolas</p>
+            </div>
+          </Link>
+          <Link to="/user/id">
+            <div className="Activity-people-cards-card">
+              <div className="Activity-people-cards-card-imgContainer">
+                <img
+                  src="https://ca.slack-edge.com/T060RPZMDH6-U06160CTFNZ-5a4cda8a8782-512"
+                  alt=""
+                />
+              </div>
+
+              <p className="Activity-people-cards-card-name">Melvin</p>
+            </div>
+          </Link>
+          <Link to="/user/id">
+            <div className="Activity-people-cards-card">
+              <div className="Activity-people-cards-card-imgContainer">
+                <img
+                  src="https://ca.slack-edge.com/T060RPZMDH6-U0619H5V5DG-7ee094234be2-512"
+                  alt=""
+                />
+              </div>
+
+              <p className="Activity-people-cards-card-name">Nicolas</p>
             </div>
           </Link>
         </div>

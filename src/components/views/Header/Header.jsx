@@ -8,7 +8,7 @@ import { NavLink, Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = false;
+  const isLogged = true;
 
   return (
     <header className="Header">
