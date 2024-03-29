@@ -1,4 +1,4 @@
-import { HiOutlineMail } from 'react-icons/hi';
+import { MdOutlineEmail } from 'react-icons/md';
 
 import './ContactDirect.scss';
 
@@ -9,10 +9,10 @@ const ContactDirect = () => {
         Vous souhaitez nous contacter directement ?
       </h3>
       <p className="ContactDirect-text">
-        Vous pouvez également nous contacter directement par e-mail :
+        Vous pouvez également nous contacter directement par e-mail
       </p>
       <div className="ContactDirect-card">
-        <HiOutlineMail className="ContactDirect-card-icon" />
+        <MdOutlineEmail className="ContactDirect-card-icon" />
 
         <p className="ContactDirect-card-email">
           E-mail <br /> <span>contact@wepeak.com</span>

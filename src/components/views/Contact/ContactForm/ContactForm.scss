@@ -18,6 +18,7 @@
     width: 47.5%;
 
     label {
+      color: v.$textColor;
       font-weight: 600;
       margin-bottom: 0.25rem;
       text-align: left;
@@ -35,6 +36,10 @@
 
       &:hover {
         border: v.$primaryColor 1px solid;
+      }
+
+      &::placeholder {
+        color: v.$secondaryColorDark;
       }
     }
 
