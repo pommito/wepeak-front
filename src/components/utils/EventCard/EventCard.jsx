@@ -1,5 +1,6 @@
 import { IconContext } from 'react-icons';
 import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import './EventCard.scss';
 
 const EventCard = () => {
@@ -18,12 +19,12 @@ const EventCard = () => {
         <h3 className="EventCard-content-title">
           Responsive design: Cross-device experience
         </h3>
-        <a href="/" className="EventCard-content-link">
+        <Link to="/" target="_blank" className="EventCard-content-link">
           <span>Lire plus</span>
           <IconContext.Provider value={{ size: '.6rem' }}>
             <FiArrowRight />
           </IconContext.Provider>
-        </a>
+        </Link>
       </div>
     </article>
   );
