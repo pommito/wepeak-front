@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 // React-icons imports
 import { FiSearch } from 'react-icons/fi';
 import { FaRegMessage } from 'react-icons/fa6';
@@ -7,10 +9,25 @@ import { NavLink, Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = false;
+  const isLogged = false; // To remove at API plug
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      // If vertical scroll is greater than 0, we set isScrolled to true
+      const scrolled = window.scrollY > 0;
+      setIsScrolled(scrolled);
+    };
+
+    // At each scroll, we call the onScroll function
+    window.addEventListener('scroll', onScroll);
+    // Good practice to remove event listener when component is unmounted
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className="Header">
+    <header className={`Header ${isScrolled ? 'scrolled' : ''}`}>
       <Link to="/">
         <div className="Header-logo-container">
           <img

@@ -3,8 +3,6 @@
 .Header {
   align-items: center;
   background-color: v.$backgroundColor;
-  border-bottom: solid 1px v.$secondaryColor;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
@@ -13,6 +11,10 @@
   top: 0;
   width: 100%;
   z-index: 1001;
+
+  &.scrolled {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
   @media (max-width: v.$tablet) {
     flex-wrap: wrap;
