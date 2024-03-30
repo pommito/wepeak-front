@@ -1,5 +1,4 @@
 // React-icons imports
-import { IconContext } from 'react-icons';
 import { FiSearch } from 'react-icons/fi';
 import { FaRegMessage } from 'react-icons/fa6';
 
@@ -8,7 +7,7 @@ import { NavLink, Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = true;
+  const isLogged = false;
 
   return (
     <header className="Header">
@@ -24,19 +23,21 @@ const Header = () => {
       <form className="Header-form">
         <input type="text" placeholder="Ville ou code postal" />
         <button type="submit">
-          <IconContext.Provider value={{ size: '1.25rem' }}>
-            <FiSearch className="search-logo" />
-          </IconContext.Provider>
+          <FiSearch className="search-logo" />
         </button>
       </form>
       <nav className="Header-nav">
         {!isLogged && (
           <ul className="Header-nav-links">
-            <li className="Header-nav-link connect">
-              <NavLink to="/login">Se connecter</NavLink>
+            <li className="Header-nav-link">
+              <NavLink className="connect" to="/login">
+                Se connecter
+              </NavLink>
             </li>
-            <li className="Header-nav-link register">
-              <NavLink to="/register">S&apos;inscrire</NavLink>
+            <li className="Header-nav-link">
+              <NavLink className="register" to="/register">
+                S&apos;inscrire
+              </NavLink>
             </li>
           </ul>
         )}
@@ -44,9 +45,7 @@ const Header = () => {
           <ul className="Header-nav-links">
             <li className="Header-nav-link messages">
               <NavLink to="/messages">
-                <IconContext.Provider value={{ size: '1.5rem' }}>
-                  <FaRegMessage />
-                </IconContext.Provider>
+                <FaRegMessage className="messages-icon" />
               </NavLink>
             </li>
             <li className="Header-nav-link profile">

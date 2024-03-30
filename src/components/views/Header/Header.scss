@@ -73,6 +73,7 @@
 
       .search-logo {
         color: v.$textColor;
+        font-size: 1.25rem;
       }
 
       &:hover {
@@ -95,20 +96,24 @@
       display: flex;
       font-size: v.$textSize;
       font-weight: 600;
-      gap: 2rem;
+      gap: 1rem;
 
       .connect:hover {
         color: v.$textColorLight;
       }
 
+      .connect,
       .register {
         align-items: center;
-        background-color: v.$accentColor;
-        border-radius: v.$borderRadius;
-        color: v.$textColor;
         display: flex;
         height: 2.3rem;
         padding: 0.5rem 1rem;
+      }
+
+      .register {
+        background-color: v.$accentColor;
+        border-radius: v.$borderRadius;
+        color: v.$textColor;
 
         &:hover {
           background-color: v.$accentColorLight;
@@ -139,6 +144,10 @@
 
       .messages {
         margin-top: 0.1rem;
+
+        &-icon {
+          font-size: 1.5rem;
+        }
       }
     }
   }
