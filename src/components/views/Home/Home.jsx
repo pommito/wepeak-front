@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Faq from '../../utils/Faq/Faq';
 import Activities from './Activities/Activities';
 import CtaBanner from './CtaBanner/CtaBanner';
@@ -6,6 +8,10 @@ import Hero from './Hero/Hero';
 import './Home.scss';
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <main className="Home">
       <Hero />

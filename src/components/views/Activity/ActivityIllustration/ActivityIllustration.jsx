@@ -1,5 +1,4 @@
 // React-icons imports
-import { IconContext } from 'react-icons';
 import { TbClockHour8 } from 'react-icons/tb';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 
@@ -22,18 +21,14 @@ const ActivityIllustration = () => {
       <div className="ActivityIllustration-mapCard">
         <div className="ActivityIllustration-mapCard-info">
           <div className="ActivityIllustration-mapCard-info-date">
-            <IconContext.Provider value={{ size: '1.4rem' }}>
-              <TbClockHour8 />
-            </IconContext.Provider>
+            <TbClockHour8 className="ActivityIllustration-mapCard-info-date icon" />
             <p>
               <span>Date et heure de départ</span> <br /> 10-04-2024 à 07h00
             </p>
           </div>
 
           <div className="ActivityIllustration-mapCard-info-location">
-            <IconContext.Provider value={{ size: '1.4rem' }}>
-              <HiOutlineLocationMarker />
-            </IconContext.Provider>
+            <HiOutlineLocationMarker className="ActivityIllustration-mapCard-info-location icon" />
             <p>
               <span>Lieu de rendez-vous</span> <br /> 10 Rte des Confins <br />{' '}
               74220 La Clusaz

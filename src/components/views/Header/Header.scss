@@ -3,32 +3,65 @@
 .Header {
   align-items: center;
   background-color: v.$backgroundColor;
-  border-bottom: solid 1px v.$secondaryColor;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid v.$backgroundColorDark;
   display: flex;
+  row-gap: 0.75rem;
+  height: 4.1rem;
   justify-content: space-between;
   margin-bottom: 1rem;
   padding: 0.2rem 1.5rem;
   position: sticky;
   top: 0;
+  transition: box-shadow 0.5s ease;
   width: 100%;
   z-index: 1001;
+
+  &.scrolled {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
   @media (max-width: v.$tablet) {
     flex-wrap: wrap;
   }
 
-  .Header-logo-container {
-    @media (max-width: v.$mobile) {
-      max-width: 3.7rem;
-      overflow: hidden;
-    }
+  @media (max-width: 390px) {
+    padding: 0.2rem 0.5rem;
   }
 
-  &-logo {
-    max-height: 2.5rem;
-    order: 1;
-    margin: 0.5rem;
+  &-left {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+
+    &-logo-container {
+      @media (max-width: v.$mobile) {
+        max-width: 3.7rem;
+        overflow: hidden;
+      }
+    }
+
+    &-logo {
+      max-height: 2.5rem;
+      order: 1;
+      margin: 0.5rem;
+    }
+
+    &-openSearch {
+      display: none;
+
+      @media (max-width: v.$tablet) {
+        display: contents;
+      }
+
+      &-icon {
+        color: v.$textColor;
+        font-size: 1.4rem;
+
+        &:hover {
+          color: v.$textColorLight;
+        }
+      }
+    }
   }
 
   &-form {
@@ -73,6 +106,7 @@
 
       .search-logo {
         color: v.$textColor;
+        font-size: 1.25rem;
       }
 
       &:hover {
@@ -95,20 +129,24 @@
       display: flex;
       font-size: v.$textSize;
       font-weight: 600;
-      gap: 2rem;
+      gap: 1rem;
 
       .connect:hover {
         color: v.$textColorLight;
       }
 
+      .connect,
       .register {
         align-items: center;
-        background-color: v.$accentColor;
-        border-radius: v.$borderRadius;
-        color: v.$textColor;
         display: flex;
         height: 2.3rem;
         padding: 0.5rem 1rem;
+      }
+
+      .register {
+        background-color: v.$accentColor;
+        border-radius: v.$borderRadius;
+        color: v.$textColor;
 
         &:hover {
           background-color: v.$accentColorLight;
@@ -139,6 +177,10 @@
 
       .messages {
         margin-top: 0.1rem;
+
+        &-icon {
+          font-size: 1.5rem;
+        }
       }
     }
   }
