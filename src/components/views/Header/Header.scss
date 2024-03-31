@@ -56,6 +56,10 @@
       &-icon {
         color: v.$textColor;
         font-size: 1.4rem;
+
+        &:hover {
+          color: v.$textColorLight;
+        }
       }
     }
   }
