@@ -104,7 +104,8 @@ const Footer = () => {
 
       <div className="Footer-bottom">
         <p className="Footer-bottom-text">
-          Copyright &#xA9; 2024 WePeak &#124; Tout droit réservé
+          Copyright &copy; {new Date().getFullYear()} WePeak | Tout droit
+          réservé
         </p>
       </div>
     </footer>
