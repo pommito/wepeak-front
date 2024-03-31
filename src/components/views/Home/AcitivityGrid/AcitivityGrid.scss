@@ -26,10 +26,6 @@
       color: v.$textColor;
       padding: 0.2rem 0.4rem;
 
-      background-color: v.$secondaryColor;
-      border-color: v.$secondaryColorDark;
-      color: v.$backgroundColor;
-
       &:hover {
         background-color: v.$secondaryColorDark;
       }
