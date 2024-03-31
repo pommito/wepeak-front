@@ -24,6 +24,10 @@
     flex-wrap: wrap;
   }
 
+  @media (max-width: 390px) {
+    padding: 0.2rem 0.5rem;
+  }
+
   &-left {
     align-items: center;
     display: flex;
@@ -47,14 +51,11 @@
 
       @media (max-width: v.$tablet) {
         display: contents;
-
-        .close {
-          display: none;
-        }
       }
 
       &-icon {
-        font-size: 1.3rem;
+        color: v.$textColor;
+        font-size: 1.4rem;
       }
     }
   }

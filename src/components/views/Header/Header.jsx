@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // React-icons imports
 import { LuSearch, LuSearchX } from 'react-icons/lu';
@@ -12,6 +12,7 @@ const Header = () => {
   const isLogged = false; // To remove at API plug
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const onScroll = () => {
     // If vertical scroll is greater than 0, we set isScrolled to true
@@ -21,6 +22,29 @@ const Header = () => {
 
   // At each scroll, we call the onScroll function
   window.addEventListener('scroll', onScroll);
+
+  // Manange display of search bar in tablet and mobile version
+  const handleSearchButtonClick = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      // Change isSearchOpen state to true if window width is greater than 992px
+      setIsSearchOpen(window.innerWidth > 992 ? true : isSearchOpen);
+    };
+
+    // Call handleResize() at the first render
+    handleResize();
+
+    // Event listener on window resize
+    window.addEventListener('resize', handleResize);
+
+    // Clean event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  });
 
   return (
     <header className={`Header ${isScrolled ? 'scrolled' : ''}`}>
@@ -35,20 +59,34 @@ const Header = () => {
           </div>
         </Link>
 
-        <button type="button" className="Header-left-openSearch open">
-          <LuSearch className="Header-left-openSearch-icon" />
-        </button>
-        <button type="button" className="Header-left-openSearch close">
-          <LuSearchX className="Header-left-openSearch-icon" />
-        </button>
+        {!isSearchOpen && (
+          <button
+            type="button"
+            className="Header-left-openSearch open"
+            onClick={handleSearchButtonClick}
+          >
+            <LuSearch className="Header-left-openSearch-icon" />
+          </button>
+        )}
+        {isSearchOpen && (
+          <button
+            type="button"
+            className="Header-left-openSearch close"
+            onClick={handleSearchButtonClick}
+          >
+            <LuSearchX className="Header-left-openSearch-icon" />
+          </button>
+        )}
       </div>
 
-      <form className="Header-form">
-        <input type="text" placeholder="Ville ou code postal" />
-        <button type="submit">
-          <LuSearch className="search-logo" />
-        </button>
-      </form>
+      {isSearchOpen && (
+        <form className="Header-form">
+          <input type="text" placeholder="Ville ou code postal" />
+          <button type="submit">
+            <LuSearch className="search-logo" />
+          </button>
+        </form>
+      )}
 
       <nav className="Header-nav">
         {!isLogged && (
