@@ -19,6 +19,9 @@
   &-filters {
     display: flex;
     gap: 0.5rem;
+    margin: 1rem 0;
+    align-self: flex-start;
+    flex-wrap: wrap;
   }
 
   &-grid {

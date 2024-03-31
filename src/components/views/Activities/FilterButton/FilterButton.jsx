@@ -1,9 +1,31 @@
 import { useState } from 'react';
+import { FaCaretDown } from 'react-icons/fa';
 
 import './FilterButton.scss';
 
 const FilterButton = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const data = {
+    text: 'Localisation',
+    option: [
+      'Lyon',
+      'Annecy',
+      'Grenoble',
+      'Chambéry',
+      'Aix-les-Bains',
+      'Albertville',
+      'Paris',
+      'Marseille',
+      'Toulouse',
+      'Bordeaux',
+      'Nantes',
+      'Lille',
+      'Strasbourg',
+      'Montpellier',
+      'Rennes',
+    ],
+  };
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -18,16 +40,25 @@ const FilterButton = () => {
           toggle();
         }}
       >
-        Tous les évènements
+        {data.text}
+        <FaCaretDown
+          className={
+            isOpen
+              ? `FilterButton-button-icon show`
+              : `FilterButton-button-icon`
+          }
+        />
       </button>
       <ul
         className={
           isOpen ? `FilterButton-dropdown show` : `FilterButton-dropdown`
         }
       >
-        <li>Lyon</li>
-        <li>Annecy</li>
-        <li>Grenoble</li>
+        {data.option.map((option) => (
+          <li className="FilterButton-dropdown-option" key={option}>
+            {option}
+          </li>
+        ))}
       </ul>
     </div>
   );
