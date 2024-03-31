@@ -3,7 +3,7 @@
 .Header {
   align-items: center;
   background-color: v.$backgroundColor;
-  border-bottom: 1px solid v.$backgroundColorDark;
+  border-bottom: 1px solid v.$backgroundColor;
   display: flex;
   row-gap: 0.75rem;
   height: 4.1rem;

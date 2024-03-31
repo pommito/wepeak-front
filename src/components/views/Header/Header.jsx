@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 // React-icons imports
 import { LuSearch, LuSearchX } from 'react-icons/lu';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { IconContext } from 'react-icons';
-import { FiSearch } from 'react-icons/fi';
 import { FaRegMessage } from 'react-icons/fa6';
 
-import { NavLink, Link } from 'react-router-dom';
+import { changeInputSearch } from '../../../actions/searchActions';
 
 import './Header.scss';
 
 const Header = () => {
   const isLogged = false; // To remove at API plug
+
+  const input = useSelector((state) => state.search.inputSearch);
+  const dispatch = useDispatch();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -49,10 +50,6 @@ const Header = () => {
       window.removeEventListener('resize', handleResize);
     };
   });
-  const input = useSelector((state) => state.inputMessage);
-  const dispatch = useDispatch();
-
-  const isLogged = true;
 
   return (
     <header className={`Header ${isScrolled ? 'scrolled' : ''}`}>
@@ -88,8 +85,22 @@ const Header = () => {
       </div>
 
       {isSearchOpen && (
-        <form className="Header-form">
-          <input type="text" placeholder="Ville ou code postal" />
+        <form
+          className="Header-form"
+          // onSubmit={(e) => {
+          //   e.preventDefault();
+          //   dispatch(submitSearch());
+          // }}
+        >
+          <input
+            type="text"
+            placeholder="Ville ou code postal"
+            value={input}
+            onChange={(e) => {
+              const action = changeInputSearch(e.target.value);
+              dispatch(action);
+            }}
+          />
           <button type="submit">
             <LuSearch className="search-logo" />
           </button>

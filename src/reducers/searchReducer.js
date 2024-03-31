@@ -1,19 +1,19 @@
-// import { ACTION_EXEMPLE } from '../actions/useActions';
+import { CHANGE_INPUT_SEARCH } from '../actions/searchActions';
 
 export const initialState = {
-  // user: [],
+  input: 'city',
 };
 
-const userReducer = (state = initialState, action = {}) => {
+const searchReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    // case ACTION_EXEMPLE:
-    //   return {
-    //     ...state,
-    //     user: action.toto,
-    //   };
+    case CHANGE_INPUT_SEARCH:
+      return {
+        ...state,
+        input: action.input,
+      };
     default:
       return state;
   }
 };
 
-export default userReducer;
+export default searchReducer;

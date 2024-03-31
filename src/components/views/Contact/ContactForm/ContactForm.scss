@@ -1,7 +1,7 @@
 @use '/src/styles/variables' as v;
 
 .ContactForm {
-  background-color: v.$primaryColorLight;
+  background-color: v.$primaryColor;
   border-radius: v.$borderRadius;
   display: flex;
   flex-direction: row;
