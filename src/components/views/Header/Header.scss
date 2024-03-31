@@ -3,12 +3,16 @@
 .Header {
   align-items: center;
   background-color: v.$backgroundColor;
+  border-bottom: 1px solid v.$backgroundColorDark;
   display: flex;
+  row-gap: 0.75rem;
+  height: 4.1rem;
   justify-content: space-between;
   margin-bottom: 1rem;
   padding: 0.2rem 1.5rem;
   position: sticky;
   top: 0;
+  transition: box-shadow 0.5s ease;
   width: 100%;
   z-index: 1001;
 
@@ -20,17 +24,39 @@
     flex-wrap: wrap;
   }
 
-  .Header-logo-container {
-    @media (max-width: v.$mobile) {
-      max-width: 3.7rem;
-      overflow: hidden;
-    }
-  }
+  &-left {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
 
-  &-logo {
-    max-height: 2.5rem;
-    order: 1;
-    margin: 0.5rem;
+    &-logo-container {
+      @media (max-width: v.$mobile) {
+        max-width: 3.7rem;
+        overflow: hidden;
+      }
+    }
+
+    &-logo {
+      max-height: 2.5rem;
+      order: 1;
+      margin: 0.5rem;
+    }
+
+    &-openSearch {
+      display: none;
+
+      @media (max-width: v.$tablet) {
+        display: contents;
+
+        .close {
+          display: none;
+        }
+      }
+
+      &-icon {
+        font-size: 1.3rem;
+      }
+    }
   }
 
   &-form {

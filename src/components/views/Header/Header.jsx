@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // React-icons imports
-import { FiSearch } from 'react-icons/fi';
+import { LuSearch, LuSearchX } from 'react-icons/lu';
 import { FaRegMessage } from 'react-icons/fa6';
 
 import { NavLink, Link } from 'react-router-dom';
@@ -13,36 +13,43 @@ const Header = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => {
-      // If vertical scroll is greater than 0, we set isScrolled to true
-      const scrolled = window.scrollY > 0;
-      setIsScrolled(scrolled);
-    };
+  const onScroll = () => {
+    // If vertical scroll is greater than 0, we set isScrolled to true
+    const scrolled = window.scrollY > 0;
+    setIsScrolled(scrolled);
+  };
 
-    // At each scroll, we call the onScroll function
-    window.addEventListener('scroll', onScroll);
-    // Good practice to remove event listener when component is unmounted
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  // At each scroll, we call the onScroll function
+  window.addEventListener('scroll', onScroll);
 
   return (
     <header className={`Header ${isScrolled ? 'scrolled' : ''}`}>
-      <Link to="/">
-        <div className="Header-logo-container">
-          <img
-            className="Header-logo"
-            src="/src/assets/Logo_BW.svg"
-            alt="Logo de WePeak"
-          />
-        </div>
-      </Link>
+      <div className="Header-left">
+        <Link to="/">
+          <div className="Header-left-logo-container">
+            <img
+              className="Header-left-logo"
+              src="/src/assets/Logo_BW.svg"
+              alt="Logo de WePeak"
+            />
+          </div>
+        </Link>
+
+        <button type="button" className="Header-left-openSearch open">
+          <LuSearch className="Header-left-openSearch-icon" />
+        </button>
+        <button type="button" className="Header-left-openSearch close">
+          <LuSearchX className="Header-left-openSearch-icon" />
+        </button>
+      </div>
+
       <form className="Header-form">
         <input type="text" placeholder="Ville ou code postal" />
         <button type="submit">
-          <FiSearch className="search-logo" />
+          <LuSearch className="search-logo" />
         </button>
       </form>
+
       <nav className="Header-nav">
         {!isLogged && (
           <ul className="Header-nav-links">
