@@ -1,4 +1,6 @@
 // React-icons imports
+import { useSelector, useDispatch } from 'react-redux';
+
 import { IconContext } from 'react-icons';
 import { FiSearch } from 'react-icons/fi';
 import { FaRegMessage } from 'react-icons/fa6';
@@ -8,6 +10,9 @@ import { NavLink, Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
+  const input = useSelector((state) => state.inputMessage);
+  const dispatch = useDispatch();
+
   const isLogged = true;
 
   return (
@@ -22,7 +27,15 @@ const Header = () => {
         </div>
       </Link>
       <form className="Header-form">
-        <input type="text" placeholder="Ville ou code postal" />
+        <input
+          type="text"
+          placeholder="Ville ou code postal"
+          value={input}
+          onChange={(e) => {
+            const action = changeInputSearch(e.target.value);
+            dispatch(action);
+          }}
+        />
         <button type="submit">
           <IconContext.Provider value={{ size: '1.25rem' }}>
             <FiSearch className="search-logo" />
