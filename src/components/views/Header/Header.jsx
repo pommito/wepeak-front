@@ -12,39 +12,55 @@ import './Header.scss';
 
 const Header = () => {
   const isLogged = false; // To remove at API plug
-
-  const input = useSelector((state) => state.search.inputSearch);
   const dispatch = useDispatch();
 
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  // THIS CODE BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
+  const input = useSelector((state) => state.search.inputSearch);
+  // Local state to stock the timeout between each input
+  const [searchTimeout, setSearchTimeout] = useState(null);
+  // Function to handle input search. Called at each input change
+  const handleInputSearch = (value) => {
+    // Update input search in the store
+    dispatch(changeInputSearch(value));
+    // If a timeout is already set, we clear it
+    if (searchTimeout) {
+      clearTimeout(searchTimeout);
+    }
+    // Launch a new timeout to call Cities search API after 500ms
+    const timeout = setTimeout(() => {
+      console.log('Search API call');
+      // dispatch(fetchCitiesSuggestions(value));
+    }, 2000);
+    // Update searchTimeout state with the new timeout
+    setSearchTimeout(timeout);
+  };
 
+  // THIS CODE BLOCK HANDLE HEADER BOTTOM SHADOW
+  const [isScrolled, setIsScrolled] = useState(false);
+  // onScroll function which will be called at each scroll
   const onScroll = () => {
     // If vertical scroll is greater than 0, we set isScrolled to true
     const scrolled = window.scrollY > 0;
     setIsScrolled(scrolled);
   };
 
+  // THIS CODE BLOCK HANDLE SEARCH DISPLAY IN DESKTOP, TABLET AND MOBILE VERSIONS
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   // At each scroll, we call the onScroll function
   window.addEventListener('scroll', onScroll);
-
   // Manange display of search bar in tablet and mobile version
   const handleSearchButtonClick = () => {
     setIsSearchOpen(!isSearchOpen);
   };
-
   useEffect(() => {
     const handleResize = () => {
       // Change isSearchOpen state to true if window width is greater than 992px
       setIsSearchOpen(window.innerWidth > 992 ? true : isSearchOpen);
     };
-
     // Call handleResize() at the first render
     handleResize();
-
     // Event listener on window resize
     window.addEventListener('resize', handleResize);
-
     // Clean event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -97,8 +113,7 @@ const Header = () => {
             placeholder="Ville ou code postal"
             value={input}
             onChange={(e) => {
-              const action = changeInputSearch(e.target.value);
-              dispatch(action);
+              handleInputSearch(e.target.value);
             }}
           />
           <button type="submit">
