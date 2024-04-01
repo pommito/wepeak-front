@@ -3,12 +3,10 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 
 import reducer from '../reducers/indexReducer';
 
-// import authMiddleware from '../middleware/authMiddleware';
+import searchMiddleware from '../middleware/searchMiddleware';
 
-// on combine devTools avec les middlewares
 const enhancers = composeWithDevTools(
-  applyMiddleware()
-  // authMiddleware
+  applyMiddleware(searchMiddleware)
   // ... d'autres middlewares
 );
 

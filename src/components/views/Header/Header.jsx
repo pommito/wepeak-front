@@ -6,7 +6,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { LuSearch, LuSearchX } from 'react-icons/lu';
 import { FaRegMessage } from 'react-icons/fa6';
 
-import { changeInputSearch } from '../../../actions/searchActions';
+import {
+  changeInputSearch,
+  fetchCitiesSearch,
+} from '../../../actions/searchActions';
 
 import './Header.scss';
 
@@ -28,8 +31,7 @@ const Header = () => {
     }
     // Launch a new timeout to call Cities search API after 500ms
     const timeout = setTimeout(() => {
-      console.log('Search API call');
-      // dispatch(fetchCitiesSuggestions(value));
+      dispatch(fetchCitiesSearch(value));
     }, 2000);
     // Update searchTimeout state with the new timeout
     setSearchTimeout(timeout);
