@@ -26,7 +26,7 @@ const Activities = () => {
         <EventCard />
         <EventCard />
       </div>
-      <Button text="Charger la suite" className="primary" url="#" />
+      <Button text="Voir la suite" className="primary" url="#" />
     </div>
   );
 };

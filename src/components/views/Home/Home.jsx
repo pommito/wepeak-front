@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import Faq from '../../utils/Faq/Faq';
-import ActivityGrid from './AcitivityGrid/ActivityGrid';
+import ActivityGrid from './ActivityGrid/ActivityGrid';
 import CtaBanner from './CtaBanner/CtaBanner';
 import DoubleCta from './DoubleCta/DoubleCta';
 import Hero from './Hero/Hero';
