@@ -6,7 +6,7 @@ import './Activities.scss';
 
 const Activities = () => {
   return (
-    <div className="Activities">
+    <main className="Activities">
       <h1 className="Activities-title">Evènements à proximité de [ville]</h1>
       <div className="Activities-filters">
         <FilterButton />
@@ -27,7 +27,7 @@ const Activities = () => {
         <EventCard />
       </div>
       <Button text="Voir la suite" className="primary" url="#" />
-    </div>
+    </main>
   );
 };
 
