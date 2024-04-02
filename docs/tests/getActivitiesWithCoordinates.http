@@ -1,1 +1,1 @@
-GET http://melvinleroux-server.eddi.cloud/api/v1/activities/nearby?lat=48.8566&lng=2.3522
+GET http://melvinleroux-server.eddi.cloud/api/v1/activities/nearby/20.746191/170.351383
