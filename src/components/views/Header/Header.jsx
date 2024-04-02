@@ -1,6 +1,6 @@
 // Import necessary librairies
 import React, { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { LuSearch, LuSearchX } from 'react-icons/lu';
 import { FaRegMessage } from 'react-icons/fa6';
@@ -21,6 +21,7 @@ const Header = () => {
   const cityList = useSelector((state) => state.search.cityList);
   const searchInput = useSelector((state) => state.search.input);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
   const input = useSelector((state) => state.search.inputSearch);
@@ -128,7 +129,14 @@ const Header = () => {
                     key={city.postalCode}
                     type="button"
                     className="Header-form-search-cities-city"
-                    onClick={fetchActivitiesFromCity}
+                    onClick={() => {
+                      dispatch(
+                        fetchActivitiesFromCity(
+                          { lat: city.lat, lng: city.lng },
+                          navigate
+                        )
+                      );
+                    }}
                   >
                     {city.placeName}, {city.postalCode}
                   </button>
