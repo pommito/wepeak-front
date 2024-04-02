@@ -1,6 +1,7 @@
 export const CHANGE_INPUT_SEARCH = 'CHANGE_INPUT_SEARCH';
 export const FETCH_CITIES_SEARCH = 'FETCH_CITIES_SEARCH';
 export const HANDLE_FETCH_CITIES_SEARCH = 'HANDLE_FETCH_CITIES_SEARCH';
+export const RESET_SEARCH = 'RESET_SEARCH';
 
 export const changeInputSearch = (input) => ({
   type: CHANGE_INPUT_SEARCH,
@@ -20,8 +21,10 @@ export const handleFetchCitiesSearch = (data) => {
         stockedResult.lat === fetchResult.lat &&
         stockedResult.lng === fetchResult.lng
     );
-    // If not, we add a new object with postalCode and placeName in the accumulator
-    if (!isDuplicate) {
+    // Check if placeName include an borough number. match return an array if a number is found, null otherwise. "/\d+/" is a regex which means "one or more digit(s)
+    const boroughNumber = fetchResult.placeName.match(/\d+/);
+    // If no borough number and no already existing coordinates, we add a new object with postalCode and placeName in the accumulator
+    if (!isDuplicate && !boroughNumber) {
       acc.push({
         postalCode: fetchResult.postalCode,
         placeName: fetchResult.placeName,
@@ -36,3 +39,7 @@ export const handleFetchCitiesSearch = (data) => {
     cityList,
   };
 };
+
+export const resetSearch = () => ({
+  type: RESET_SEARCH,
+});

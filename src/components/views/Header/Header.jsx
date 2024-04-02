@@ -9,6 +9,7 @@ import { FaRegMessage } from 'react-icons/fa6';
 import {
   changeInputSearch,
   fetchCitiesSearch,
+  resetSearch,
 } from '../../../actions/searchActions';
 
 import './Header.scss';
@@ -16,9 +17,10 @@ import './Header.scss';
 const Header = () => {
   const isLogged = false; // To remove at API plug
   const cityList = useSelector((state) => state.search.cityList);
+  const searchInput = useSelector((state) => state.search.input);
   const dispatch = useDispatch();
 
-  // THIS CODE BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
+  // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
   const input = useSelector((state) => state.search.inputSearch);
   // Local state to stock the timeout between each input
   const [searchTimeout, setSearchTimeout] = useState(null);
@@ -33,12 +35,12 @@ const Header = () => {
     // Launch a new timeout to call Cities search API after 500ms
     const timeout = setTimeout(() => {
       dispatch(fetchCitiesSearch(value));
-    }, 2000);
+    }, 500);
     // Update searchTimeout state with the new timeout
     setSearchTimeout(timeout);
   };
 
-  // THIS CODE BLOCK HANDLE HEADER BOTTOM SHADOW
+  // THIS CODE-BLOCK HANDLE HEADER BOTTOM SHADOW
   const [isScrolled, setIsScrolled] = useState(false);
   // onScroll function which will be called at each scroll
   const onScroll = () => {
@@ -47,13 +49,14 @@ const Header = () => {
     setIsScrolled(scrolled);
   };
 
-  // THIS CODE BLOCK HANDLE SEARCH DISPLAY IN DESKTOP, TABLET AND MOBILE VERSIONS
+  // THIS CODE-BLOCK HANDLE SEARCH DISPLAY IN DESKTOP, TABLET AND MOBILE VERSIONS
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   // At each scroll, we call the onScroll function
   window.addEventListener('scroll', onScroll);
   // Manange display of search bar in tablet and mobile version
   const handleSearchButtonClick = () => {
     setIsSearchOpen(!isSearchOpen);
+    dispatch(resetSearch());
   };
   useEffect(() => {
     const handleResize = () => {
@@ -111,24 +114,31 @@ const Header = () => {
           //   dispatch(submitSearch());
           // }}
         >
-          <input
-            type="text"
-            placeholder="Ville ou code postal"
-            value={input}
-            onChange={(e) => {
-              handleInputSearch(e.target.value);
-            }}
-          />
+          <div className="Header-form-search">
+            <input
+              type="text"
+              placeholder="Commune ou code postal"
+              value={input}
+              onChange={(e) => {
+                handleInputSearch(e.target.value);
+              }}
+            />
+            {searchInput.length > 2 && cityList.length < 11 && (
+              <div className="Header-form-search-cities">
+                {cityList.map((city) => (
+                  <button
+                    key={city.postalCode}
+                    type="button"
+                    className="Header-form-search-cities-city"
+                  >
+                    {city.placeName}, {city.postalCode}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
-          {/* {cityList.length > 1 && (
-            <div>
-              <button type="button">{cityList[0].placeName}</button>
-              <button type="button">{cityList[1].placeName}</button>
-              <button type="button">{cityList[2].placeName}</button>
-            </div>
-          )} */}
-
-          <button type="submit">
+          <button className="Header-form-submit" type="submit">
             <LuSearch className="search-logo" />
           </button>
         </form>

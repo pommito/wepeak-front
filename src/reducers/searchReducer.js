@@ -1,10 +1,11 @@
 import {
   CHANGE_INPUT_SEARCH,
   HANDLE_FETCH_CITIES_SEARCH,
+  RESET_SEARCH,
 } from '../actions/searchActions';
 
 export const initialState = {
-  input: 'city',
+  input: '',
   cityList: [],
 };
 
@@ -19,6 +20,12 @@ const searchReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         cityList: action.cityList,
+      };
+    case RESET_SEARCH:
+      return {
+        ...state,
+        input: '',
+        cityList: [],
       };
     default:
       return state;
