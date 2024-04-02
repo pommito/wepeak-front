@@ -1,17 +1,19 @@
+// Import necessary librairies
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
-// React-icons imports
 import { LuSearch, LuSearchX } from 'react-icons/lu';
 import { FaRegMessage } from 'react-icons/fa6';
 
+// Import actions
 import {
   changeInputSearch,
   fetchCitiesSearch,
   resetSearch,
 } from '../../../actions/searchActions';
+import { fetchActivitiesFromCity } from '../../../actions/activityActions';
 
+// Import stylesheet
 import './Header.scss';
 
 const Header = () => {
@@ -32,12 +34,14 @@ const Header = () => {
     if (searchTimeout) {
       clearTimeout(searchTimeout);
     }
-    // Launch a new timeout to call Cities search API after 500ms
-    const timeout = setTimeout(() => {
-      dispatch(fetchCitiesSearch(value));
-    }, 500);
-    // Update searchTimeout state with the new timeout
-    setSearchTimeout(timeout);
+    if (value.length > 2) {
+      // Launch a new timeout to call Cities search API after 500ms
+      const timeout = setTimeout(() => {
+        dispatch(fetchCitiesSearch(value));
+      }, 500);
+      // Update searchTimeout state with the new timeout
+      setSearchTimeout(timeout);
+    }
   };
 
   // THIS CODE-BLOCK HANDLE HEADER BOTTOM SHADOW
@@ -107,17 +111,11 @@ const Header = () => {
       </div>
 
       {isSearchOpen && (
-        <form
-          className="Header-form"
-          // onSubmit={(e) => {
-          //   e.preventDefault();
-          //   dispatch(submitSearch());
-          // }}
-        >
+        <form className="Header-form">
           <div className="Header-form-search">
             <input
               type="text"
-              placeholder="Commune ou code postal"
+              placeholder="Commune, code postal"
               value={input}
               onChange={(e) => {
                 handleInputSearch(e.target.value);
@@ -130,6 +128,7 @@ const Header = () => {
                     key={city.postalCode}
                     type="button"
                     className="Header-form-search-cities-city"
+                    onClick={fetchActivitiesFromCity}
                   >
                     {city.placeName}, {city.postalCode}
                   </button>
