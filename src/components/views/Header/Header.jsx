@@ -15,6 +15,7 @@ import './Header.scss';
 
 const Header = () => {
   const isLogged = false; // To remove at API plug
+  const cityList = useSelector((state) => state.search.cityList);
   const dispatch = useDispatch();
 
   // THIS CODE BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
@@ -118,6 +119,15 @@ const Header = () => {
               handleInputSearch(e.target.value);
             }}
           />
+
+          {/* {cityList.length > 1 && (
+            <div>
+              <button type="button">{cityList[0].placeName}</button>
+              <button type="button">{cityList[1].placeName}</button>
+              <button type="button">{cityList[2].placeName}</button>
+            </div>
+          )} */}
+
           <button type="submit">
             <LuSearch className="search-logo" />
           </button>
