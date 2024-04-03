@@ -17,7 +17,7 @@ import { fetchActivitiesFromCity } from '../../../actions/activityActions';
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = true; // To remove at API plug
+  const isLogged = false; // To remove at API plug
   const cityList = useSelector((state) => state.search.cityList);
   const searchInput = useSelector((state) => state.search.input);
   const dispatch = useDispatch();
@@ -44,6 +44,21 @@ const Header = () => {
       setSearchTimeout(timeout);
     }
   };
+  // THIS CODE-BLOCK HANDLE REMOVING OF CITIES SUGGESTIONS WHEN CLICKING OUTSIDE
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      // If click is outside the search input, we reset the city list suggestion
+      if (!e.target.closest('.Header-form-search')) {
+        dispatch(resetSearch());
+      }
+    };
+    // Event listener on click
+    document.addEventListener('click', handleClickOutside);
+    // Clean event listener on component unmount
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  });
 
   // THIS CODE-BLOCK HANDLE HEADER BOTTOM SHADOW
   const [isScrolled, setIsScrolled] = useState(false);
