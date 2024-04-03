@@ -1,8 +1,13 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Error404.scss';
 
 const Error404 = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   const imgNumber = Math.floor(Math.random() * 5) + 1;
 
   return (
