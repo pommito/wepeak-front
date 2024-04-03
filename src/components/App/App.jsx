@@ -7,6 +7,7 @@ import Contact from '../views/Contact/Contact';
 import Footer from '../views/Footer/Footer';
 
 import './App.scss';
+import Activities from '../views/Activities/Activities';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/activities/single" element={<Activity />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/activities" element={<Activities />} />
       </Routes>
       <Footer />
     </div>

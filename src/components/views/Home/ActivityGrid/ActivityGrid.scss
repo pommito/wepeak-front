@@ -1,6 +1,6 @@
 @use '/src/styles/variables' as v;
 
-.Activities {
+.ActivityGrid {
   min-height: 100dvh;
   width: 80%;
 
@@ -26,10 +26,6 @@
       color: v.$textColor;
       padding: 0.2rem 0.4rem;
 
-      background-color: v.$secondaryColor;
-      border-color: v.$secondaryColorDark;
-      color: v.$backgroundColor;
-
       &:hover {
         background-color: v.$secondaryColorDark;
       }
@@ -44,14 +40,14 @@
   }
 }
 @media (max-width: v.$tablet) {
-  .Activities {
+  .ActivityGrid {
     &-grid {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(4, 1fr);
     }
   }
   @media (max-width: v.$mobile) {
-    .Activities {
+    .ActivityGrid {
       &-grid {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 1fr);
