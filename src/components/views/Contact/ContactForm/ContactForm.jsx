@@ -50,7 +50,7 @@ const ContactForm = () => {
       </div>
 
       <button className="ContactForm-send" type="button">
-        Envoyer ->
+        Envoyer &#10141;
       </button>
     </form>
   );
