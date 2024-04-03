@@ -1,18 +1,18 @@
 import { Link } from 'react-router-dom';
 
 import EventCard from '../../../utils/EventCard/EventCard';
-import './Activities.scss';
+import './ActivityGrid.scss';
 
-const Activities = () => {
+const ActivityGrid = () => {
   return (
-    <div className="Activities">
-      <div className="Activities-top">
-        <h2 className="Activities-top-title">Evènements à venir</h2>
-        <Link to="/activities" className="Activities-top-link">
+    <div className="ActivityGrid">
+      <div className="ActivityGrid-top">
+        <h2 className="ActivityGrid-top-title">Evènements à venir</h2>
+        <Link to="/ActivityGrid" className="ActivityGrid-top-link">
           Voir tous les évènements
         </Link>
       </div>
-      <div className="Activities-grid">
+      <div className="ActivityGrid-grid">
         <EventCard />
         <EventCard />
         <EventCard />
@@ -27,4 +27,4 @@ const Activities = () => {
   );
 };
 
-export default Activities;
+export default ActivityGrid;

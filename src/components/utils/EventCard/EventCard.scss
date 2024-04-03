@@ -2,7 +2,7 @@
 
 .EventCard {
   &-image {
-    background-size: cover;
+    object-fit: cover;
     background-position: center;
     border-radius: calc(v.$borderRadius / 2);
     height: 200px;
