@@ -33,8 +33,10 @@
     background-color: v.$secondaryColorLight;
     border-radius: v.$borderRadius;
     max-height: 0;
-    overflow: hidden;
-    width: 100%;
+    overflow-y: hidden;
+    padding: 0rem 0.25rem;
+    min-width: 100%;
+    width: auto;
     z-index: 9999;
     transition: all 0.5s cubic-bezier(0, 1, 0, 1);
 

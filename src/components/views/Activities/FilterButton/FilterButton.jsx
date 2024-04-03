@@ -1,31 +1,13 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
 
 import './FilterButton.scss';
 
-const FilterButton = () => {
+const FilterButton = ({ title, options }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const data = {
-    text: 'Localisation',
-    option: [
-      'Lyon',
-      'Annecy',
-      'Grenoble',
-      'Chambéry',
-      'Aix-les-Bains',
-      'Albertville',
-      'Paris',
-      'Marseille',
-      'Toulouse',
-      'Bordeaux',
-      'Nantes',
-      'Lille',
-      'Strasbourg',
-      'Montpellier',
-      'Rennes',
-    ],
-  };
+  console.log(options);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -40,7 +22,7 @@ const FilterButton = () => {
           toggle();
         }}
       >
-        {data.text}
+        {title}
         <FaCaretDown
           className={
             isOpen
@@ -54,7 +36,7 @@ const FilterButton = () => {
           isOpen ? `FilterButton-dropdown show` : `FilterButton-dropdown`
         }
       >
-        {data.option.map((option) => (
+        {options.map((option) => (
           <li className="FilterButton-dropdown-option" key={option}>
             {option}
           </li>
@@ -62,6 +44,11 @@ const FilterButton = () => {
       </ul>
     </div>
   );
+};
+
+FilterButton.propTypes = {
+  title: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default FilterButton;
