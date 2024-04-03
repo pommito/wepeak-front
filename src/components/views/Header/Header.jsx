@@ -1,45 +1,77 @@
+// Import necessary librairies
 import React, { useState, useEffect } from 'react';
-
-// React-icons imports
+import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { LuSearch, LuSearchX } from 'react-icons/lu';
 import { FaRegMessage } from 'react-icons/fa6';
 
-import { NavLink, Link } from 'react-router-dom';
+// Import actions
+import {
+  changeInputSearch,
+  fetchCitiesSearch,
+  resetSearch,
+} from '../../../actions/searchActions';
+import { fetchActivitiesFromCity } from '../../../actions/activityActions';
 
+// Import stylesheet
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = false; // To remove at API plug
+  const isLogged = true; // To remove at API plug
+  const cityList = useSelector((state) => state.search.cityList);
+  const searchInput = useSelector((state) => state.search.input);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
+  const input = useSelector((state) => state.search.inputSearch);
+  // Local state to stock the timeout between each input
+  const [searchTimeout, setSearchTimeout] = useState(null);
+  // Function to handle input search. Called at each input change
+  const handleInputSearch = (value) => {
+    // Update input search in the store
+    dispatch(changeInputSearch(value));
+    // If a timeout is already set, we clear it
+    if (searchTimeout) {
+      clearTimeout(searchTimeout);
+    }
+    if (value.length > 2) {
+      // Launch a new timeout to call Cities search API after 500ms
+      const timeout = setTimeout(() => {
+        dispatch(fetchCitiesSearch(value));
+      }, 500);
+      // Update searchTimeout state with the new timeout
+      setSearchTimeout(timeout);
+    }
+  };
+
+  // THIS CODE-BLOCK HANDLE HEADER BOTTOM SHADOW
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-
+  // onScroll function which will be called at each scroll
   const onScroll = () => {
     // If vertical scroll is greater than 0, we set isScrolled to true
     const scrolled = window.scrollY > 0;
     setIsScrolled(scrolled);
   };
 
+  // THIS CODE-BLOCK HANDLE SEARCH DISPLAY IN DESKTOP, TABLET AND MOBILE VERSIONS
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   // At each scroll, we call the onScroll function
   window.addEventListener('scroll', onScroll);
-
   // Manange display of search bar in tablet and mobile version
   const handleSearchButtonClick = () => {
     setIsSearchOpen(!isSearchOpen);
+    dispatch(resetSearch());
   };
-
   useEffect(() => {
     const handleResize = () => {
       // Change isSearchOpen state to true if window width is greater than 992px
       setIsSearchOpen(window.innerWidth > 992 ? true : isSearchOpen);
     };
-
     // Call handleResize() at the first render
     handleResize();
-
     // Event listener on window resize
     window.addEventListener('resize', handleResize);
-
     // Clean event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -81,8 +113,39 @@ const Header = () => {
 
       {isSearchOpen && (
         <form className="Header-form">
-          <input type="text" placeholder="Ville ou code postal" />
-          <button type="submit">
+          <div className="Header-form-search">
+            <input
+              type="text"
+              placeholder="Commune, code postal"
+              value={input}
+              onChange={(e) => {
+                handleInputSearch(e.target.value);
+              }}
+            />
+            {searchInput.length > 2 && cityList.length < 11 && (
+              <div className="Header-form-search-cities">
+                {cityList.map((city) => (
+                  <button
+                    key={city.postalCode}
+                    type="button"
+                    className="Header-form-search-cities-city"
+                    onClick={() => {
+                      dispatch(
+                        fetchActivitiesFromCity(
+                          { lat: city.lat, lng: city.lng },
+                          navigate
+                        )
+                      );
+                    }}
+                  >
+                    {city.placeName}, {city.postalCode}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <button className="Header-form-submit" type="submit">
             <LuSearch className="search-logo" />
           </button>
         </form>

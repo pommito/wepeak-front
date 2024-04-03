@@ -4,6 +4,7 @@ import Header from '../views/Header/Header';
 import Home from '../views/Home/Home';
 import Activity from '../views/Activity/Activity';
 import Contact from '../views/Contact/Contact';
+import Error404 from '../views/Error404/Error404';
 import Footer from '../views/Footer/Footer';
 
 import './App.scss';
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/activities/single" element={<Activity />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/activities" element={<Activities />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
     </div>
