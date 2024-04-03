@@ -2,7 +2,6 @@ import {
   FETCH_ACTIVITIES_FROM_CITY,
   handleFetchActivitiesFromCity,
 } from '../actions/activityActions';
-import { handleFetchCitiesSearch } from '../actions/searchActions';
 
 const activityMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
