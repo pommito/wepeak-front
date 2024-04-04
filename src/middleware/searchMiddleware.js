@@ -26,10 +26,7 @@ const searchMiddleware = (store) => (next) => (action) => {
             error
           );
         })
-        .finally(() => {
-          console.log('Fetch operation complete');
-        });
-
+        .finally(() => {});
       break;
     }
     default:

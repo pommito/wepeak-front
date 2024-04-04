@@ -131,6 +131,7 @@
       background-color: v.$primaryColor;
       border: none;
       color: v.$backgroundColor;
+      cursor: auto; // while submit button is not working
       border-radius: 0 v.$borderRadius v.$borderRadius 0;
       height: 2.5rem;
       width: 2.5rem;
@@ -140,9 +141,10 @@
         font-size: 1.25rem;
       }
 
-      &:hover {
-        background-color: v.$primaryColorDark;
-      }
+      // commented while submit button is not working
+      // &:hover {
+      //   background-color: v.$primaryColorDark;
+      // }
     }
   }
 

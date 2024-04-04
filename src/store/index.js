@@ -6,9 +6,15 @@ import reducer from '../reducers/indexReducer';
 import searchMiddleware from '../middleware/searchMiddleware';
 import activityMiddleware from '../middleware/activityMiddleware';
 import contactMiddleware from '../middleware/contactMiddleware';
+import userMiddleware from '../middleware/userMiddleware';
 
 const enhancers = composeWithDevTools(
-  applyMiddleware(searchMiddleware, activityMiddleware, contactMiddleware)
+  applyMiddleware(
+    searchMiddleware,
+    activityMiddleware,
+    contactMiddleware,
+    userMiddleware
+  )
 );
 
 const store = createStore(reducer, enhancers);

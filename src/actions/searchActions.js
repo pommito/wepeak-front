@@ -13,6 +13,7 @@ export const fetchCitiesSearch = () => ({
 });
 
 export const handleFetchCitiesSearch = (data) => {
+  console.log(data.postalCodes);
   // transform data to remove duplicates in coordinates and keep only postalCode and placeName in objects
   const cityList = data.postalCodes.reduce((acc, fetchResult) => {
     // Check if coordinates of the current fetchResult are already in the accumulator
