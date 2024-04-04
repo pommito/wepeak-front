@@ -17,14 +17,13 @@ import { fetchActivitiesFromCity } from '../../../actions/activityActions';
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = true; // To remove at API plug
+  const isLogged = false; // To remove at API plug
   const cityList = useSelector((state) => state.search.cityList);
-  const searchInput = useSelector((state) => state.search.input);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
-  const input = useSelector((state) => state.search.inputSearch);
+  const input = useSelector((state) => state.search.input);
   // Local state to stock the timeout between each input
   const [searchTimeout, setSearchTimeout] = useState(null);
   // Function to handle input search. Called at each input change
@@ -44,6 +43,21 @@ const Header = () => {
       setSearchTimeout(timeout);
     }
   };
+  // THIS CODE-BLOCK HANDLE REMOVING OF CITIES SUGGESTIONS WHEN CLICKING OUTSIDE
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      // If click is outside the search input, we reset the city list suggestion
+      if (!e.target.closest('.Header-form-search')) {
+        dispatch(resetSearch());
+      }
+    };
+    // Event listener on click
+    document.addEventListener('click', handleClickOutside);
+    // Clean event listener on component unmount
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  });
 
   // THIS CODE-BLOCK HANDLE HEADER BOTTOM SHADOW
   const [isScrolled, setIsScrolled] = useState(false);
@@ -122,27 +136,29 @@ const Header = () => {
                 handleInputSearch(e.target.value);
               }}
             />
-            {searchInput.length > 2 && cityList.length < 11 && (
-              <div className="Header-form-search-cities">
-                {cityList.map((city) => (
-                  <button
-                    key={city.postalCode}
-                    type="button"
-                    className="Header-form-search-cities-city"
-                    onClick={() => {
-                      dispatch(
-                        fetchActivitiesFromCity(
-                          { lat: city.lat, lng: city.lng },
-                          navigate
-                        )
-                      );
-                    }}
-                  >
-                    {city.placeName}, {city.postalCode}
-                  </button>
-                ))}
-              </div>
-            )}
+            {input.length > 2 &&
+              cityList.length < 11 &&
+              cityList.length > 0 && (
+                <div className="Header-form-search-cities">
+                  {cityList.map((city) => (
+                    <button
+                      key={city.postalCode}
+                      type="button"
+                      className="Header-form-search-cities-city"
+                      onClick={() => {
+                        dispatch(
+                          fetchActivitiesFromCity(
+                            { lat: city.lat, lng: city.lng },
+                            navigate
+                          )
+                        );
+                      }}
+                    >
+                      {city.placeName}, {city.postalCode}
+                    </button>
+                  ))}
+                </div>
+              )}
           </div>
 
           <button className="Header-form-submit" type="submit">

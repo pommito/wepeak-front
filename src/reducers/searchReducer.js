@@ -24,7 +24,6 @@ const searchReducer = (state = initialState, action = {}) => {
     case RESET_SEARCH:
       return {
         ...state,
-        input: '',
         cityList: [],
       };
     default:

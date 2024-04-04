@@ -27,6 +27,18 @@
       font-weight: 600;
       padding: 0.2rem 0.4rem;
       margin-right: 0.5rem;
+
+      &.facile {
+        background-color: green;
+      }
+
+      &.moyen {
+        background-color: orange;
+      }
+
+      &.difficile {
+        background-color: red;
+      }
     }
 
     &-date {

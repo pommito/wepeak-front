@@ -18,8 +18,8 @@ export const handleFetchCitiesSearch = (data) => {
     // Check if coordinates of the current fetchResult are already in the accumulator
     const isDuplicate = acc.find(
       (stockedResult) =>
-        stockedResult.lat === fetchResult.lat &&
-        stockedResult.lng === fetchResult.lng
+        stockedResult.lat.replace(',', '.') == fetchResult.lat &&
+        stockedResult.lng.replace(',', '.') == fetchResult.lng
     );
     // Check if placeName include an borough number. match return an array if a number is found, null otherwise. "/\d+/" is a regex which means "one or more digit(s)
     const boroughNumber = fetchResult.placeName.match(/\d+/);
@@ -28,8 +28,9 @@ export const handleFetchCitiesSearch = (data) => {
       acc.push({
         postalCode: fetchResult.postalCode,
         placeName: fetchResult.placeName,
-        lat: fetchResult.lat,
-        lng: fetchResult.lng,
+        // replace points by commas in lat and lng to match the format of the API
+        lat: fetchResult.lat.toString().replace('.', ','),
+        lng: fetchResult.lng.toString().replace('.', ','),
       });
     }
     return acc;

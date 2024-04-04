@@ -2,18 +2,13 @@ import {
   FETCH_ACTIVITIES_FROM_CITY,
   handleFetchActivitiesFromCity,
 } from '../actions/activityActions';
-import { handleFetchCitiesSearch } from '../actions/searchActions';
 
 const activityMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_ACTIVITIES_FROM_CITY: {
-      fetch('http://melvinleroux-server.eddi.cloud/api/v1/activities', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(action.coordinates),
-      })
+      fetch(
+        `http://melvinleroux-server.eddi.cloud/api/v1/activities/nearby/${action.coordinates.lat}/${action.coordinates.lng}`
+      )
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -21,7 +16,9 @@ const activityMiddleware = (store) => (next) => (action) => {
           return response.json();
         })
         .then((activities) => {
-          store.dispatch(handleFetchActivitiesFromCity(activities));
+          store.dispatch(
+            handleFetchActivitiesFromCity(activities, action.searchedCity)
+          );
           action.navigate('/activities');
         })
         .catch((error) => {
