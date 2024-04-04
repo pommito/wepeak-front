@@ -36,21 +36,18 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
   }
 }
 @media (max-width: v.$tablet) {
   .ActivityGrid {
     &-grid {
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(4, 1fr);
     }
   }
   @media (max-width: v.$mobile) {
     .ActivityGrid {
       &-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 1fr);
       }
 
       &-top {

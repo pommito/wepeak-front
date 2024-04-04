@@ -15,8 +15,8 @@ const CtaBanner = () => {
           échanger avec les autres membres de la communauté.
         </p>
         <div className="CtaBanner-left-buttons">
-          <Button text="S'inscrire" className="accent" url="#" />
-          <Button text="Learn more" className="secondary" url="#" />
+          <Button text="S'inscrire" className="accent" url="/register" />
+          <Button text="En savoir plus" className="secondary" url="/about" />
         </div>
       </div>
       <div className="CtaBanner-right">

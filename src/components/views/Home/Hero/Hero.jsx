@@ -13,8 +13,12 @@ const Hero = () => {
           inoubliables avec la communauté WePeak !
         </p>
         <div className="Hero-content-buttons">
-          <Button text="Get started" className="primary" url="#" />
-          <Button text="Learn more" className="secondary" url="#" />
+          <Button
+            text="Trouver une activité"
+            className="primary"
+            url="/activities"
+          />
+          <Button text="En savoir plus" className="secondary" url="/about" />
         </div>
       </div>
       <div className="Hero-gallery">

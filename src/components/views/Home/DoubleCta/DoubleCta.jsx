@@ -14,7 +14,7 @@ const DoubleCta = () => {
           ac tempus enim.
         </p>
         <div className="DoubleCta-left-buttons">
-          <Button text="S'inscrire" className="secondary" url="#" />
+          <Button text="S'inscrire" className="secondary" url="/register" />
         </div>
       </div>
       <div className="DoubleCta-right">
@@ -26,7 +26,7 @@ const DoubleCta = () => {
           ac tempus enim.
         </p>
         <div className="DoubleCta-left-buttons">
-          <Button text="Nous contacter" className="accent" url="#" />
+          <Button text="Nous contacter" className="accent" url="/contact" />
         </div>
       </div>
     </div>
