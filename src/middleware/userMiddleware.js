@@ -2,6 +2,7 @@ import {
   GET_USER_POSITION,
   handleUserPosition,
   GET_USER_POSITION_NAME,
+  handleUserPositionName,
 } from '../actions/userActions';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -24,11 +25,32 @@ const userMiddleware = (store) => (next) => (action) => {
         );
       }
       break;
-    case GET_USER_POSITION_NAME:
-
+    case GET_USER_POSITION_NAME: {
+      const { userPosition } = store.getState().user;
+      fetch(
+        `http://api.geonames.org/findNearbyPostalCodesJSON?lat=${userPosition.lat}&lng=${userPosition.lng}&username=nicolaschambon`
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          store.dispatch(handleUserPositionName(data.postalCodes[0].placeName));
+        })
+        .catch((error) => {
+          console.error(
+            'There has been a problem with your fetch operation:',
+            error
+          );
+        })
+        .finally(() => {});
+      break;
+    }
     default:
-      next(action);
   }
+  return next(action);
 };
 
 export default userMiddleware;

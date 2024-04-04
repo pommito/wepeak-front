@@ -36,13 +36,12 @@ const Home = () => {
         lng: userPosition.lng,
       })
     );
-    dispatch(getUserPositionName(userPosition));
-  }, [userPositionName]);
+  }, [userPosition, dispatch]);
 
   return (
     <main className="Home">
       <Hero />
-      <ActivityGrid userPositionName="toto" />
+      <ActivityGrid userPositionName={userPositionName} />
       <CtaBanner />
       <Faq />
       <DoubleCta />

@@ -27,7 +27,6 @@ const searchMiddleware = (store) => (next) => (action) => {
           );
         })
         .finally(() => {});
-
       break;
     }
     default:

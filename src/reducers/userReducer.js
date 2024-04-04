@@ -1,7 +1,11 @@
-import { HANDLE_USER_POSITION } from '../actions/userActions';
+import {
+  HANDLE_USER_POSITION,
+  HANDLE_USER_POSITION_NAME,
+} from '../actions/userActions';
 
 export const initialState = {
   userPosition: {},
+  userPositionName: '',
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -10,6 +14,11 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userPosition: action.coordinates,
+      };
+    case HANDLE_USER_POSITION_NAME:
+      return {
+        ...state,
+        userPositionName: action.userPositionName,
       };
     default:
       return state;
