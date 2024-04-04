@@ -1,16 +1,16 @@
-// import { ACTION_EXEMPLE } from '../actions/useActions';
+import { HANDLE_USER_POSITION } from '../actions/userActions';
 
 export const initialState = {
-  // user: [],
+  userPosition: {},
 };
 
 const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    // case ACTION_EXEMPLE:
-    //   return {
-    //     ...state,
-    //     user: action.toto,
-    //   };
+    case HANDLE_USER_POSITION:
+      return {
+        ...state,
+        userPosition: action.coordinates,
+      };
     default:
       return state;
   }

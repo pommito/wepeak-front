@@ -1,9 +1,14 @@
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+
 import { Link } from 'react-router-dom';
 
 import EventCard from '../../../utils/EventCard/EventCard';
 import './ActivityGrid.scss';
 
 const ActivityGrid = ({ userPositionName }) => {
+  const activityList = useSelector((state) => state.activity.activities);
+
   return (
     <div className="ActivityGrid">
       <div className="ActivityGrid-top">
@@ -15,18 +20,22 @@ const ActivityGrid = ({ userPositionName }) => {
         </Link>
       </div>
       <div className="ActivityGrid-grid">
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
+        {activityList.map((activity) => (
+          <EventCard
+            key={activity['0'].id}
+            title={activity['0'].name}
+            date={activity['0'].date}
+            difficulty={activity['0'].difficulty}
+            slug={activity['0'].id}
+          />
+        ))}
       </div>
     </div>
   );
+};
+
+ActivityGrid.propTypes = {
+  userPositionName: PropTypes.string.isRequired,
 };
 
 export default ActivityGrid;
