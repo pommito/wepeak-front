@@ -15,7 +15,7 @@ const ContactDirect = () => {
         <MdOutlineEmail className="ContactDirect-card-icon" />
 
         <p className="ContactDirect-card-email">
-          E-mail <br /> <span>contact@wepeak.com</span>
+          E-mail <br /> <span>wepeakfrance@gmail.com</span>
         </p>
       </div>
     </div>

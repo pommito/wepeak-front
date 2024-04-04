@@ -1,4 +1,8 @@
-import { GET_USER_POSITION, handleUserPosition } from '../actions/userActions';
+import {
+  GET_USER_POSITION,
+  handleUserPosition,
+  GET_USER_POSITION_NAME,
+} from '../actions/userActions';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -20,7 +24,11 @@ const userMiddleware = (store) => (next) => (action) => {
         );
       }
       break;
+    case GET_USER_POSITION_NAME:
+
     default:
       next(action);
   }
 };
+
+export default userMiddleware;
