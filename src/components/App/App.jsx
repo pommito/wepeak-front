@@ -16,7 +16,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/activities/single" element={<Activity />} />
+        <Route path="/activities/:slug" element={<Activity />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/activities" element={<Activities />} />
         <Route path="*" element={<Error404 />} />
