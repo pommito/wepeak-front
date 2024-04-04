@@ -1,15 +1,23 @@
+// Import necessary librairies
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
+// Import components
 import Button from '../../utils/Button/Button';
 import EventCard from '../../utils/EventCard/EventCard';
 import FilterButton from './FilterButton/FilterButton';
 
+// Import stylesheet
 import './Activities.scss';
 
 const Activities = () => {
+  const activityList = useSelector((state) => state.activity.activities);
+  const SearchedCity = console.log(activityList);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+
   return (
     <main className="Activities">
       <h1 className="Activities-title">Evènements à proximité de [ville]</h1>
@@ -21,15 +29,13 @@ const Activities = () => {
         <FilterButton />
       </div>
       <div className="Activities-grid">
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
+        {activityList.map((activity) => (
+          <EventCard
+            key={activity['0'].id}
+            title={activity['0'].name}
+            date={activity['0'].date}
+          />
+        ))}
       </div>
       <Button text="Voir la suite" className="primary" url="#" />
     </main>
