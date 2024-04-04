@@ -4,10 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Import actions
 import { fetchActivitiesFromCity } from '../../../actions/activityActions';
-import {
-  getUserPosition,
-  getUserPositionName,
-} from '../../../actions/userActions';
+import { getUserPosition } from '../../../actions/userActions';
 
 // Import components
 import Hero from './Hero/Hero';

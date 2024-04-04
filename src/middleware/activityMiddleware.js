@@ -2,6 +2,8 @@
 import {
   FETCH_ACTIVITIES_FROM_CITY,
   handleFetchActivitiesFromCity,
+  FETCH_ACTIVITY,
+  handleFetchActivity,
 } from '../actions/activityActions';
 import { resetSearch } from '../actions/searchActions';
 import { getUserPositionName } from '../actions/userActions';
@@ -26,7 +28,6 @@ const activityMiddleware = (store) => (next) => (action) => {
             );
             if (action.navigate) {
               action.navigate('/activities');
-              // dispatch(resetSearch());
               store.dispatch(resetSearch());
             }
           })
@@ -39,8 +40,27 @@ const activityMiddleware = (store) => (next) => (action) => {
           .finally(() => {
             store.dispatch(getUserPositionName());
           });
-        break;
       }
+      break;
+    }
+    case FETCH_ACTIVITY: {
+      fetch(
+        `http://melvinleroux-server.eddi.cloud/api/v1/activities/${action.slug}`
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((activity) => {
+          store.dispatch(handleFetchActivity(activity));
+        })
+        .catch((error) => {
+          console.error('There was an error with your fetch operation:', error);
+        })
+        .finally(() => {});
+      break;
     }
     default:
   }

@@ -1,6 +1,10 @@
 // Import necessary libraries
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+// Import actions
+import { fetchActivity } from '../../../actions/activityActions';
 
 // Import components
 import ActivityHeader from './ActivityHeader/ActivityHeader';
@@ -13,14 +17,20 @@ import ActivityPictures from './ActivityPictures/ActivityPictures';
 import './Activity.scss';
 
 const Activity = () => {
-  // useLocation
-  const slug = useLocation().pathname.replace('/activities/', '');
-
-  console.log(slug);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   });
+
+  const dispatch = useDispatch();
+
+  // useLocation().pathname returns the current URL of the browser
+  // we removed the '/activities/' part of the URL to get the slug
+  const slug = useLocation().pathname.replace('/activities/', '');
+
+  useEffect(() => {
+    dispatch(fetchActivity(slug));
+  }, [slug, dispatch]);
+
   return (
     <main className="Activity">
       <ActivityHeader />
