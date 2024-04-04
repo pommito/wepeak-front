@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import EventCard from '../../../utils/EventCard/EventCard';
 import './ActivityGrid.scss';
 
-const ActivityGrid = () => {
+const ActivityGrid = ({ userPositionName }) => {
   return (
     <div className="ActivityGrid">
       <div className="ActivityGrid-top">
-        <h2 className="ActivityGrid-top-title">Evènements à venir</h2>
+        <h2 className="ActivityGrid-top-title">
+          Evènements à venir proches de {userPositionName}
+        </h2>
         <Link to="/ActivityGrid" className="ActivityGrid-top-link">
           Voir tous les évènements
         </Link>
