@@ -4,10 +4,8 @@ import { FaCaretDown } from 'react-icons/fa';
 
 import './FilterButton.scss';
 
-const FilterButton = ({ title, options }) => {
+const FilterButton = ({ title, options, onClick, active }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  console.log(options);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -15,17 +13,11 @@ const FilterButton = ({ title, options }) => {
 
   return (
     <div className="FilterButton">
-      <button
-        type="button"
-        className="FilterButton-button"
-        onClick={() => {
-          toggle();
-        }}
-      >
+      <button type="button" className="FilterButton-button" onClick={onClick}>
         {title}
         <FaCaretDown
           className={
-            isOpen
+            active
               ? `FilterButton-button-icon show`
               : `FilterButton-button-icon`
           }
@@ -33,7 +25,7 @@ const FilterButton = ({ title, options }) => {
       </button>
       <ul
         className={
-          isOpen ? `FilterButton-dropdown show` : `FilterButton-dropdown`
+          active ? `FilterButton-dropdown show` : `FilterButton-dropdown`
         }
       >
         {options.map((option) => (

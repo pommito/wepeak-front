@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import Header from '../views/Header/Header';
 import Home from '../views/Home/Home';

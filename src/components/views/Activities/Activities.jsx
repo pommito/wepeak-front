@@ -1,5 +1,5 @@
 // Import necessary librairies
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 // Import components
@@ -11,6 +11,7 @@ import FilterButton from './FilterButton/FilterButton';
 import './Activities.scss';
 
 const Activities = () => {
+  const [isFilterActive, setIsFilterActive] = useState(null);
   const activityList = useSelector((state) => state.activity.activities);
   const lastSearchedCity = useSelector(
     (state) => state.activity.lastSearchedCity
@@ -57,6 +58,22 @@ const Activities = () => {
     window.scrollTo(0, 0);
   });
 
+  const handleClickOnFilter = (title) => {
+    setIsFilterActive(isFilterActive === title ? null : title);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('.Activities-filters')) {
+        setIsFilterActive(null);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  });
+
   return (
     <main className="Activities">
       <h1 className="Activities-title">{`Evènements à proximité de ${lastSearchedCity}`}</h1>
@@ -66,6 +83,10 @@ const Activities = () => {
             title={item.title}
             options={item.options}
             key={item.title}
+            onClick={() => {
+              handleClickOnFilter(item.title);
+            }}
+            active={isFilterActive === item.title}
           />
         ))}
       </div>
