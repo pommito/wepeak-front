@@ -78,6 +78,7 @@ const Home = () => {
     <main className="Home">
       <Hero />
       <ActivityGrid userPositionName={userPositionName} />
+
       <CtaBanner />
       <Faq />
       <DoubleCta />

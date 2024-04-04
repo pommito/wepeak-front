@@ -19,12 +19,11 @@ import './Header.scss';
 const Header = () => {
   const isLogged = false; // To remove at API plug
   const cityList = useSelector((state) => state.search.cityList);
-  const searchInput = useSelector((state) => state.search.input);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
-  const input = useSelector((state) => state.search.inputSearch);
+  const input = useSelector((state) => state.search.input);
   // Local state to stock the timeout between each input
   const [searchTimeout, setSearchTimeout] = useState(null);
   // Function to handle input search. Called at each input change
@@ -137,28 +136,29 @@ const Header = () => {
                 handleInputSearch(e.target.value);
               }}
             />
-            {searchInput.length > 2 && cityList.length < 11 && (
-              <div className="Header-form-search-cities">
-                {cityList.map((city) => (
-                  <button
-                    key={city.postalCode}
-                    type="button"
-                    className="Header-form-search-cities-city"
-                    onClick={() => {
-                      dispatch(
-                        fetchActivitiesFromCity(
-                          { lat: city.lat, lng: city.lng },
-                          navigate,
-                          city.placeName
-                        )
-                      );
-                    }}
-                  >
-                    {city.placeName}, {city.postalCode}
-                  </button>
-                ))}
-              </div>
-            )}
+            {input.length > 2 &&
+              cityList.length < 11 &&
+              cityList.length > 0 && (
+                <div className="Header-form-search-cities">
+                  {cityList.map((city) => (
+                    <button
+                      key={city.postalCode}
+                      type="button"
+                      className="Header-form-search-cities-city"
+                      onClick={() => {
+                        dispatch(
+                          fetchActivitiesFromCity(
+                            { lat: city.lat, lng: city.lng },
+                            navigate
+                          )
+                        );
+                      }}
+                    >
+                      {city.placeName}, {city.postalCode}
+                    </button>
+                  ))}
+                </div>
+              )}
           </div>
 
           <button className="Header-form-submit" type="submit">
