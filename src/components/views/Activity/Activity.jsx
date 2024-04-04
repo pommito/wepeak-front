@@ -16,6 +16,8 @@ const Activity = () => {
   // useLocation
   const slug = useLocation().pathname.replace('/activities/', '');
 
+  console.log(slug);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   });
