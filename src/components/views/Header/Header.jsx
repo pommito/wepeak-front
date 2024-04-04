@@ -148,7 +148,8 @@ const Header = () => {
                       dispatch(
                         fetchActivitiesFromCity(
                           { lat: city.lat, lng: city.lng },
-                          navigate
+                          navigate,
+                          city.placeName
                         )
                       );
                     }}
