@@ -1,7 +1,9 @@
+// Import actions
 import {
   FETCH_ACTIVITIES_FROM_CITY,
   handleFetchActivitiesFromCity,
 } from '../actions/activityActions';
+import { resetSearch } from '../actions/searchActions';
 import { getUserPositionName } from '../actions/userActions';
 
 const activityMiddleware = (store) => (next) => (action) => {
@@ -24,6 +26,8 @@ const activityMiddleware = (store) => (next) => (action) => {
             );
             if (action.navigate) {
               action.navigate('/activities');
+              // dispatch(resetSearch());
+              store.dispatch(resetSearch());
             }
           })
           .catch((error) => {

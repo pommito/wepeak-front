@@ -126,7 +126,12 @@ const Header = () => {
       </div>
 
       {isSearchOpen && (
-        <form className="Header-form">
+        <form
+          className="Header-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <div className="Header-form-search">
             <input
               type="text"
@@ -137,7 +142,7 @@ const Header = () => {
               }}
             />
             {input.length > 2 &&
-              cityList.length < 11 &&
+              cityList.length < 20 &&
               cityList.length > 0 && (
                 <div className="Header-form-search-cities">
                   {cityList.map((city) => (

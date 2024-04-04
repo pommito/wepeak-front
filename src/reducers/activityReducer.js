@@ -11,7 +11,7 @@ const activityReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         activities: action.activities,
-        lastSearchedCity: action.searchedCity,
+        lastSearchedCity: action.lastSearchedCity,
       };
 
     default:

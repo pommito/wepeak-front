@@ -34,7 +34,11 @@
     width: 65%;
 
     @media (max-width: v.$tablet) {
-      width: 90%;
+      width: 70%;
+    }
+
+    @media (max-width: v.$mobile) {
+      width: 100%;
     }
 
     &-icon {

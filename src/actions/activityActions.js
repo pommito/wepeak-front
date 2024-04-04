@@ -5,19 +5,20 @@ export const HANDLE_FETCH_ACTIVITIES_FROM_CITY =
 export const fetchActivitiesFromCity = (
   coordinates,
   navigate = false,
-  searchedCity = ''
+  lastSearchedCity = ''
 ) => {
   return {
     type: FETCH_ACTIVITIES_FROM_CITY,
     coordinates,
     navigate,
-    searchedCity,
+    lastSearchedCity,
   };
 };
 
-export const handleFetchActivitiesFromCity = (activities) => {
+export const handleFetchActivitiesFromCity = (activities, lastSearchedCity) => {
   return {
     type: HANDLE_FETCH_ACTIVITIES_FROM_CITY,
     activities,
+    lastSearchedCity,
   };
 };
