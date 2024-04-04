@@ -17,7 +17,9 @@ const activityMiddleware = (store) => (next) => (action) => {
           return response.json();
         })
         .then((activities) => {
-          store.dispatch(handleFetchActivitiesFromCity(activities));
+          store.dispatch(
+            handleFetchActivitiesFromCity(activities, action.searchedCity)
+          );
           action.navigate('/activities');
         })
         .catch((error) => {

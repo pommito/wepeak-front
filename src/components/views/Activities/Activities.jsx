@@ -12,7 +12,9 @@ import './Activities.scss';
 
 const Activities = () => {
   const activityList = useSelector((state) => state.activity.activities);
-  const SearchedCity = console.log(activityList);
+  const lastSearchedCity = useSelector(
+    (state) => state.activity.lastSearchedCity
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,7 +22,7 @@ const Activities = () => {
 
   return (
     <main className="Activities">
-      <h1 className="Activities-title">Evènements à proximité de [ville]</h1>
+      <h1 className="Activities-title">{`Evènements à proximité de ${lastSearchedCity}`}</h1>
       <div className="Activities-filters">
         <FilterButton />
         <FilterButton />
@@ -34,6 +36,8 @@ const Activities = () => {
             key={activity['0'].id}
             title={activity['0'].name}
             date={activity['0'].date}
+            difficulty={activity['0'].difficulty}
+            slug={activity['0'].id}
           />
         ))}
       </div>
