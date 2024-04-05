@@ -1,16 +1,49 @@
 import { useState, forwardRef } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 
+import { fetchActivitiesFromCityWithDates } from '../../../../actions/activityActions';
+
 import 'react-datepicker/dist/react-datepicker.css';
 
-const Calendar = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+const Calendar = ({ lastSearchedCity }) => {
+  const dispatch = useDispatch();
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
+
+    if (start && end) {
+      const formatedStartDate = {
+        label: 'startDate',
+        value: formatDate(start),
+      };
+      const formatedEndDate = {
+        label: 'endDate',
+        value: formatDate(end),
+      };
+
+      console.log(formatedStartDate, formatedEndDate);
+
+      dispatch(
+        fetchActivitiesFromCityWithDates(
+          lastSearchedCity,
+          formatedStartDate,
+          formatedEndDate
+        )
+      );
+    }
   };
 
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
@@ -20,7 +53,7 @@ const Calendar = () => {
       onClick={onClick}
       ref={ref}
     >
-      {value}
+      {value === '' ? 'Selectionner une date' : value}
     </button>
   ));
 
@@ -34,7 +67,6 @@ const Calendar = () => {
   return (
     <DatePicker
       dateFormat="dd/MM/yyyy"
-      selected={startDate}
       onChange={onChange}
       customInput={<ExampleCustomInput />}
       startDate={startDate}
@@ -43,31 +75,5 @@ const Calendar = () => {
     />
   );
 };
-
-// const Calendar = () => {
-//   const [startDate, setStartDate] = useState(new Date());
-//   const [endDate, setEndDate] = useState(new Date());
-//   return (
-//     <>
-//       <DatePicker
-//         dateFormat="dd/MM/YYYY"
-//         selected={startDate}
-//         onChange={(date) => setStartDate(date)}
-//         selectsStart
-//         startDate={startDate}
-//         endDate={endDate}
-//       />
-//       <DatePicker
-//         dateFormat="dd/MM/YYYY"
-//         selected={endDate}
-//         onChange={(date) => setEndDate(date)}
-//         selectsEnd
-//         startDate={startDate}
-//         endDate={endDate}
-//         minDate={startDate}
-//       />
-//     </>
-//   );
-// };
 
 export default Calendar;

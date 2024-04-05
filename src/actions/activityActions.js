@@ -1,10 +1,14 @@
 export const FETCH_ACTIVITIES_FROM_CITY = 'FETCH_ACTIVITIES_FROM_CITY';
 export const FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER =
   'FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER';
+export const FETCH_ACTIVITIES_FROM_CITY_WITH_DATES =
+  'FETCH_ACTIVITIES_FROM_CITY_WITH_DATES';
 export const HANDLE_FETCH_ACTIVITIES_FROM_CITY =
   'HANDLE_FETCH_ACTIVITIES_FROM_CITY';
 export const HANDLE_FETCH_ACTIVITIES_WITH_FILTER =
   'HANDLE_FETCH_ACTIVITIES_WITH_FILTER';
+export const HANDLE_FETCH_ACTIVITIES_WITH_DATES =
+  'HANDLE_FETCH_ACTIVITIES_WITH_DATES';
 
 export const fetchActivitiesFromCity = (
   coordinates,
@@ -32,6 +36,19 @@ export const fetchActivitiesFromCityWithFilter = (
   };
 };
 
+export const fetchActivitiesFromCityWithDates = (
+  lastSearchedCity,
+  startDate,
+  endDate
+) => {
+  return {
+    type: FETCH_ACTIVITIES_FROM_CITY_WITH_DATES,
+    lastSearchedCity,
+    startDate,
+    endDate,
+  };
+};
+
 export const handleFetchActivitiesFromCity = (
   activities,
   lastSearchedCity,
@@ -51,6 +68,16 @@ export const handleFetchActivitiesWithFilter = (
 ) => {
   return {
     type: HANDLE_FETCH_ACTIVITIES_WITH_FILTER,
+    activities,
+    lastSearchedCity,
+  };
+};
+export const handleFetchActivitiesWithDates = (
+  activities,
+  lastSearchedCity
+) => {
+  return {
+    type: HANDLE_FETCH_ACTIVITIES_WITH_DATES,
     activities,
     lastSearchedCity,
   };

@@ -56,7 +56,7 @@ const Activities = () => {
             active={isFilterActive === item.title.label}
           />
         ))}
-        <Calendar />
+        <Calendar lastSearchedCity={lastSearchedCity} />
       </div>
       <div className="Activities-grid">
         {activityList.map((activity) => (

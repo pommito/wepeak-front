@@ -1,6 +1,7 @@
 // Import actions
 import {
   FETCH_ACTIVITIES_FROM_CITY,
+  FETCH_ACTIVITIES_FROM_CITY_WITH_DATES,
   FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER,
   handleFetchActivitiesFromCity,
   handleFetchActivitiesWithFilter,
@@ -52,6 +53,36 @@ const activityMiddleware = (store) => (next) => (action) => {
       if (action.lastSearchedCity.coordinates.lat) {
         fetch(
           `http://melvinleroux-server.eddi.cloud/api/v1/activities/page/1/${action.lastSearchedCity.coordinates.lat}/${action.lastSearchedCity.coordinates.lng}?${action.filterName}=${action.filterValue}`
+        )
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then((activities) => {
+            store.dispatch(
+              handleFetchActivitiesWithFilter(
+                activities,
+                action.lastSearchedCity
+              )
+            );
+          })
+          .catch((error) => {
+            console.error(
+              'There was an error with your fetch operation:',
+              error
+            );
+          });
+      }
+
+      break;
+    }
+    case FETCH_ACTIVITIES_FROM_CITY_WITH_DATES: {
+      console.log(action.lastSearchedCity);
+      if (action.lastSearchedCity.coordinates.lat) {
+        fetch(
+          `http://melvinleroux-server.eddi.cloud/api/v1/activities/page/1/${action.lastSearchedCity.coordinates.lat}/${action.lastSearchedCity.coordinates.lng}?${action.startDate.label}=${action.startDate.value}?${action.endDate.label}=${action.endDate.value}`
         )
           .then((response) => {
             if (!response.ok) {
