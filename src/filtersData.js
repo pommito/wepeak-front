@@ -2,11 +2,11 @@ export default [
   {
     title: { value: 'distance', label: 'Distance' },
     options: [
-      { value: 5, label: 'Moins de 5 km' },
-      { value: 10, label: 'Moins de 10 km' },
-      { value: 20, label: 'Moins de 20 km' },
-      { value: 50, label: 'Moins de 50 km' },
-      { value: 100, label: 'Moins de 100 km' },
+      { value: '5', label: 'Moins de 5 km' },
+      { value: '10', label: 'Moins de 10 km' },
+      { value: '20', label: 'Moins de 20 km' },
+      { value: '50', label: 'Moins de 50 km' },
+      { value: '100', label: 'Moins de 100 km' },
     ],
   },
   {

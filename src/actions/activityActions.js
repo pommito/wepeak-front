@@ -3,6 +3,8 @@ export const FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER =
   'FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER';
 export const HANDLE_FETCH_ACTIVITIES_FROM_CITY =
   'HANDLE_FETCH_ACTIVITIES_FROM_CITY';
+export const HANDLE_FETCH_ACTIVITIES_WITH_FILTER =
+  'HANDLE_FETCH_ACTIVITIES_WITH_FILTER';
 
 export const fetchActivitiesFromCity = (
   coordinates,
@@ -18,13 +20,13 @@ export const fetchActivitiesFromCity = (
 };
 
 export const fetchActivitiesFromCityWithFilter = (
-  coordinates,
+  lastSearchedCity,
   filterName,
   filterValue
 ) => {
   return {
     type: FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER,
-    coordinates,
+    lastSearchedCity,
     filterName,
     filterValue,
   };
@@ -40,5 +42,16 @@ export const handleFetchActivitiesFromCity = (
     activities,
     lastSearchedCity,
     coordinates,
+  };
+};
+
+export const handleFetchActivitiesWithFilter = (
+  activities,
+  lastSearchedCity
+) => {
+  return {
+    type: HANDLE_FETCH_ACTIVITIES_WITH_FILTER,
+    activities,
+    lastSearchedCity,
   };
 };

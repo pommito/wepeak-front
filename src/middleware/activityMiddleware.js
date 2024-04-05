@@ -3,6 +3,7 @@ import {
   FETCH_ACTIVITIES_FROM_CITY,
   FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER,
   handleFetchActivitiesFromCity,
+  handleFetchActivitiesWithFilter,
 } from '../actions/activityActions';
 import { resetSearch } from '../actions/searchActions';
 import { getUserPositionName } from '../actions/userActions';
@@ -48,9 +49,9 @@ const activityMiddleware = (store) => (next) => (action) => {
       break;
     }
     case FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER: {
-      if (action.coordinates.lat) {
+      if (action.lastSearchedCity.coordinates.lat) {
         fetch(
-          `http://melvinleroux-server.eddi.cloud/api/v1/activities/page/1/${action.coordinates.lat}/${action.coordinates.lng}?${action.filterName}=${action.filterValue}`
+          `http://melvinleroux-server.eddi.cloud/api/v1/activities/page/1/${action.lastSearchedCity.coordinates.lat}/${action.lastSearchedCity.coordinates.lng}?${action.filterName}=${action.filterValue}`
         )
           .then((response) => {
             if (!response.ok) {
@@ -60,10 +61,9 @@ const activityMiddleware = (store) => (next) => (action) => {
           })
           .then((activities) => {
             store.dispatch(
-              handleFetchActivitiesFromCity(
+              handleFetchActivitiesWithFilter(
                 activities,
-                action.lastSearchedCity,
-                action.coordinates
+                action.lastSearchedCity
               )
             );
           })
@@ -73,9 +73,6 @@ const activityMiddleware = (store) => (next) => (action) => {
               error
             );
           });
-        // .finally(() => {
-        //   store.dispatch(getUserPositionName());
-        // });
       }
 
       break;

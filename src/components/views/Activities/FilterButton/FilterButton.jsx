@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -30,6 +31,7 @@ const FilterButton = ({ title, options, onClick, active }) => {
         }
       >
         {options.map((option) => (
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
           <li
             className="FilterButton-dropdown-option"
             key={option.label}
@@ -37,7 +39,7 @@ const FilterButton = ({ title, options, onClick, active }) => {
             onClick={() => {
               dispatch(
                 fetchActivitiesFromCityWithFilter(
-                  lastSearchedCity.coordinates,
+                  lastSearchedCity,
                   title.value,
                   option.value
                 )
@@ -53,8 +55,16 @@ const FilterButton = ({ title, options, onClick, active }) => {
 };
 
 FilterButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  title: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  }).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   onClick: PropTypes.func.isRequired,
   active: PropTypes.bool.isRequired,
 };

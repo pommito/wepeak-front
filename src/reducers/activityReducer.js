@@ -1,4 +1,7 @@
-import { HANDLE_FETCH_ACTIVITIES_FROM_CITY } from '../actions/activityActions';
+import {
+  HANDLE_FETCH_ACTIVITIES_FROM_CITY,
+  HANDLE_FETCH_ACTIVITIES_WITH_FILTER,
+} from '../actions/activityActions';
 
 export const initialState = {
   activities: [],
@@ -15,6 +18,12 @@ const activityReducer = (state = initialState, action = {}) => {
           name: action.lastSearchedCity,
           coordinates: action.coordinates,
         },
+      };
+    case HANDLE_FETCH_ACTIVITIES_WITH_FILTER:
+      return {
+        ...state,
+        activities: action.activities,
+        lastSearchedCity: action.lastSearchedCity,
       };
 
     default:

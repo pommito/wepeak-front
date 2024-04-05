@@ -7,6 +7,7 @@ import Button from '../../utils/Button/Button';
 import EventCard from '../../utils/EventCard/EventCard';
 import FilterButton from './FilterButton/FilterButton';
 
+// eslint-disable-next-line import/extensions, import/no-unresolved, import/no-absolute-path
 import data from '/src/filtersData';
 
 // Import stylesheet
@@ -47,7 +48,7 @@ const Activities = () => {
           <FilterButton
             title={item.title}
             options={item.options}
-            key={item.title}
+            key={item.title.value}
             onClick={() => {
               handleClickOnFilter(item.title.label);
             }}
