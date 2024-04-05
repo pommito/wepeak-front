@@ -1,12 +1,14 @@
 import {
   HANDLE_FETCH_ACTIVITIES_FROM_CITY,
   HANDLE_FETCH_ACTIVITY,
+  HANDLE_FETCH_ADRESS,
 } from '../actions/activityActions';
 
 export const initialState = {
   activities: [],
   lastSearchedCity: '',
   activity: {},
+  activityAdress: {},
 };
 
 const activityReducer = (state = initialState, action = {}) => {
@@ -21,6 +23,11 @@ const activityReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         activity: action.activity,
+      };
+    case HANDLE_FETCH_ADRESS:
+      return {
+        ...state,
+        activityAdress: action.activityAdress,
       };
     default:
       return state;

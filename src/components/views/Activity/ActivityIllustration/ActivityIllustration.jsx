@@ -1,17 +1,25 @@
-// React-icons imports
+// Import necessary libraries
 import { TbClockHour8 } from 'react-icons/tb';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
-
-// Leaflet imports
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import PropTypes from 'prop-types';
 import 'leaflet/dist/leaflet.css';
 
 import './ActivityIllustration.scss';
 
-const ActivityIllustration = () => {
+const ActivityIllustration = ({
+  date,
+  adressNumber,
+  adressRoad,
+  adressPostcode,
+  adressCity,
+  lat,
+  lng,
+}) => {
   return (
     <div className="ActivityIllustration">
       <div className="ActivityIllustration-imgContainer">
+        {/* TODO Dynamisation of activity picture when available in API */}
         <img
           src="https://idata.over-blog.com/0/08/49/95/Ski-de-Rando-2011/P1000329.jpg"
           alt=""
@@ -23,35 +31,48 @@ const ActivityIllustration = () => {
           <div className="ActivityIllustration-mapCard-info-date">
             <TbClockHour8 className="ActivityIllustration-mapCard-info-date icon" />
             <p>
-              <span>Date et heure de départ</span> <br /> 10-04-2024 à 07h00
+              <span>Date et heure de départ</span> <br />{' '}
+              {new Date(date).toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+              })}
             </p>
           </div>
 
           <div className="ActivityIllustration-mapCard-info-location">
             <HiOutlineLocationMarker className="ActivityIllustration-mapCard-info-location icon" />
             <p>
-              <span>Lieu de rendez-vous</span> <br /> 10 Rte des Confins <br />{' '}
-              74220 La Clusaz
+              <span>Lieu de rendez-vous</span> <br /> {adressNumber}{' '}
+              {adressRoad} <br /> {adressPostcode} {adressCity}
             </p>
           </div>
         </div>
 
         <div className="ActivityIllustration-mapCard-map">
-          <MapContainer
-            className="map-container"
-            center={[45.923156, 6.48366]}
-            zoom={15}
-          >
+          <MapContainer className="map-container" center={[lat, lng]} zoom={15}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[45.923156, 6.48366]} />
+            <Marker position={[lat, lng]} />
           </MapContainer>
         </div>
       </div>
     </div>
   );
+};
+
+ActivityIllustration.propTypes = {
+  date: PropTypes.string.isRequired,
+  adressNumber: PropTypes.string.isRequired,
+  adressRoad: PropTypes.string.isRequired,
+  adressPostcode: PropTypes.string.isRequired,
+  adressCity: PropTypes.string.isRequired,
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
 };
 
 export default ActivityIllustration;

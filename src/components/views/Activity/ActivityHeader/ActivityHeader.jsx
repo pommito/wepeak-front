@@ -1,24 +1,14 @@
 // Import necessary libraries
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 // Import stylesheet
 import './ActivityHeader.scss';
 
-const ActivityHeader = () => {
-  const activityName = useSelector((state) => state.activity.activity.name);
-  const sport = useSelector((state) => state.activity.activity.sport);
-  const userId = useSelector((state) => state.activity.activity.createdBy.id);
-  const userPicture = useSelector(
-    (state) => state.activity.activity.createdBy.thumbnail
-  );
-  const userName = useSelector(
-    (state) => state.activity.activity.createdBy.pseudo
-  );
-
+const ActivityHeader = ({ name, userId, userName }) => {
   return (
     <div className="ActivityHeader">
-      <h2 className="ActivityHeader-name">{activityName}</h2>
+      <h2 className="ActivityHeader-name">{name}</h2>
 
       {/* TODO Dynamisation of sport when available in API */}
       <h3 className="ActivityHeader-sport">Ski de randonnée</h3>
@@ -43,6 +33,12 @@ const ActivityHeader = () => {
       </div>
     </div>
   );
+};
+
+ActivityHeader.propTypes = {
+  name: PropTypes.string.isRequired,
+  userId: PropTypes.number.isRequired,
+  userName: PropTypes.string.isRequired,
 };
 
 export default ActivityHeader;

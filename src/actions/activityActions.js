@@ -3,6 +3,8 @@ export const HANDLE_FETCH_ACTIVITIES_FROM_CITY =
   'HANDLE_FETCH_ACTIVITIES_FROM_CITY';
 export const FETCH_ACTIVITY = 'FETCH_ACTIVITY';
 export const HANDLE_FETCH_ACTIVITY = 'HANDLE_FETCH_ACTIVITY';
+export const FETCH_ADRESS_FROM_COORDINATES = 'FETCH_ADRESS_FROM_COORDINATES';
+export const HANDLE_FETCH_ADRESS = 'HANDLE_FETCH_ADRESS';
 
 export const fetchActivitiesFromCity = (
   coordinates,
@@ -36,5 +38,19 @@ export const handleFetchActivity = (activity) => {
   return {
     type: HANDLE_FETCH_ACTIVITY,
     activity,
+  };
+};
+
+export const fetchAdressFromCoordinates = (coordinates) => {
+  return {
+    type: FETCH_ADRESS_FROM_COORDINATES,
+    coordinates,
+  };
+};
+
+export const handleFetchAdress = (activityAdress) => {
+  return {
+    type: HANDLE_FETCH_ADRESS,
+    activityAdress,
   };
 };
