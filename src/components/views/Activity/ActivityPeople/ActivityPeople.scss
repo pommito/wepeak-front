@@ -19,6 +19,16 @@
     gap: 3rem;
     justify-content: left;
 
+    // <p> waiting subtitle
+    &-waiting {
+      font-weight: 600;
+      margin-top: 1.5rem;
+    }
+
+    &.waiting {
+      margin-top: 1rem;
+    }
+
     &-card {
       align-items: center;
       display: flex;
@@ -36,6 +46,10 @@
         img {
           height: 100%;
           width: 100%;
+
+          &.waiting {
+            filter: blur(2px);
+          }
         }
       }
 
@@ -44,6 +58,10 @@
         font-size: v.$textSize;
         font-weight: 600;
         text-align: center;
+
+        &.waiting {
+          color: v.$textColorLight;
+        }
       }
     }
   }

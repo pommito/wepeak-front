@@ -45,8 +45,8 @@ const Activity = () => {
 
   const activityAdress = useSelector((state) => state.activity.activityAdress);
 
-  // if activity is not fetched yet, return null
-  if (!activity.createdBy) return null;
+  // if activity and activityAdress are not yet available, return null
+  if (!activity.createdBy || !activityAdress.road) return null;
 
   return (
     <main className="Activity">
@@ -64,13 +64,16 @@ const Activity = () => {
         adressRoad={activityAdress.road}
         adressPostcode={activityAdress.postcode}
         adressCity={
-          activityAdress.village ? activityAdress.village : activityAdress.city
+          activityAdress.village || activityAdress.city || activityAdress.town
         }
         lat={activity.lat}
         lng={activity.lng}
       />
-      <ActivityDetailApply />
-      <ActivityPeople />
+      <ActivityDetailApply description={activity.description} />
+      <ActivityPeople
+        people={activity.participations}
+        groupSize={activity.groupSize}
+      />
       <ActivityPictures />
     </main>
   );
