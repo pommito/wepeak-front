@@ -1,4 +1,4 @@
-import { POST_CONTACT_FORM } from '../actions/contactActions';
+import { POST_CONTACT_FORM, setErrorMessage } from '../actions/contactActions';
 
 const contactMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -18,7 +18,12 @@ const contactMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           if (!response.ok) {
-            throw new Error('Network response was not ok');
+            // If the response is not ok, we parse the response body as JSON.
+            return response.json().then((error) => {
+              // throw is used to stop the promise chain and trigger the catch block.
+              // if error.errors (which normaly contains specific messages) is not defined, we throw a generic error message.
+              throw new Error(error.errors || 'Network response was not ok');
+            });
           }
           return response.json();
         })
@@ -29,6 +34,7 @@ const contactMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.error('There was an error with your fetch operation:', error);
+          store.dispatch(setErrorMessage(error.message));
         })
         .finally(() => {});
       break;
