@@ -1,4 +1,8 @@
-import { POST_CONTACT_FORM, setErrorMessage } from '../actions/contactActions';
+import {
+  POST_CONTACT_FORM,
+  setErrorMessage,
+  setSuccessMessage,
+} from '../actions/contactActions';
 
 const contactMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -30,7 +34,12 @@ const contactMiddleware = (store) => (next) => (action) => {
         .then((message) => {
           console.log(message);
           // Handle here the success case with message to user and redirection
-          // action.navigate('/');
+          store.dispatch(
+            setSuccessMessage(
+              'Votre message a bien été envoyé ! Merci pour votre intérêt.'
+            )
+          );
+          store.dispatch(setErrorMessage(''));
         })
         .catch((error) => {
           console.error('There was an error with your fetch operation:', error);
