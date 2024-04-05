@@ -12,6 +12,7 @@ import data from '/src/filtersData';
 
 // Import stylesheet
 import './Activities.scss';
+import Calendar from './Calendar/Calendar';
 
 const Activities = () => {
   const activityList = useSelector((state) => state.activity.activities);
@@ -55,6 +56,7 @@ const Activities = () => {
             active={isFilterActive === item.title.label}
           />
         ))}
+        <Calendar />
       </div>
       <div className="Activities-grid">
         {activityList.map((activity) => (
