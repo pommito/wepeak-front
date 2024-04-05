@@ -2,7 +2,7 @@ import { HANDLE_FETCH_ACTIVITIES_FROM_CITY } from '../actions/activityActions';
 
 export const initialState = {
   activities: [],
-  lastSearchedCity: '',
+  lastSearchedCity: {},
 };
 
 const activityReducer = (state = initialState, action = {}) => {
@@ -11,7 +11,10 @@ const activityReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         activities: action.activities,
-        lastSearchedCity: action.lastSearchedCity,
+        lastSearchedCity: {
+          name: action.lastSearchedCity,
+          coordinates: action.coordinates,
+        },
       };
 
     default:

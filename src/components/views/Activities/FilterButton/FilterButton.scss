@@ -29,6 +29,7 @@
 
   &-dropdown {
     position: absolute;
+    cursor: pointer;
     top: 110%;
     background-color: v.$secondaryColorLight;
     border-radius: v.$borderRadius;

@@ -11,11 +11,11 @@ import FilterButton from './FilterButton/FilterButton';
 import './Activities.scss';
 
 const Activities = () => {
-  const [isFilterActive, setIsFilterActive] = useState(null);
   const activityList = useSelector((state) => state.activity.activities);
   const lastSearchedCity = useSelector(
     (state) => state.activity.lastSearchedCity
   );
+  const [isFilterActive, setIsFilterActive] = useState(null);
 
   const data = [
     {
@@ -27,6 +27,10 @@ const Activities = () => {
         'Moins de 50 km',
         'Moins de 100 km',
       ],
+    },
+    {
+      title: 'Difficulté',
+      options: ['Facile', 'Moyen', 'Difficile'],
     },
     {
       title: 'Date',
@@ -76,7 +80,7 @@ const Activities = () => {
 
   return (
     <main className="Activities">
-      <h1 className="Activities-title">{`Evènements à proximité de ${lastSearchedCity}`}</h1>
+      <h1 className="Activities-title">{`Evènements à proximité de ${lastSearchedCity.name}`}</h1>
       <div className="Activities-filters">
         {data.map((item) => (
           <FilterButton
