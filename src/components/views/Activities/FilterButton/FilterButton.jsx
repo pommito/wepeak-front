@@ -1,14 +1,21 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { FaCaretDown } from 'react-icons/fa';
+import { fetchActivitiesFromCityWithFilter } from '../../../../actions/activityActions';
 
 import './FilterButton.scss';
 
 const FilterButton = ({ title, options, onClick, active }) => {
+  const dispatch = useDispatch();
+  const lastSearchedCity = useSelector(
+    (state) => state.activity.lastSearchedCity
+  );
+
   return (
     <div className="FilterButton">
       <button type="button" className="FilterButton-button" onClick={onClick}>
-        {title}
+        {title.label}
         <FaCaretDown
           className={
             active
@@ -23,8 +30,21 @@ const FilterButton = ({ title, options, onClick, active }) => {
         }
       >
         {options.map((option) => (
-          <li className="FilterButton-dropdown-option" key={option}>
-            {option}
+          <li
+            className="FilterButton-dropdown-option"
+            key={option.label}
+            value={option.value}
+            onClick={() => {
+              dispatch(
+                fetchActivitiesFromCityWithFilter(
+                  lastSearchedCity.coordinates,
+                  title.value,
+                  option.value
+                )
+              );
+            }}
+          >
+            {option.label}
           </li>
         ))}
       </ul>

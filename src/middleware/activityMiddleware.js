@@ -50,7 +50,7 @@ const activityMiddleware = (store) => (next) => (action) => {
     case FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER: {
       if (action.coordinates.lat) {
         fetch(
-          `http://melvinleroux-server.eddi.cloud/api/v1/activities/nearby/${action.coordinates.lat}/${action.coordinates.lng}?${action.filterName}=${action.filterValue}`
+          `http://melvinleroux-server.eddi.cloud/api/v1/activities/page/1/${action.coordinates.lat}/${action.coordinates.lng}?${action.filterName}=${action.filterValue}`
         )
           .then((response) => {
             if (!response.ok) {
@@ -66,21 +66,16 @@ const activityMiddleware = (store) => (next) => (action) => {
                 action.coordinates
               )
             );
-            if (action.navigate) {
-              action.navigate('/activities');
-              // dispatch(resetSearch());
-              store.dispatch(resetSearch());
-            }
           })
           .catch((error) => {
             console.error(
               'There was an error with your fetch operation:',
               error
             );
-          })
-          .finally(() => {
-            store.dispatch(getUserPositionName());
           });
+        // .finally(() => {
+        //   store.dispatch(getUserPositionName());
+        // });
       }
 
       break;

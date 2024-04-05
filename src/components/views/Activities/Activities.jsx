@@ -7,6 +7,8 @@ import Button from '../../utils/Button/Button';
 import EventCard from '../../utils/EventCard/EventCard';
 import FilterButton from './FilterButton/FilterButton';
 
+import data from '/src/filtersData';
+
 // Import stylesheet
 import './Activities.scss';
 
@@ -16,47 +18,6 @@ const Activities = () => {
     (state) => state.activity.lastSearchedCity
   );
   const [isFilterActive, setIsFilterActive] = useState(null);
-
-  const data = [
-    {
-      title: 'Distance',
-      options: [
-        'Moins de 5 km',
-        'Moins de 10 km',
-        'Moins de 20 km',
-        'Moins de 50 km',
-        'Moins de 100 km',
-      ],
-    },
-    {
-      title: 'Difficulté',
-      options: ['Facile', 'Moyen', 'Difficile'],
-    },
-    {
-      title: 'Date',
-      options: [
-        "Aujourd'hui",
-        'Demain',
-        'Ce week-end',
-        'Cette semaine',
-        'Ce mois-ci',
-      ],
-    },
-    {
-      title: 'Group Size',
-      options: ['1-5', '6-10', '11-20'],
-    },
-    {
-      title: 'Sports',
-      options: [
-        'Backcountry Skiing',
-        'Hiking',
-        'Mountain Biking',
-        'Climbing',
-        'Trail Running',
-      ],
-    },
-  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -88,9 +49,9 @@ const Activities = () => {
             options={item.options}
             key={item.title}
             onClick={() => {
-              handleClickOnFilter(item.title);
+              handleClickOnFilter(item.title.label);
             }}
-            active={isFilterActive === item.title}
+            active={isFilterActive === item.title.label}
           />
         ))}
       </div>

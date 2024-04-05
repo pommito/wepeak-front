@@ -20,15 +20,13 @@ export const fetchActivitiesFromCity = (
 export const fetchActivitiesFromCityWithFilter = (
   coordinates,
   filterName,
-  filterValue,
-  lastSearchedCity = ''
+  filterValue
 ) => {
   return {
     type: FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER,
     coordinates,
     filterName,
     filterValue,
-    lastSearchedCity,
   };
 };
 
