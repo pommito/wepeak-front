@@ -32,7 +32,6 @@ const contactMiddleware = (store) => (next) => (action) => {
           return response.json();
         })
         .then((message) => {
-          console.log(message);
           // Handle here the success case with message to user and redirection
           store.dispatch(
             setSuccessMessage(
