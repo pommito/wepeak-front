@@ -34,8 +34,6 @@ const Calendar = ({ lastSearchedCity }) => {
         value: formatDate(end),
       };
 
-      console.log(formatedStartDate, formatedEndDate);
-
       dispatch(
         fetchActivitiesFromCityWithDates(
           lastSearchedCity,

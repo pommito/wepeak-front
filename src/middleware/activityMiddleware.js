@@ -82,7 +82,7 @@ const activityMiddleware = (store) => (next) => (action) => {
       console.log(action.lastSearchedCity);
       if (action.lastSearchedCity.coordinates.lat) {
         fetch(
-          `http://melvinleroux-server.eddi.cloud/api/v1/activities/page/1/${action.lastSearchedCity.coordinates.lat}/${action.lastSearchedCity.coordinates.lng}?${action.startDate.label}=${action.startDate.value}?${action.endDate.label}=${action.endDate.value}`
+          `http://melvinleroux-server.eddi.cloud/api/v1/activities/page/1/${action.lastSearchedCity.coordinates.lat}/${action.lastSearchedCity.coordinates.lng}?${action.startDate.label}=${action.startDate.value}&${action.endDate.label}=${action.endDate.value}`
         )
           .then((response) => {
             if (!response.ok) {
