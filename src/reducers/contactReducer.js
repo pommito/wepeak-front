@@ -1,4 +1,9 @@
-import { CHANGE_CONTACT_INPUT } from '../actions/contactActions';
+import {
+  CHANGE_CONTACT_INPUT,
+  SET_ERROR_MESSAGE,
+  SET_SUCCESS_MESSAGE,
+  RESET_CONTACT_FORM,
+} from '../actions/contactActions';
 
 export const initialState = {
   nameInput: '',
@@ -6,6 +11,8 @@ export const initialState = {
   phoneInput: '',
   companyInput: '',
   messageInput: '',
+  errorMessage: '',
+  successMessage: '',
 };
 
 const contactReducer = (state = initialState, action = {}) => {
@@ -14,6 +21,20 @@ const contactReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.identifier]: action.value,
+      };
+    case SET_ERROR_MESSAGE:
+      return {
+        ...state,
+        errorMessage: action.message,
+      };
+    case SET_SUCCESS_MESSAGE:
+      return {
+        ...state,
+        successMessage: action.message,
+      };
+    case RESET_CONTACT_FORM:
+      return {
+        ...initialState,
       };
     default:
       return state;

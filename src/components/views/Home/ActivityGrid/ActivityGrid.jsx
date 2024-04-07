@@ -1,9 +1,12 @@
+// Import necessary librairies
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-
 import { Link } from 'react-router-dom';
 
+// Import components
 import EventCard from '../../../utils/EventCard/EventCard';
+
+// Import stylesheet
 import './ActivityGrid.scss';
 
 const ActivityGrid = ({ userPositionName }) => {
@@ -15,7 +18,7 @@ const ActivityGrid = ({ userPositionName }) => {
         <h2 className="ActivityGrid-top-title">
           Evènements à venir proches de {userPositionName}
         </h2>
-        <Link to="/ActivityGrid" className="ActivityGrid-top-link">
+        <Link to="/activities" className="ActivityGrid-top-link">
           Voir tous les évènements
         </Link>
       </div>

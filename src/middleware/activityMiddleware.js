@@ -4,6 +4,10 @@ import {
   FETCH_ACTIVITIES_FROM_CITY_WITH_DATES,
   FETCH_ACTIVITIES_FROM_CITY_WITH_FILTER,
   handleFetchActivitiesFromCity,
+  FETCH_ACTIVITY,
+  handleFetchActivity,
+  FETCH_ADRESS_FROM_COORDINATES,
+  handleFetchAdress,
   handleFetchActivitiesWithFilter,
 } from '../actions/activityActions';
 import { resetSearch } from '../actions/searchActions';
@@ -33,7 +37,6 @@ const activityMiddleware = (store) => (next) => (action) => {
             );
             if (action.navigate) {
               action.navigate('/activities');
-              // dispatch(resetSearch());
               store.dispatch(resetSearch());
             }
           })
@@ -106,6 +109,46 @@ const activityMiddleware = (store) => (next) => (action) => {
           });
       }
 
+      break;
+      }
+      break;
+    }
+    case FETCH_ACTIVITY: {
+      fetch(
+        `http://melvinleroux-server.eddi.cloud/api/v1/activities/${action.slug}`
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((activity) => {
+          store.dispatch(handleFetchActivity(activity));
+        })
+        .catch((error) => {
+          console.error('There was an error with your fetch operation:', error);
+        })
+        .finally(() => {});
+      break;
+    }
+    case FETCH_ADRESS_FROM_COORDINATES: {
+      fetch(
+        `https://nominatim.openstreetmap.org/reverse.php?lat=${action.coordinates.lat}&lon=${action.coordinates.lng}&zoom=18&format=jsonv2`
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          store.dispatch(handleFetchAdress(data.address));
+        })
+        .catch((error) => {
+          console.error('There was an error with your fetch operation:', error);
+        })
+        .finally(() => {});
       break;
     }
     default:
