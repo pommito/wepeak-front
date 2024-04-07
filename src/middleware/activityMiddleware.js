@@ -110,8 +110,6 @@ const activityMiddleware = (store) => (next) => (action) => {
       }
 
       break;
-      }
-      break;
     }
     case FETCH_ACTIVITY: {
       fetch(
