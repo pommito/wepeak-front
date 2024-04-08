@@ -12,6 +12,8 @@ import './ActivityGrid.scss';
 const ActivityGrid = ({ userPositionName }) => {
   const activityList = useSelector((state) => state.activity.activities);
 
+  console.log(activityList);
+
   return (
     <div className="ActivityGrid">
       <div className="ActivityGrid-top">
@@ -23,7 +25,7 @@ const ActivityGrid = ({ userPositionName }) => {
         </Link>
       </div>
       <div className="ActivityGrid-grid">
-        {activityList.map((activity) => (
+        {activityList.slice(0, 9).map((activity) => (
           <EventCard
             key={activity['0'].id}
             title={activity['0'].name}

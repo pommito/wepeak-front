@@ -2,6 +2,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import Header from '../views/Header/Header';
+import Footer from '../views/Footer/Footer';
 import Home from '../views/Home/Home';
 import Activity from '../views/Activity/Activity';
 import Contact from '../views/Contact/Contact';
@@ -13,6 +14,9 @@ import UserPage from '../views/UserPage/UserPage';
 import './App.scss';
 import Activities from '../views/Activities/Activities';
 import Login from '../views/Login/Login';
+import Register from '../views/Register/Register';
+
+import './App.scss';
 
 const App = () => {
   const location = useLocation();

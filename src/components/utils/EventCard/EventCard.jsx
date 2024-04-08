@@ -9,6 +9,7 @@ import image from '../../../assets/images/Home_hero_3.avif';
 import './EventCard.scss';
 
 const EventCard = ({ title, date, difficulty, slug }) => {
+  console.log(difficulty);
   return (
     <article className="EventCard">
       <Link to={`/activities/${slug}`}>
