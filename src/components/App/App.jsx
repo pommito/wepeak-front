@@ -6,6 +6,8 @@ import Activity from '../views/Activity/Activity';
 import Contact from '../views/Contact/Contact';
 import Error404 from '../views/Error404/Error404';
 import Footer from '../views/Footer/Footer';
+import Profile from '../views/Profile/Profile';
+import UserPage from '../views/UserPage/UserPage';
 
 import './App.scss';
 import Activities from '../views/Activities/Activities';
@@ -19,6 +21,8 @@ const App = () => {
         <Route path="/activities/:slug" element={<Activity />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/activities" element={<Activities />} />
+        <Route path="/user" element={<UserPage />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />
