@@ -32,11 +32,13 @@ const ProfileCard = () => {
         </div>
         <div className="ProfileCard-stats-stat center">
           <p className="ProfileCard-stats-stat-number">8</p>
-          <p className="ProfileCard-stats-stat-name">Participations</p>
+          <p className="ProfileCard-stats-stat-name">
+            Participations <br /> passées
+          </p>
         </div>
         <div className="ProfileCard-stats-stat">
           <p className="ProfileCard-stats-stat-number">2</p>
-          <p className="ProfileCard-stats-stat-name">Groupes</p>
+          <p className="ProfileCard-stats-stat-name">Inscriptions</p>
         </div>
       </div>
     </div>
