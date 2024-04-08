@@ -27,7 +27,7 @@ const Login = () => {
           <label htmlFor="email">Email</label>
           <input type="email" id="email" name="email" required />
           <div className="Login-content-form-wrapper">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Mot de passe</label>
             <Link
               to="/forgot-password"
               className="Login-content-form-wrapper-link"
@@ -55,7 +55,7 @@ const Login = () => {
         </form>
       </div>
       <NavLink to="/" className="Login-content-exit">
-        Retour à l'accueil
+        Retour à l&apos;accueil
         <FiArrowUpRight />
       </NavLink>
     </main>
