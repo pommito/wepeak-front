@@ -1,1 +1,19 @@
 @use '/src/styles/variables' as v;
+
+.Profile {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem auto 2rem auto;
+  width: 95%;
+
+  &-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 30%;
+  }
+
+  &-right {
+    width: 70%;
+  }
+}

@@ -47,7 +47,7 @@ const ContactForm = () => {
           type="email"
           id="email"
           name="email"
-          placeholder="example@email.com"
+          placeholder="exemple@email.com"
           value={emailInput}
           onChange={(e) => {
             dispatch(changeContactInput(e.target.value, 'emailInput'));

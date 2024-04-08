@@ -25,10 +25,12 @@ const App = () => {
       {!isExcludedPath && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/activities" element={<Activities />} />
         <Route path="/activities/:slug" element={<Activity />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/activities" element={<Activities />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/user/:slug" element={<UserPage />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       {!isExcludedPath && <Footer />}
