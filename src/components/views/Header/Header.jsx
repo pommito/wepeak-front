@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { LuSearch, LuSearchX } from 'react-icons/lu';
 import { FaRegMessage } from 'react-icons/fa6';
 
+import Logo_BW from '../../../assets/Logo_BW.svg';
+
 // Import actions
 import {
   changeInputSearch,
@@ -17,7 +19,7 @@ import { fetchActivitiesFromCity } from '../../../actions/activityActions';
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = false; // To remove at API plug
+  const isLogged = true; // To remove at API plug
   const cityList = useSelector((state) => state.search.cityList);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -99,7 +101,7 @@ const Header = () => {
           <div className="Header-left-logo-container">
             <img
               className="Header-left-logo"
-              src="/src/assets/Logo_BW.svg"
+              src={Logo_BW}
               alt="Logo de WePeak"
             />
           </div>

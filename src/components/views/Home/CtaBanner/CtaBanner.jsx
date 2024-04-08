@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './CtaBanner.scss';
 import Button from '../../../utils/Button/Button';
 
+import image from '../../../../assets/images/Home_hero_6.avif';
+
 const CtaBanner = () => {
   return (
     <div className="CtaBanner">
@@ -20,11 +22,7 @@ const CtaBanner = () => {
         </div>
       </div>
       <div className="CtaBanner-right">
-        <img
-          src="/src/assets/images/Home_hero_6.avif"
-          alt=""
-          className="CtaBanner-right-image"
-        />
+        <img src={image} alt="" className="CtaBanner-right-image" />
       </div>
     </div>
   );

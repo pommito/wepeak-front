@@ -8,6 +8,8 @@ import {
 
 import { Link } from 'react-router-dom';
 
+import Logo_BW from '../../../assets/Logo_BW.svg';
+
 import './Footer.scss';
 
 const Footer = () => {
@@ -21,7 +23,7 @@ const Footer = () => {
             <div className="Footer-main-socials-logoContainer">
               <img
                 className="Footer-main-socials-logoContainer-logo"
-                src="/src/assets/Logo_BW.svg"
+                src={Logo_BW}
                 alt="Logo de WePeak"
               />
             </div>
