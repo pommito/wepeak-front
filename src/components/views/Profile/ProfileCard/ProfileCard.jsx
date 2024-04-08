@@ -1,3 +1,6 @@
+import { HiLocationMarker } from 'react-icons/hi';
+import { FaCalendarMinus } from 'react-icons/fa6';
+
 import './ProfileCard.scss';
 
 const ProfileCard = () => {
@@ -11,23 +14,29 @@ const ProfileCard = () => {
         />
         <div className="ProfileCard-imgContainer-userData">
           <h4>Tom Fourage</h4>
-          <p>User Email</p>
-          <p>City</p>
-          <p>Member since date</p>
+          <p>tom.fourage.dev@gmail.com</p>
+          <div className="ProfileCard-imgContainer-userData-city">
+            <HiLocationMarker />
+            <p>Seignosse</p>
+          </div>
+          <div className="ProfileCard-imgContainer-userData-date">
+            <FaCalendarMinus />
+            <p>Membre WePeak depuis : avri. 2024</p>
+          </div>
         </div>
       </div>
       <div className="ProfileCard-stats">
-        <div className="ProfileCard-stat">
-          <p className="ProfileCard-stat-number">4</p>
-          <p className="ProfileCard-stat-name">Sports</p>
+        <div className="ProfileCard-stats-stat">
+          <p className="ProfileCard-stats-stat-number">4</p>
+          <p className="ProfileCard-stats-stat-name">Sports</p>
         </div>
-        <div className="ProfileCard-stat center">
-          <p className="ProfileCard-stat-number">8</p>
-          <p className="ProfileCard-stat-name">Participations</p>
+        <div className="ProfileCard-stats-stat center">
+          <p className="ProfileCard-stats-stat-number">8</p>
+          <p className="ProfileCard-stats-stat-name">Participations</p>
         </div>
-        <div className="ProfileCard-stat">
-          <p className="ProfileCard-stat-number">2</p>
-          <p className="ProfileCard-stat-name">Groupes</p>
+        <div className="ProfileCard-stats-stat">
+          <p className="ProfileCard-stats-stat-number">2</p>
+          <p className="ProfileCard-stats-stat-name">Groupes</p>
         </div>
       </div>
     </div>
