@@ -10,19 +10,21 @@ import Footer from '../views/Footer/Footer';
 
 import './App.scss';
 import Activities from '../views/Activities/Activities';
+import Login from '../views/Login/Login';
 
 const App = () => {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/activities/:slug" element={<Activity />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/activities" element={<Activities />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
