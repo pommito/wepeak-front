@@ -13,7 +13,9 @@ const Login = () => {
   return (
     <div className="Login">
       <div className="Login-content">
-        <img src={logo} alt="Logo WePeak" className="Login-content-logo" />
+        <NavLink to="/">
+          <img src={logo} alt="Logo WePeak" className="Login-content-logo" />
+        </NavLink>
         <h1 className="Login-content-title">Connexion</h1>
         <p className="Login-content-register">
           Vous n&apos;avez pas de compte ?{' '}

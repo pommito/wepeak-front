@@ -15,7 +15,7 @@ import Login from '../views/Login/Login';
 const App = () => {
   return (
     <div className="App">
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/activities/:slug" element={<Activity />} />
@@ -24,7 +24,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
