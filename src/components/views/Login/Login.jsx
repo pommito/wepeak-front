@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { FiEye, FiEyeOff, FiArrowUpRight } from 'react-icons/fi';
 
 import './Login.scss';
 
@@ -11,7 +11,7 @@ const Login = () => {
   const [isVisibile, setIsVisible] = useState(false);
 
   return (
-    <div className="Login">
+    <main className="Login">
       <div className="Login-content">
         <NavLink to="/">
           <img src={logo} alt="Logo WePeak" className="Login-content-logo" />
@@ -54,7 +54,11 @@ const Login = () => {
           <button type="submit">Se connecter</button>
         </form>
       </div>
-    </div>
+      <NavLink to="/" className="Login-content-exit">
+        Retour à l'accueil
+        <FiArrowUpRight />
+      </NavLink>
+    </main>
   );
 };
 
