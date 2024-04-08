@@ -13,7 +13,7 @@ const ProfileCard = () => {
           alt=""
         />
         <div className="ProfileCard-imgContainer-userData">
-          <h4>Tom Fourage</h4>
+          <h3>Tom Fourage</h3>
           <p>tom.fourage.dev@gmail.com</p>
           <div className="ProfileCard-imgContainer-userData-city">
             <HiLocationMarker />
