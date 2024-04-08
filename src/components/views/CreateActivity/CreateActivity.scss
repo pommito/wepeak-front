@@ -1,0 +1,85 @@
+@use '/src/styles/variables' as v;
+
+.CreateActivity {
+  width: 100vw;
+  height: 100vh;
+
+  &-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 3rem;
+    overflow: wrap;
+    width: 100%;
+
+    label {
+      font-size: v.$textSize;
+      font-weight: 600;
+    }
+
+    input,
+    textarea,
+    select {
+      padding: 0.5rem;
+      border: 1px solid v.$secondaryColor;
+      border-radius: v.$borderRadius;
+    }
+
+    button {
+      padding: 0.5rem;
+      border: none;
+      border-radius: v.$borderRadius;
+      background-color: v.$primaryColor;
+      margin-top: 0.5rem;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        background-color: v.$primaryColorDark;
+      }
+    }
+
+    &-left,
+    &-rigth {
+      &-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        &-row {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+          width: 50%;
+        }
+      }
+    }
+
+    &-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-width: 50%;
+      text-align: start;
+    }
+
+    &-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: start;
+      min-width: 50%;
+
+      img {
+        width: 100%;
+        height: 300px;
+      }
+    }
+
+    &-button {
+      grid-column: 1 / -1;
+      width: 25%;
+      margin-left: auto;
+    }
+  }
+}

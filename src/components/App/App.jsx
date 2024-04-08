@@ -5,6 +5,7 @@ import Header from '../views/Header/Header';
 import Footer from '../views/Footer/Footer';
 import Home from '../views/Home/Home';
 import Activity from '../views/Activity/Activity';
+import CreateActivity from '../views/CreateActivity/CreateActivity';
 import Contact from '../views/Contact/Contact';
 import Error404 from '../views/Error404/Error404';
 import Activities from '../views/Activities/Activities';
@@ -16,7 +17,7 @@ import './App.scss';
 const App = () => {
   const location = useLocation();
 
-  const excludedPaths = ['/login', '/register'];
+  const excludedPaths = ['/login', '/register', '/activities/create'];
   const isExcludedPath = excludedPaths.includes(location.pathname);
 
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/activities/:slug" element={<Activity />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/activities" element={<Activities />} />
+        <Route path="/activities/create" element={<CreateActivity />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error404 />} />
