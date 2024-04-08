@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import Header from '../views/Header/Header';
 import Home from '../views/Home/Home';
@@ -11,21 +12,26 @@ import UserPage from '../views/UserPage/UserPage';
 
 import './App.scss';
 import Activities from '../views/Activities/Activities';
+import Login from '../views/Login/Login';
 
 const App = () => {
+  const location = useLocation();
+
+  const excludedPaths = ['/login', '/register'];
+  const isExcludedPath = excludedPaths.includes(location.pathname);
+
   return (
     <div className="App">
-      <Header />
+      {!isExcludedPath && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/activities/:slug" element={<Activity />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/activities" element={<Activities />} />
-        <Route path="/user" element={<UserPage />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
-      <Footer />
+      {!isExcludedPath && <Footer />}
     </div>
   );
 };
