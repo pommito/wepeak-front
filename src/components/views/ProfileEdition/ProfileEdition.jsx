@@ -90,6 +90,16 @@ const ProfileEdition = () => {
           <label htmlFor="city">Ville</label>
           <input type="text" id="city" name="city" value="Seignosse" required />
         </div>
+        <div className="ProfileEdition-form-birthdate">
+          <label htmlFor="birthdate">Date de naissance</label>
+          <input
+            type="date"
+            id="birthdate"
+            name="birthdate"
+            value="22/03/1991"
+            required
+          />
+        </div>
         <div className="ProfileEdition-form-bio">
           <label htmlFor="bio">Bio</label>
           <textarea
@@ -130,6 +140,9 @@ const ProfileEdition = () => {
         </div>
         <button type="submit" className="ProfileEdition-form-submit">
           Enregistrer les modifications
+        </button>
+        <button type="button" className="ProfileEdition-form-delete">
+          Supprimer mon profil
         </button>
       </form>
     </main>

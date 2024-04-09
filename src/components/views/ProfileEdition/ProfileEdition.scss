@@ -70,6 +70,7 @@
     &-email,
     &-username,
     &-city,
+    &-birthdate,
     &-bio,
     &-oldPassword,
     &-newPassword,
@@ -85,11 +86,12 @@
     &-firstname,
     &-name,
     &-username,
-    &-email {
+    &-email,
+    &-city,
+    &-birthdate {
       width: 48.5%;
     }
 
-    &-city,
     &-bio {
       width: 100%;
     }
@@ -134,19 +136,30 @@
       width: 100%;
     }
 
-    &-submit {
-      background-color: v.$accentColorDark;
+    &-submit,
+    &-delete {
       border: none;
       border-radius: v.$borderRadius;
       color: v.$backgroundColor;
       font-family: v.$textFont;
       font-size: v.$textSize;
       padding: 0.75rem;
-      align-self: flex-end;
       width: 30%;
+    }
+
+    &-submit {
+      background-color: v.$accentColorDark;
 
       &:hover {
         background-color: v.$accentColor;
+      }
+    }
+
+    &-delete {
+      background-color: rgb(187, 59, 59);
+
+      &:hover {
+        background-color: rgb(136, 31, 31);
       }
     }
   }

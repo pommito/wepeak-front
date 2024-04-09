@@ -72,15 +72,16 @@
   }
 
   &-more {
-    background-color: v.$accentColor;
-    border: 1px solid v.$accentColorDark;
+    background-color: v.$backgroundColor;
+    border: 1px solid v.$secondaryColorLight;
     border-radius: v.$borderRadius;
     display: flex;
     font-size: 1.5rem;
     margin: 1rem auto 0 auto;
+    transition: background-color 0.25s;
 
     &:hover {
-      background-color: v.$accentColorDark;
+      background-color: v.$secondaryColorLight;
     }
   }
 }
