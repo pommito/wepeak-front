@@ -70,12 +70,17 @@
     justify-content: space-between;
 
     &-stat {
-      padding: 0 1rem;
-    }
-
-    &-stat.center {
-      border-left: 1px solid v.$textColorLight;
-      border-right: 1px solid v.$textColorLight;
+      &.left {
+        padding-left: 5%;
+      }
+      &.center {
+        border-left: 1px solid v.$textColorLight;
+        border-right: 1px solid v.$textColorLight;
+        padding: 0 5%;
+      }
+      &.right {
+        padding-right: 5%;
+      }
     }
 
     &-stat-number {

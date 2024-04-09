@@ -26,19 +26,19 @@ const ProfileCard = () => {
         </div>
       </div>
       <div className="ProfileCard-stats">
-        <div className="ProfileCard-stats-stat">
+        <div className="ProfileCard-stats-stat left">
           <p className="ProfileCard-stats-stat-number">4</p>
           <p className="ProfileCard-stats-stat-name">Sports</p>
         </div>
         <div className="ProfileCard-stats-stat center">
+          <p className="ProfileCard-stats-stat-number">3</p>
+          <p className="ProfileCard-stats-stat-name">Inscriptions</p>
+        </div>
+        <div className="ProfileCard-stats-stat right">
           <p className="ProfileCard-stats-stat-number">8</p>
           <p className="ProfileCard-stats-stat-name">
-            Participations <br /> passées
+            Activités <br /> passées
           </p>
-        </div>
-        <div className="ProfileCard-stats-stat">
-          <p className="ProfileCard-stats-stat-number">2</p>
-          <p className="ProfileCard-stats-stat-name">Inscriptions</p>
         </div>
       </div>
     </div>

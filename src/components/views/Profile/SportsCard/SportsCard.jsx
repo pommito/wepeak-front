@@ -13,7 +13,7 @@ const SportsCard = () => {
           Surf
         </Link>
         <Link to="/activities" className="SportsCard-list-sport">
-          Planche à voile
+          Randonnée
         </Link>
         <Link to="/activities" className="SportsCard-list-sport">
           Ski de randonnée
