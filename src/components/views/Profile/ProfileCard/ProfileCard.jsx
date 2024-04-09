@@ -41,6 +41,13 @@ const ProfileCard = () => {
           </p>
         </div>
       </div>
+      <div className="ProfileCard-bio">
+        <h4 className="ProfileCard-bio-title">Bio</h4>
+        <p className="ProfileCard-bio-text">
+          Salut les girls, moi c'est Tom, un bogoss du 40. J'aime le surf et la
+          plage. Kiss kiss.
+        </p>
+      </div>
     </div>
   );
 };

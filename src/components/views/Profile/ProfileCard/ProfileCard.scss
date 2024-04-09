@@ -94,4 +94,19 @@
       line-height: 2ch;
     }
   }
+
+  &-bio {
+    text-align: left;
+
+    &-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    &-text {
+      font-size: v.$textSize;
+      line-height: 2ch;
+    }
+  }
 }

@@ -7,6 +7,7 @@ import Activity from '../views/Activity/Activity';
 import Contact from '../views/Contact/Contact';
 import Error404 from '../views/Error404/Error404';
 import Profile from '../views/Profile/Profile';
+import ProfileEdition from '../views/ProfileEdition/ProfileEdition';
 import UserPage from '../views/UserPage/UserPage';
 
 import Activities from '../views/Activities/Activities';
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/edit" element={<ProfileEdition />} />
         <Route path="/user/:slug" element={<UserPage />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
