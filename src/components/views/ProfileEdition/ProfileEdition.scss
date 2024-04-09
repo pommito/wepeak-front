@@ -28,6 +28,10 @@
       justify-content: center;
       width: 100%;
 
+      @media (max-width: v.$mobile) {
+        flex-direction: column;
+      }
+
       &-imgContainer {
         border: 1px solid v.$backgroundColorDark;
         border-radius: 50%;
@@ -90,6 +94,9 @@
     &-city,
     &-birthdate {
       width: 48.5%;
+      @media (max-width: v.$tablet) {
+        width: 100%;
+      }
     }
 
     &-bio {
@@ -145,6 +152,13 @@
       font-size: v.$textSize;
       padding: 0.75rem;
       width: 30%;
+
+      @media (max-width: v.$tablet) {
+        width: 45%;
+      }
+      @media (max-width: v.$tablet) {
+        font-size: calc(v.$textSize * 0.85);
+      }
     }
 
     &-submit {
