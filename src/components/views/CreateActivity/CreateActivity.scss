@@ -2,13 +2,19 @@
 
 .CreateActivity {
   width: 100vw;
-  height: 100vh;
+  padding: 3rem;
+
+  &-title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: start;
+    margin-bottom: 2rem;
+  }
 
   &-form {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    padding: 3rem;
     overflow: wrap;
     width: 100%;
 
@@ -27,6 +33,7 @@
     }
 
     button {
+      align-self: flex-end;
       padding: 0.5rem;
       border: none;
       border-radius: v.$borderRadius;
@@ -55,19 +62,19 @@
 
           &-button {
             align-items: center;
-            background-color: v.$primaryColor;
+            background-color: v.$accentColor;
             color: v.$backgroundColor;
             display: flex;
             font-size: v.$textSize;
             gap: 0.5rem;
             justify-content: space-between;
             padding: 0.5rem;
-            border: 1px solid v.$primaryColorDark;
+            border: 1px solid v.$accentColorDark;
             border-radius: v.$borderRadius;
             height: 100%;
 
             &:hover {
-              background-color: v.$primaryColorDark;
+              background-color: v.$accentColorDark;
             }
           }
 
@@ -88,14 +95,23 @@
       &-thumbnail {
         width: 100%;
         height: 300px;
+        position: relative;
 
         img {
           width: 100%;
           height: 100%;
-          // i want my img to be centered and cover the whole div
           object-position: center;
           object-fit: cover;
           border-radius: v.$borderRadius;
+        }
+
+        &-delete {
+          cursor: pointer;
+          color: white;
+          position: absolute;
+          top: 0.75rem;
+          right: 0.75rem;
+          width: 0.75rem;
         }
       }
     }
@@ -111,12 +127,17 @@
         width: 100%;
         height: 300px;
       }
+
+      &-map {
+        width: 100%;
+        height: 300px;
+        border-radius: v.$borderRadius;
+      }
     }
 
     &-button {
       grid-column: 1 / -1;
-      width: 25%;
-      margin-left: auto;
+      width: 100%;
     }
   }
 }

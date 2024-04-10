@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 import { RiImageAddFill } from 'react-icons/ri';
+import { FaTrashAlt } from 'react-icons/fa';
+import Map from './Map/Map';
 
 import './CreateActivity.scss';
 import imageByDefault from '../../../assets/images/image_placeholder.png';
@@ -14,17 +16,16 @@ const CreateActivity = () => {
     const file = e.target.files[0];
 
     if (file) {
-      // FileReader is a built-in browser API that allows to read files
       const reader = new FileReader();
-      // We setup an event listener. onloadend is an event that is triggered when the file has been read.
       reader.onloadend = () => {
-        // reader.result contains the file content in a data URL format (base64)
         setImage(reader.result);
       };
-      // readAsDataURL will read the file and transform it to a data URL.
-      // At the end, the onloadend event will be triggered.
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleResetImage = () => {
+    setImage(null);
   };
 
   return (
@@ -39,6 +40,12 @@ const CreateActivity = () => {
               <img src={imageByDefault} alt="par défaut" />
             ) : (
               <img src={image} alt="thumbnail of the activity" />
+            )}
+            {image && (
+              <FaTrashAlt
+                className="CreateActivity-form-left-thumbnail-delete"
+                onClick={handleResetImage}
+              />
             )}
           </div>
           <div className="CreateActivity-form-left-wrapper">
@@ -70,6 +77,22 @@ const CreateActivity = () => {
             </div>
           </div>
 
+          <label htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="10"
+            maxLength="1000"
+            minLength="100"
+            required
+          />
+        </div>
+        <div className="CreateActivity-form-right">
+          <label htmlFor="area">Lieu</label>
+          <input type="text" id="area" name="area" required />
+          <div className="CreateActivity-form-right-map">
+            <Map />
+          </div>
           <div className="CreateActivity-form-left-wrapper">
             <div className="CreateActivity-form-left-wrapper-row">
               <label htmlFor="date">Date</label>
@@ -87,21 +110,6 @@ const CreateActivity = () => {
               <input type="time" id="time" name="time" required />
             </div>
           </div>
-
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            rows="10"
-            maxLength="1000"
-            minLength="100"
-            required
-          />
-        </div>
-        <div className="CreateActivity-form-right">
-          <label htmlFor="area">Lieu</label>
-          <input type="text" id="area" name="area" required />
-          <img src={imageByDefault} alt="" />
           <div className="CreateActivity-form-left-wrapper">
             <div className="CreateActivity-form-left-wrapper-row">
               <label htmlFor="groupSize">Taille du groupe</label>
@@ -122,11 +130,10 @@ const CreateActivity = () => {
               </select>
             </div>
           </div>
+          <button type="submit" className="CreateActivity-form-button">
+            Créer mon activité
+          </button>
         </div>
-
-        <button type="submit" className="CreateActivity-form-button">
-          Créer mon activité
-        </button>
       </form>
     </main>
   );

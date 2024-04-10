@@ -20,7 +20,7 @@ import './App.scss';
 const App = () => {
   const location = useLocation();
 
-  const excludedPaths = ['/login', '/register', '/activities/create'];
+  const excludedPaths = ['/login', '/register'];
   const isExcludedPath = excludedPaths.includes(location.pathname);
 
   return (
