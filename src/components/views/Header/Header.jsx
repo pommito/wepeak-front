@@ -19,7 +19,7 @@ import { fetchActivitiesFromCity } from '../../../actions/activityActions';
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = true; // To remove at API plug
+  const isLogged = false; // To remove at API plug
   const cityList = useSelector((state) => state.search.cityList);
   const dispatch = useDispatch();
   const navigate = useNavigate();
