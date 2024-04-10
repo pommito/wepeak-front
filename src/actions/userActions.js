@@ -22,8 +22,8 @@ export const handleUserPositionName = (userPositionName) => ({
   userPositionName,
 });
 
-export const changeLoginInput = (identifier, value) => ({
+export const changeLoginInput = (value, identifier) => ({
   type: CHANGE_LOGIN_INPUT,
-  identifier,
   value,
+  identifier,
 });

@@ -1,13 +1,18 @@
+// Import necessary librairies
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-
 import { FiEye, FiEyeOff, FiArrowUpRight } from 'react-icons/fi';
 
-import './Login.scss';
+// Import actions
+import { changeLoginInput } from '../../../actions/userActions';
 
+// Import stylesheet and logo
+import './Login.scss';
 import logo from '../../../assets/favicon.png';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [isVisibile, setIsVisible] = useState(false);
 
   return (
@@ -25,7 +30,15 @@ const Login = () => {
         </p>
         <form className="Login-content-form">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            onChange={(e) => {
+              dispatch(changeLoginInput(e.target.value, 'emailInputLogin'));
+            }}
+            required
+          />
           <div className="Login-content-form-wrapper">
             <label htmlFor="password">Mot de passe</label>
             <Link
@@ -41,6 +54,11 @@ const Login = () => {
               id="password"
               name="password"
               className="Login-content-form-password-input"
+              onChange={(e) => {
+                dispatch(
+                  changeLoginInput(e.target.value, 'passwordInputLogin')
+                );
+              }}
               required
             />
             <i className="Login-content-form-password-icon">
