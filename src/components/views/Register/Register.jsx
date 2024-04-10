@@ -10,7 +10,6 @@ const Register = () => {
   const [isVisibile, setIsVisible] = useState(false);
 
   const date = new Date();
-  const minAge = date.setFullYear(date.getFullYear() - 18);
 
   return (
     <main className="Register">
@@ -20,7 +19,7 @@ const Register = () => {
         </Link>
         <h1 className="Register-content-title">Inscription</h1>
         <p className="Register-content-register">
-          Vous avez déjà un compte ?{' '}
+          Vous avez déjà un compte ?
           <Link to="/login" className="Register-content-register-link">
             Se connecter
           </Link>
@@ -70,7 +69,7 @@ const Register = () => {
                 id="birthdate"
                 name="birthdate"
                 required
-                min={date.toISOString().split('T')[0]}
+                max={date.toISOString().split('T')[0]}
               />
             </div>
           </div>
