@@ -4,6 +4,8 @@ import {
   GET_USER_POSITION_NAME,
   handleUserPositionName,
   POST_LOGIN_FORM,
+  handleSuccessLogin,
+  setLoginErrorMessage,
 } from '../actions/userActions';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -29,7 +31,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case GET_USER_POSITION_NAME: {
       const { userPosition } = store.getState().user;
       fetch(
-        `https://secure.geonames.org/findNearbyPostalCodesJSON?lat=${userPosition.lat}&lng=${userPosition.lng}&username=nicolaschambon`
+        `https://secure.geonames.org/findNearbyPostalCodesJSON?lat=${userPosition.lat}&lng=${userPosition.lng}&username=pommito`
       )
         .then((response) => {
           if (!response.ok) {
@@ -51,7 +53,7 @@ const userMiddleware = (store) => (next) => (action) => {
     }
     case POST_LOGIN_FORM: {
       const { emailInputLogin, passwordInputLogin } = store.getState().user;
-      fetch('https://melvinleroux-server.eddi.cloud/api/login_check', {
+      fetch('https://melvinleroux-server.eddi.cloud/api/v1/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,19 +65,25 @@ const userMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           if (!response.ok) {
-            throw new Error('Network response was not ok');
+            // If the response is not ok, we parse the response body as JSON.
+            return response.json().then((error) => {
+              // throw is used to stop the promise chain and trigger the catch block.
+              // if error.errors (which normaly contains specific messages) is not defined, we throw a generic error message.
+              throw new Error(error.error || 'Network response was not ok');
+            });
           }
           return response.json();
         })
         .then((data) => {
-          // succcess
-          console.log(data);
+          store.dispatch(handleSuccessLogin(data));
+          action.navigate('/');
         })
         .catch((error) => {
           console.error(
             'There has been a problem with your fetch operation:',
             error
           );
+          store.dispatch(setLoginErrorMessage(error.message));
         })
         .finally(() => {});
       break;

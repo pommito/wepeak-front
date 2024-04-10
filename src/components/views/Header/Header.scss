@@ -188,7 +188,8 @@
 
       .create,
       .profile {
-        color: v.$textColor;
+        color: v.$textColorLight;
+        transition: color 0.5s ease;
 
         &-picture-container {
           border: v.$backgroundColorDark solid 1px;
@@ -204,7 +205,7 @@
         }
 
         &:hover {
-          color: v.$secondaryColorDark;
+          color: v.$textColor;
         }
       }
 

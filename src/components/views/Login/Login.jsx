@@ -1,7 +1,7 @@
 // Import necessary librairies
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { FiEye, FiEyeOff, FiArrowUpRight } from 'react-icons/fi';
 
 // Import actions
@@ -13,7 +13,10 @@ import logo from '../../../assets/favicon.png';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isVisibile, setIsVisible] = useState(false);
+
+  const errorMessage = useSelector((state) => state.user.loginErrorMessage);
 
   return (
     <main className="Login">
@@ -32,7 +35,7 @@ const Login = () => {
           className="Login-content-form"
           onSubmit={(e) => {
             e.preventDefault();
-            dispatch(postLoginForm());
+            dispatch(postLoginForm(navigate));
           }}
         >
           <label htmlFor="email">Email</label>
@@ -75,6 +78,9 @@ const Login = () => {
               )}
             </i>
           </div>
+          {errorMessage.length > 0 && (
+            <div className="Login-content-form-error"> {errorMessage} </div>
+          )}
           <button type="submit">Se connecter</button>
         </form>
       </div>

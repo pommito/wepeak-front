@@ -4,6 +4,8 @@ export const GET_USER_POSITION_NAME = 'GET_USER_POSITION_NAME';
 export const HANDLE_USER_POSITION_NAME = 'HANDLE_USER_POSITION_NAME';
 export const CHANGE_LOGIN_INPUT = 'CHANGE_LOGIN_INPUT';
 export const POST_LOGIN_FORM = 'POST_LOGIN_FORM';
+export const HANDLE_SUCCESS_LOGIN = 'HANDLE_SUCCESS_LOGIN';
+export const SET_LOGIN_ERROR_MESSAGE = 'SET_LOGIN_ERROR_MESSAGE';
 
 export const getUserPosition = () => ({
   type: GET_USER_POSITION,
@@ -29,6 +31,17 @@ export const changeLoginInput = (value, identifier) => ({
   identifier,
 });
 
-export const postLoginForm = () => ({
+export const postLoginForm = (navigate) => ({
   type: POST_LOGIN_FORM,
+  navigate,
+});
+
+export const handleSuccessLogin = (loggedData) => ({
+  type: HANDLE_SUCCESS_LOGIN,
+  loggedData,
+});
+
+export const setLoginErrorMessage = (message) => ({
+  type: SET_LOGIN_ERROR_MESSAGE,
+  message,
 });
