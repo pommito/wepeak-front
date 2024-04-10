@@ -3,6 +3,7 @@ import {
   handleUserPosition,
   GET_USER_POSITION_NAME,
   handleUserPositionName,
+  POST_LOGIN_FORM,
 } from '../actions/userActions';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -38,6 +39,36 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .then((data) => {
           store.dispatch(handleUserPositionName(data.postalCodes[0].placeName));
+        })
+        .catch((error) => {
+          console.error(
+            'There has been a problem with your fetch operation:',
+            error
+          );
+        })
+        .finally(() => {});
+      break;
+    }
+    case POST_LOGIN_FORM: {
+      const { emailInputLogin, passwordInputLogin } = store.getState().user;
+      fetch('https://melvinleroux-server.eddi.cloud/api/login_check', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: emailInputLogin,
+          password: passwordInputLogin,
+        }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
         })
         .catch((error) => {
           console.error(

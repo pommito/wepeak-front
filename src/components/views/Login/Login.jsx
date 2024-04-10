@@ -5,7 +5,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { FiEye, FiEyeOff, FiArrowUpRight } from 'react-icons/fi';
 
 // Import actions
-import { changeLoginInput } from '../../../actions/userActions';
+import { changeLoginInput, postLoginForm } from '../../../actions/userActions';
 
 // Import stylesheet and logo
 import './Login.scss';
@@ -28,7 +28,13 @@ const Login = () => {
             S&apos;inscrire
           </NavLink>
         </p>
-        <form className="Login-content-form">
+        <form
+          className="Login-content-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            dispatch(postLoginForm());
+          }}
+        >
           <label htmlFor="email">Email</label>
           <input
             type="email"
