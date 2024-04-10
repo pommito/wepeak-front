@@ -143,8 +143,7 @@
       width: 100%;
     }
 
-    &-submit,
-    &-delete {
+    &-submit {
       border: none;
       border-radius: v.$borderRadius;
       color: v.$backgroundColor;
@@ -170,10 +169,16 @@
     }
 
     &-delete {
-      background-color: rgb(187, 59, 59);
+      background-color: v.$secondaryColorLight;
+      border: none;
+      color: rgb(211, 29, 29);
+      font-family: v.$textFont;
+      font-size: v.$textSize;
+      font-weight: 300;
+      padding: 0;
 
       &:hover {
-        background-color: rgb(136, 31, 31);
+        color: rgb(136, 31, 31);
       }
     }
   }
