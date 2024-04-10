@@ -1,11 +1,19 @@
 import { useState } from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
 import { RiImageAddFill } from 'react-icons/ri';
 import { FaTrashAlt } from 'react-icons/fa';
+
+import {
+  changeInputSearch,
+  fetchCitiesSearch,
+  resetSearch,
+} from '../../../actions/searchActions';
+import { fetchActivitiesFromCity } from '../../../actions/activityActions';
 import Map from './Map/Map';
 
 import './CreateActivity.scss';
 import imageByDefault from '../../../assets/images/image_placeholder.png';
+import InputSearch from './Map/InputSearch/InputSearch';
 
 const CreateActivity = () => {
   const [image, setImage] = useState(null);
@@ -89,7 +97,7 @@ const CreateActivity = () => {
         </div>
         <div className="CreateActivity-form-right">
           <label htmlFor="area">Lieu</label>
-          <input type="text" id="area" name="area" required />
+          <InputSearch id="area" />
           <div className="CreateActivity-form-right-map">
             <Map />
           </div>
