@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { LuSearch, LuSearchX } from 'react-icons/lu';
-import { FaRegMessage } from 'react-icons/fa6';
+import { IoIosAddCircleOutline } from 'react-icons/io';
 
 import Logo_BW from '../../../assets/Logo_BW.svg';
 
@@ -19,7 +19,7 @@ import { fetchActivitiesFromCity } from '../../../actions/activityActions';
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = false; // To remove at API plug
+  const isLogged = true; // To remove at API plug
   const cityList = useSelector((state) => state.search.cityList);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -192,9 +192,10 @@ const Header = () => {
         )}
         {isLogged && (
           <ul className="Header-nav-links">
-            <li className="Header-nav-link messages">
-              <NavLink to="/messages">
-                <FaRegMessage className="messages-icon" />
+            <li className="Header-nav-link create">
+              <NavLink to="/activities/create">
+                <IoIosAddCircleOutline className="create-icon" />
+                <p>Créer une activité</p>
               </NavLink>
             </li>
             <li className="Header-nav-link profile">

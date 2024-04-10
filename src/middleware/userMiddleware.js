@@ -68,6 +68,7 @@ const userMiddleware = (store) => (next) => (action) => {
           return response.json();
         })
         .then((data) => {
+          // succcess
           console.log(data);
         })
         .catch((error) => {

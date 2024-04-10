@@ -186,7 +186,7 @@
         }
       }
 
-      .messages,
+      .create,
       .profile {
         color: v.$textColor;
 
@@ -208,11 +208,17 @@
         }
       }
 
-      .messages {
+      .create {
         margin-top: 0.1rem;
 
         &-icon {
-          font-size: 1.5rem;
+          font-size: 1.75rem;
+        }
+
+        a {
+          align-items: center;
+          display: flex;
+          gap: 0.3rem;
         }
       }
     }
