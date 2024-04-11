@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { MdPlace } from 'react-icons/md';
 
 import {
   changeInputSearch,
@@ -64,12 +65,12 @@ const InputSearch = ({ id }) => {
         }}
       />
       {areaInput.length > 2 && cityList.length < 20 && cityList.length > 0 && (
-        <div className="Header-form-search-cities">
+        <div className="InputSearch-dropdown">
           {cityList.map((city) => (
             <button
               key={city.postalCode}
               type="button"
-              className="Header-form-search-cities-city"
+              className="InputSearch-dropdown-item"
               onClick={() => {
                 dispatch(
                   fetchActivitiesFromCity(
@@ -79,6 +80,7 @@ const InputSearch = ({ id }) => {
                 );
               }}
             >
+              <MdPlace className="InputSearch-dropdown-item-icon" />
               {city.placeName}, {city.postalCode}
             </button>
           ))}

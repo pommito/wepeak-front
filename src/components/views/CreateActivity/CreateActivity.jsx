@@ -97,7 +97,9 @@ const CreateActivity = () => {
         </div>
         <div className="CreateActivity-form-right">
           <label htmlFor="area">Lieu</label>
-          <InputSearch id="area" />
+          <div className="CreateActivity-form-right-area">
+            <InputSearch id="area" />
+          </div>
           <div className="CreateActivity-form-right-map">
             <Map />
           </div>
