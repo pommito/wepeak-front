@@ -11,7 +11,6 @@ import './ActivityGrid.scss';
 
 const ActivityGrid = ({ userPositionName }) => {
   const activityList = useSelector((state) => state.activity.activities);
-
   return (
     <div className="ActivityGrid">
       <div className="ActivityGrid-top">

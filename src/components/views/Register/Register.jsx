@@ -1,12 +1,21 @@
+// Import necessary librairies
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { FiEye, FiEyeOff, FiArrowUpRight } from 'react-icons/fi';
 
-import logo from '../../../assets/favicon.png';
+// Import actions
+import {
+  changeRegisterInput,
+  postRegisterForm,
+} from '../../../actions/registerActions';
+
+// Import stylesheet and logo
 import './Register.scss';
+import logo from '../../../assets/favicon.png';
 
 const Register = () => {
+  const dispatch = useDispatch();
   const [isVisibile, setIsVisible] = useState(false);
 
   const date = new Date();
@@ -24,21 +33,63 @@ const Register = () => {
             Se connecter
           </Link>
         </p>
-        <form className="Register-content-form">
+        <form
+          className="Register-content-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            dispatch(postRegisterForm());
+          }}
+        >
           <div className="Register-content-form-wrapper">
             <div className="Register-content-form-wrapper-row">
               <label htmlFor="firstname">Prénom</label>
-              <input type="text" id="firstname" name="firstname" required />
+              <input
+                type="text"
+                id="firstname"
+                name="firstname"
+                onChange={(e) => {
+                  dispatch(
+                    changeRegisterInput(e.target.value, 'firstnameInput')
+                  );
+                }}
+                required
+              />
             </div>
             <div className="Register-content-form-wrapper-row">
               <label htmlFor="lastname">Nom</label>
-              <input type="text" id="lastname" name="lastname" required />
+              <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                onChange={(e) => {
+                  dispatch(
+                    changeRegisterInput(e.target.value, 'lastnameInput')
+                  );
+                }}
+                required
+              />
             </div>
           </div>
           <label htmlFor="username">Nom d&apos;utilisateur</label>
-          <input type="text" id="username" name="username" required />
+          <input
+            type="text"
+            id="username"
+            name="username"
+            onChange={(e) => {
+              dispatch(changeRegisterInput(e.target.value, 'usernameInput'));
+            }}
+            required
+          />
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            onChange={(e) => {
+              dispatch(changeRegisterInput(e.target.value, 'emailInput'));
+            }}
+            required
+          />
           <label htmlFor="password">Mot de passe</label>
           <div className="Register-content-form-password">
             <input
@@ -46,6 +97,9 @@ const Register = () => {
               id="password"
               name="password"
               className="Register-content-form-password-input"
+              onChange={(e) => {
+                dispatch(changeRegisterInput(e.target.value, 'passwordInput'));
+              }}
               required
             />
             <i className="Register-content-form-password-icon">
@@ -60,7 +114,15 @@ const Register = () => {
           <div className="Register-content-form-wrapper">
             <div className="Register-content-form-wrapper-row">
               <label htmlFor="city">Ville</label>
-              <input type="text" id="city" name="city" required />
+              <input
+                type="text"
+                id="city"
+                name="city"
+                onChange={(e) => {
+                  dispatch(changeRegisterInput(e.target.value, 'cityInput'));
+                }}
+                required
+              />
             </div>
             <div className="Register-content-form-wrapper-row">
               <label htmlFor="birthdate">Date de naissance</label>
@@ -68,6 +130,11 @@ const Register = () => {
                 type="date"
                 id="birthdate"
                 name="birthdate"
+                onChange={(e) => {
+                  dispatch(
+                    changeRegisterInput(e.target.value, 'birthdateInput')
+                  );
+                }}
                 required
                 max={date.toISOString().split('T')[0]}
               />
@@ -76,7 +143,15 @@ const Register = () => {
           <fieldset className="Register-content-form-age">
             <legend>Âge</legend>
             <div className="Register-content-form-age-wrapper">
-              <input type="checkbox" id="age" name="age" required />
+              <input
+                type="checkbox"
+                id="age"
+                name="age"
+                onChange={(e) => {
+                  dispatch(changeRegisterInput(e.target.checked, 'ageInput'));
+                }}
+                required
+              />
               <label htmlFor="age">
                 Je jure sur le caveau de mon père que j&apos;ai plus de 18 ans
               </label>

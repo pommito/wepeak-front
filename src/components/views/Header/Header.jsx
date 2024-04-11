@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { LuSearch, LuSearchX } from 'react-icons/lu';
-import { FaRegMessage } from 'react-icons/fa6';
+import { IoIosAddCircleOutline } from 'react-icons/io';
 
 import Logo_BW from '../../../assets/Logo_BW.svg';
 
@@ -19,10 +19,12 @@ import { fetchActivitiesFromCity } from '../../../actions/activityActions';
 import './Header.scss';
 
 const Header = () => {
-  const isLogged = true; // To remove at API plug
   const cityList = useSelector((state) => state.search.cityList);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const loggedData = useSelector((state) => state.user.loggedData);
+  const isLogged = loggedData.token !== undefined;
 
   // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
   const input = useSelector((state) => state.search.input);
@@ -47,18 +49,20 @@ const Header = () => {
   };
   // THIS CODE-BLOCK HANDLE REMOVING OF CITIES SUGGESTIONS WHEN CLICKING OUTSIDE
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      // If click is outside the search input, we reset the city list suggestion
-      if (!e.target.closest('.Header-form-search')) {
-        dispatch(resetSearch());
-      }
-    };
-    // Event listener on click
-    document.addEventListener('click', handleClickOutside);
-    // Clean event listener on component unmount
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
+    if (cityList.length < 20 && cityList.length > 0) {
+      const handleClickOutside = (e) => {
+        // If click is outside the search input, we reset the city list suggestion
+        if (!e.target.closest('.Header-form-search')) {
+          dispatch(resetSearch());
+        }
+      };
+      // Event listener on click
+      document.addEventListener('click', handleClickOutside);
+      // Clean event listener on component unmount
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
   });
 
   // THIS CODE-BLOCK HANDLE HEADER BOTTOM SHADOW
@@ -192,9 +196,10 @@ const Header = () => {
         )}
         {isLogged && (
           <ul className="Header-nav-links">
-            <li className="Header-nav-link messages">
-              <NavLink to="/messages">
-                <FaRegMessage className="messages-icon" />
+            <li className="Header-nav-link create">
+              <NavLink to="/activities/create">
+                <IoIosAddCircleOutline className="create-icon" />
+                <p>Créer une activité</p>
               </NavLink>
             </li>
             <li className="Header-nav-link profile">

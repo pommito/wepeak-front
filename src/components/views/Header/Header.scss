@@ -186,9 +186,10 @@
         }
       }
 
-      .messages,
+      .create,
       .profile {
-        color: v.$textColor;
+        color: v.$textColorLight;
+        transition: color 0.5s ease;
 
         &-picture-container {
           border: v.$backgroundColorDark solid 1px;
@@ -204,15 +205,23 @@
         }
 
         &:hover {
-          color: v.$secondaryColorDark;
+          color: v.$textColor;
         }
       }
 
-      .messages {
-        margin-top: 0.1rem;
-
+      .create {
         &-icon {
           font-size: 1.5rem;
+        }
+
+        a {
+          align-items: center;
+          display: flex;
+          gap: 0.3rem;
+
+          p {
+            padding-top: 0.1rem;
+          }
         }
       }
     }
