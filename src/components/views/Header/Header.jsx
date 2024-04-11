@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { LuSearch, LuSearchX } from 'react-icons/lu';
-import { IoIosAddCircleOutline } from 'react-icons/io';
+import { IoIosAddCircleOutline, IoIosArrowDown } from 'react-icons/io';
 
 import Logo_BW from '../../../assets/Logo_BW.svg';
 
@@ -24,7 +24,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const loggedData = useSelector((state) => state.user.loggedData);
-  const isLogged = loggedData.token !== undefined;
+  // const isLogged = loggedData.token !== undefined;
+  const isLogged = true;
 
   // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
   const input = useSelector((state) => state.search.input);
@@ -203,18 +204,31 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="Header-nav-link profile">
-              <NavLink to="/profile">
-                <div className="profile-picture-container">
-                  <img
-                    src="https://ca.slack-edge.com/T060RPZMDH6-U061SDTH4TF-c278721b6e6d-512"
-                    alt=""
-                  />
-                </div>
-              </NavLink>
+              <div className="profile-picture-container">
+                <img
+                  src="https://ca.slack-edge.com/T060RPZMDH6-U061SDTH4TF-c278721b6e6d-512"
+                  alt=""
+                />
+              </div>
+              <IoIosArrowDown />
             </li>
           </ul>
         )}
       </nav>
+      <div className="Header-profile">
+        <Link to="/profile" className="Header-profile-profileLink">
+          Afficher mon profil
+        </Link>
+        <button
+          type="button"
+          className="Header-profile-logout"
+          onClick={(e) => {
+            handleClickLogoutBtn;
+          }}
+        >
+          Se déconnecter
+        </button>
+      </div>
     </header>
   );
 };
