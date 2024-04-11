@@ -2,8 +2,6 @@ import {
   CHANGE_INPUT_SEARCH,
   CHANGE_INPUT_SEARCH_VALUE,
   HANDLE_FETCH_CITIES_SEARCH,
-  HANDLE_FETCH_CITIES_SEARCH_BIS,
-  HANDLE_SELECTED_CITY,
   RESET_SEARCH,
 } from '../actions/searchActions';
 
@@ -36,20 +34,6 @@ const searchReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         cityList: action.cityList,
-      };
-    case HANDLE_FETCH_CITIES_SEARCH_BIS:
-      return {
-        ...state,
-        cityList: action.cityList,
-      };
-    case HANDLE_SELECTED_CITY:
-      return {
-        ...state,
-        searchedCity: {
-          name: action.city.placeName,
-          lat: action.city.lat,
-          lng: action.city.lng,
-        },
       };
     case RESET_SEARCH:
       return {

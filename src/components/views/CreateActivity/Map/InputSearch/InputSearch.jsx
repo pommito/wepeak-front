@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
+  changeInputSearch,
   changeInputSearchValue,
   fetchCitiesSearch,
-  fetchCitiesSearchBis,
-  handleSelectedCity,
   resetSearch,
 } from '../../../../../actions/searchActions';
 import { fetchActivitiesFromCity } from '../../../../../actions/activityActions';
@@ -18,8 +17,8 @@ const InputSearch = ({ id }) => {
   const areaInput = useSelector((state) => state.search.searchedCity.name);
   const cityList = useSelector((state) => state.search.cityList);
 
-  const handleAreaInput = (value) => {
-    dispatch(changeInputSearchValue(value));
+  const handleAreaInput = (value, identifier) => {
+    dispatch(changeInputSearchValue(value, identifier));
     // If a timeout is already set, we clear it
     if (searchTimeout) {
       clearTimeout(searchTimeout);
@@ -27,12 +26,30 @@ const InputSearch = ({ id }) => {
     if (value.length > 2) {
       // Launch a new timeout to call Cities search API after 500ms
       const timeout = setTimeout(() => {
-        dispatch(fetchCitiesSearchBis(value));
+        dispatch(fetchCitiesSearch(identifier));
       }, 500);
       // Update searchTimeout state with the new timeout
       setSearchTimeout(timeout);
     }
   };
+
+  // THIS CODE-BLOCK HANDLE REMOVING OF CITIES SUGGESTIONS WHEN CLICKING OUTSIDE
+  useEffect(() => {
+    if (cityList.length < 20 && cityList.length > 0) {
+      const handleClickOutside = (e) => {
+        // If click is outside the search input, we reset the city list suggestion
+        if (!e.target.closest('.Header-form-search')) {
+          dispatch(resetSearch());
+        }
+      };
+      // Event listener on click
+      document.addEventListener('click', handleClickOutside);
+      // Clean event listener on component unmount
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
+  });
 
   return (
     <>
@@ -43,23 +60,22 @@ const InputSearch = ({ id }) => {
         placeholder="Commune, code postal"
         value={areaInput}
         onChange={(e) => {
-          handleAreaInput(e.target.value);
+          handleAreaInput(e.target.value, 'createActivity');
         }}
       />
       {areaInput.length > 2 && cityList.length < 20 && cityList.length > 0 && (
-        <div className="InputSearch-dropdown">
+        <div className="Header-form-search-cities">
           {cityList.map((city) => (
             <button
               key={city.postalCode}
               type="button"
-              className="InputSearch-dropdown-item"
+              className="Header-form-search-cities-city"
               onClick={() => {
                 dispatch(
-                  handleSelectedCity({
-                    name: city.placeName,
-                    lat: city.lat,
-                    lng: city.lng,
-                  })
+                  fetchActivitiesFromCity(
+                    { lat: city.lat, lng: city.lng },
+                    city.placeName
+                  )
                 );
               }}
             >

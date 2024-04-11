@@ -10,6 +10,7 @@ import Logo_BW from '../../../assets/Logo_BW.svg';
 // Import actions
 import {
   changeInputSearch,
+  changeInputSearchValue,
   fetchCitiesSearch,
   resetSearch,
 } from '../../../actions/searchActions';
@@ -31,7 +32,7 @@ const Header = () => {
   // Local state to stock the timeout between each input
   const [searchTimeout, setSearchTimeout] = useState(null);
   // Function to handle input search. Called at each input change
-  const handleInputSearch = (value) => {
+  const handleInputSearch = (value, identifier) => {
     // Update input search in the store
     dispatch(changeInputSearch(value));
     // If a timeout is already set, we clear it
@@ -41,7 +42,7 @@ const Header = () => {
     if (value.length > 2) {
       // Launch a new timeout to call Cities search API after 500ms
       const timeout = setTimeout(() => {
-        dispatch(fetchCitiesSearch(value));
+        dispatch(fetchCitiesSearch(identifier));
       }, 500);
       // Update searchTimeout state with the new timeout
       setSearchTimeout(timeout);
@@ -144,7 +145,7 @@ const Header = () => {
               placeholder="Commune, code postal"
               value={input}
               onChange={(e) => {
-                handleInputSearch(e.target.value);
+                handleInputSearch(e.target.value, 'headerSearchBar');
               }}
             />
             {input.length > 2 &&
