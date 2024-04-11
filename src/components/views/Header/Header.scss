@@ -236,9 +236,11 @@
     background-color: v.$backgroundColor;
     border: 1px solid v.$backgroundColorDark;
     border-radius: calc(v.$borderRadius * 0.5);
+    color: v.$textColorLight;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    padding: 0 0.15rem;
     position: absolute;
     right: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 2px 0 4px rgba(0, 0, 0, 0.1),
@@ -251,7 +253,7 @@
       padding: 0.5rem 0.75rem;
 
       &:hover {
-        background-color: v.$backgroundColorDark;
+        color: v.$textColor;
       }
     }
 
@@ -259,7 +261,9 @@
       background-color: v.$backgroundColor;
       border: none;
       border-top: 1px solid v.$secondaryColorLight;
+      color: v.$textColorLight;
       cursor: pointer;
+      font-family: v.$textFont;
     }
   }
 }

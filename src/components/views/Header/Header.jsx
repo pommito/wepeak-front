@@ -14,6 +14,7 @@ import {
   resetSearch,
 } from '../../../actions/searchActions';
 import { fetchActivitiesFromCity } from '../../../actions/activityActions';
+import { logout } from '../../../actions/userActions';
 
 // Import stylesheet
 import './Header.scss';
@@ -98,6 +99,12 @@ const Header = () => {
       window.removeEventListener('resize', handleResize);
     };
   });
+
+  // THIS CODE-BLOCK HANDLE LOGOUT
+  const handleClickLogoutBtn = () => {
+    console.log('logout');
+    dispatch(logout());
+  };
 
   return (
     <header className={`Header ${isScrolled ? 'scrolled' : ''}`}>
@@ -223,7 +230,7 @@ const Header = () => {
           type="button"
           className="Header-profile-logout"
           onClick={(e) => {
-            handleClickLogoutBtn;
+            handleClickLogoutBtn();
           }}
         >
           Se déconnecter

@@ -4,6 +4,7 @@ import {
   CHANGE_LOGIN_INPUT,
   HANDLE_SUCCESS_LOGIN,
   SET_LOGIN_ERROR_MESSAGE,
+  LOGOUT,
 } from '../actions/userActions';
 
 export const initialState = {
@@ -36,11 +37,19 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         loggedData: action.loggedData,
+        passwordInputLogin: '',
+        emailInputLogin: '',
+        loginErrorMessage: '',
       };
     case SET_LOGIN_ERROR_MESSAGE:
       return {
         ...state,
         loginErrorMessage: action.message,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        loggedData: {},
       };
     default:
       return state;
