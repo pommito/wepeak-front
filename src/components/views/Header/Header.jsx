@@ -31,6 +31,14 @@ const Header = () => {
   const loggedData = useSelector((state) => state.user.loggedData);
   const isLogged = loggedData.token !== undefined;
 
+  // Set default user picture
+  let userPictureUrl =
+    'https://www.svgrepo.com/show/420334/avatar-bad-breaking.svg';
+  // If user is logged and has a thumbnail, we set userPictureUrl with the thumbnail
+  if (isLogged && loggedData.user.thumbnail) {
+    userPictureUrl = loggedData.user.thumbnail;
+  }
+
   // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
   const input = useSelector((state) => state.search.input);
   // Local state to stock the timeout between each input
@@ -106,6 +114,7 @@ const Header = () => {
   // THIS CODE-BLOCK HANDLE LOGOUT
   const handleClickLogoutBtn = () => {
     dispatch(logout());
+    navigate('/');
   };
 
   // THIS CODE-BLOCK HANDLE PROFILE DROPDOWN
@@ -226,10 +235,7 @@ const Header = () => {
               }}
             >
               <div className="profile-picture-container">
-                <img
-                  src="https://ca.slack-edge.com/T060RPZMDH6-U061SDTH4TF-c278721b6e6d-512"
-                  alt=""
-                />
+                <img src={userPictureUrl} alt="" />
               </div>
               {isProfileOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
             </button>
@@ -246,7 +252,7 @@ const Header = () => {
           <button
             type="button"
             className="Header-profile-logout"
-            onClick={(e) => {
+            onClick={() => {
               handleClickLogoutBtn();
             }}
           >
