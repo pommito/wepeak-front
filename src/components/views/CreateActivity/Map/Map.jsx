@@ -11,7 +11,10 @@ const Map = () => {
   const markerPosition = useSelector(
     (state) => state.activity.activityAdress.coordinates
   );
-  const markerCoordinates = [markerPosition[0], markerPosition[2]];
+  const markerCoordinates = [
+    markerPosition[0] || searchedCity.lat,
+    markerPosition[2] || searchedCity.lng,
+  ];
 
   console.log(markerCoordinates);
 
@@ -24,19 +27,16 @@ const Map = () => {
   return (
     <MapContainer
       className="map-container"
-      center={markerCoordinates || [searchedCity.lat, searchedCity.lng]}
+      center={markerCoordinates}
       zoom={15}
     >
-      <ChangeView
-        center={markerCoordinates || [searchedCity.lat, searchedCity.lng]}
-        zoom={15}
-      />
+      <ChangeView center={markerCoordinates} zoom={15} />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker
-        position={markerCoordinates || [searchedCity.lat, searchedCity.lng]}
+        position={markerCoordinates}
         draggable="true"
         eventHandlers={{
           dragend: (e) => {

@@ -4,6 +4,7 @@ import {
   HANDLE_FETCH_ADRESS,
   HANDLE_FETCH_ACTIVITIES_WITH_FILTER,
   HANDLE_FETCH_ADDRESS_FROM_MARKER,
+  RESET_ACTIVITY_ADDRESS,
 } from '../actions/activityActions';
 
 export const initialState = {
@@ -46,6 +47,15 @@ const activityReducer = (state = initialState, action = {}) => {
           coordinates: action.coordinates,
         },
       };
+    case RESET_ACTIVITY_ADDRESS:
+      return {
+        ...state,
+        activityAdress: {
+          address: '',
+          coordinates: {},
+        },
+      };
+
     default:
       return state;
   }

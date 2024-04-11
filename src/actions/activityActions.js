@@ -15,6 +15,7 @@ export const HANDLE_FETCH_ACTIVITIES_WITH_FILTER =
   'HANDLE_FETCH_ACTIVITIES_WITH_FILTER';
 export const HANDLE_FETCH_ACTIVITIES_WITH_DATES =
   'HANDLE_FETCH_ACTIVITIES_WITH_DATES';
+export const RESET_ACTIVITY_ADDRESS = 'RESET_ACTIVITY_ADDRESS';
 
 export const fetchActivitiesFromCity = (
   coordinates,
@@ -123,5 +124,11 @@ export const handleFetchAddressFromMarker = (address) => {
   return {
     type: HANDLE_FETCH_ADDRESS_FROM_MARKER,
     address,
+  };
+};
+
+export const resetActivityAddress = () => {
+  return {
+    type: RESET_ACTIVITY_ADDRESS,
   };
 };

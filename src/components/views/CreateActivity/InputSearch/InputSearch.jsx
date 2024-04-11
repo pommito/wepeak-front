@@ -9,7 +9,10 @@ import {
   handleClickOnCityResult,
   resetSearch,
 } from '../../../../actions/searchActions';
-import { fetchActivitiesFromCity } from '../../../../actions/activityActions';
+import {
+  fetchActivitiesFromCity,
+  resetActivityAddress,
+} from '../../../../actions/activityActions';
 
 import './InputSearch.scss';
 
@@ -73,6 +76,7 @@ const InputSearch = ({ id, adressFromMarker = null }) => {
               type="button"
               className="InputSearch-dropdown-item"
               onClick={() => {
+                dispatch(resetActivityAddress());
                 dispatch(handleClickOnCityResult(city));
               }}
             >
