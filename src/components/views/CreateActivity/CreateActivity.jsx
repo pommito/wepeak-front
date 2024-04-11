@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RiImageAddFill } from 'react-icons/ri';
 import { FaTrashAlt } from 'react-icons/fa';
 
 import {
   changeInputSearch,
+  changeInputSearchValue,
   fetchCitiesSearch,
   resetSearch,
 } from '../../../actions/searchActions';
@@ -16,8 +17,25 @@ import imageByDefault from '../../../assets/images/image_placeholder.png';
 import InputSearch from './InputSearch/InputSearch';
 
 const CreateActivity = () => {
+  const dispatch = useDispatch();
   const [image, setImage] = useState(null);
+  const positionFromMarker = useSelector(
+    (state) => state.activity.activityAdress.address
+  );
   const today = new Date().toISOString().split('T')[0];
+
+  // Handle the formating of the address from the marker
+  const formatAddress = ({ house_number, road, city, postcode }) => {
+    const parts = [house_number, road, city, postcode].filter(Boolean);
+    return parts.join(' ');
+  };
+  const formatedAdress = formatAddress(positionFromMarker);
+
+  useEffect(() => {
+    if (positionFromMarker) {
+      dispatch(changeInputSearchValue(formatedAdress, 'CreateActivity'));
+    }
+  }, [positionFromMarker, dispatch, formatedAdress]);
 
   const handleImageChange = (e) => {
     // we get the first file selected by the user from the input
@@ -98,7 +116,7 @@ const CreateActivity = () => {
         <div className="CreateActivity-form-right">
           <label htmlFor="area">Lieu</label>
           <div className="CreateActivity-form-right-area">
-            <InputSearch id="area" />
+            <InputSearch id="area" adressFromMarker={formatedAdress || false} />
           </div>
           <div className="CreateActivity-form-right-map">
             <Map />

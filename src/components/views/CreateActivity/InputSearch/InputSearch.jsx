@@ -13,7 +13,7 @@ import { fetchActivitiesFromCity } from '../../../../actions/activityActions';
 
 import './InputSearch.scss';
 
-const InputSearch = ({ id }) => {
+const InputSearch = ({ id, adressFromMarker = null }) => {
   const dispatch = useDispatch();
   const [searchTimeout, setSearchTimeout] = useState(null);
   const areaInput = useSelector((state) => state.search.searchedCity.name);

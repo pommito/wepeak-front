@@ -9,6 +9,8 @@ export const FETCH_ACTIVITY = 'FETCH_ACTIVITY';
 export const HANDLE_FETCH_ACTIVITY = 'HANDLE_FETCH_ACTIVITY';
 export const FETCH_ADRESS_FROM_COORDINATES = 'FETCH_ADRESS_FROM_COORDINATES';
 export const HANDLE_FETCH_ADRESS = 'HANDLE_FETCH_ADRESS';
+export const HANDLE_FETCH_ADDRESS_FROM_MARKER =
+  'HANDLE_FETCH_ADDRESS_FROM_MARKER';
 export const HANDLE_FETCH_ACTIVITIES_WITH_FILTER =
   'HANDLE_FETCH_ACTIVITIES_WITH_FILTER';
 export const HANDLE_FETCH_ACTIVITIES_WITH_DATES =
@@ -109,9 +111,17 @@ export const fetchAdressFromCoordinates = (coordinates, identifier) => {
   };
 };
 
-export const handleFetchAdress = (activityAdress) => {
+export const handleFetchAdress = (activityAdress, coordinates) => {
   return {
     type: HANDLE_FETCH_ADRESS,
     activityAdress,
+    coordinates,
+  };
+};
+
+export const handleFetchAddressFromMarker = (address) => {
+  return {
+    type: HANDLE_FETCH_ADDRESS_FROM_MARKER,
+    address,
   };
 };

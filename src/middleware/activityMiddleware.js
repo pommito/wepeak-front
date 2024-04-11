@@ -9,6 +9,7 @@ import {
   FETCH_ADRESS_FROM_COORDINATES,
   handleFetchAdress,
   handleFetchActivitiesWithFilter,
+  handleFetchAddressFromMarker,
 } from '../actions/activityActions';
 import { resetSearch } from '../actions/searchActions';
 import { getUserPositionName } from '../actions/userActions';
@@ -140,15 +141,7 @@ const activityMiddleware = (store) => (next) => (action) => {
           return response.json();
         })
         .then((data) => {
-          switch (action.identifier) {
-            case 'Activity':
-              store.dispatch(handleFetchAdress(data.address));
-              break;
-            case 'CreateActivity':
-              console.log(data.address);
-              break;
-            default:
-          }
+          store.dispatch(handleFetchAdress(data.address, data.boundingbox));
         })
         .catch((error) => {
           console.error('There was an error with your fetch operation:', error);

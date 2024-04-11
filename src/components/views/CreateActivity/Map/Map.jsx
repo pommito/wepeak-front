@@ -8,6 +8,12 @@ import { fetchAdressFromCoordinates } from '../../../../actions/activityActions'
 const Map = () => {
   const dispatch = useDispatch();
   const searchedCity = useSelector((state) => state.search.searchedCity);
+  const markerPosition = useSelector(
+    (state) => state.activity.activityAdress.coordinates
+  );
+  const markerCoordinates = [markerPosition[0], markerPosition[2]];
+
+  console.log(markerCoordinates);
 
   const ChangeView = ({ center, zoom }) => {
     const map = useMap();
@@ -18,20 +24,22 @@ const Map = () => {
   return (
     <MapContainer
       className="map-container"
-      center={[searchedCity.lat, searchedCity.lng]}
+      center={markerCoordinates || [searchedCity.lat, searchedCity.lng]}
       zoom={15}
     >
-      <ChangeView center={[searchedCity.lat, searchedCity.lng]} zoom={15} />
+      <ChangeView
+        center={markerCoordinates || [searchedCity.lat, searchedCity.lng]}
+        zoom={15}
+      />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker
-        position={[searchedCity.lat, searchedCity.lng]}
+        position={markerCoordinates || [searchedCity.lat, searchedCity.lng]}
         draggable="true"
         eventHandlers={{
           dragend: (e) => {
-            console.log('Marker dragged to:', e.target.getLatLng());
             dispatch(
               fetchAdressFromCoordinates(e.target.getLatLng(), 'CreateActivity')
             );
