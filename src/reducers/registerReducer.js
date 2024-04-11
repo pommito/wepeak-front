@@ -1,7 +1,6 @@
 import {
   CHANGE_REGISTER_INPUT,
   // SET_ERROR_MESSAGE,
-  // SET_SUCCESS_MESSAGE,
   // RESET_REGISTER_FORM,
 } from '../actions/registerActions';
 
@@ -15,7 +14,6 @@ export const initialState = {
   birthdateInput: '',
   ageInput: false,
   // errorMessage: '',
-  // successMessage: '',
 };
 
 const contactReducer = (state = initialState, action = {}) => {
@@ -29,11 +27,6 @@ const contactReducer = (state = initialState, action = {}) => {
     //   return {
     //     ...state,
     //     errorMessage: action.message,
-    //   };
-    // case SET_SUCCESS_MESSAGE:
-    //   return {
-    //     ...state,
-    //     successMessage: action.message,
     //   };
     // case RESET_REGISTER_FORM:
     //   return {

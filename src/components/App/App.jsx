@@ -1,23 +1,25 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Header from '../views/Header/Header';
-import Footer from '../views/Footer/Footer';
+import PopUp from '../utils/PopUp/PopUp';
 import Home from '../views/Home/Home';
+import Activities from '../views/Activities/Activities';
 import Activity from '../views/Activity/Activity';
 import Contact from '../views/Contact/Contact';
-import Error404 from '../views/Error404/Error404';
+import Login from '../views/Login/Login';
+import Register from '../views/Register/Register';
 import Profile from '../views/Profile/Profile';
 import ProfileEdition from '../views/ProfileEdition/ProfileEdition';
 import UserPage from '../views/UserPage/UserPage';
-
-import Activities from '../views/Activities/Activities';
-import Login from '../views/Login/Login';
-import Register from '../views/Register/Register';
+import Error404 from '../views/Error404/Error404';
+import Footer from '../views/Footer/Footer';
 
 import './App.scss';
 
 const App = () => {
   const location = useLocation();
+  const message = useSelector((state) => state.global.popUpMessage);
 
   const excludedPaths = ['/login', '/register'];
   const isExcludedPath = excludedPaths.includes(location.pathname);
@@ -25,6 +27,7 @@ const App = () => {
   return (
     <div className="App">
       {!isExcludedPath && <Header />}
+      {message && <PopUp />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/activities" element={<Activities />} />
