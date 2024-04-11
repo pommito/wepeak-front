@@ -14,7 +14,7 @@ const ActivityHeader = ({ name, userId, userName }) => {
       <h3 className="ActivityHeader-sport">Ski de randonnée</h3>
 
       <div className="ActivityHeader-host">
-        <Link to={`/user/${userId}`}>
+        <Link to={`/users/${userId}`}>
           <div className="ActivityHeader-host-imgContainer">
             {/* TODO Dynamisation of user picture when available in API */}
             <img
@@ -26,7 +26,7 @@ const ActivityHeader = ({ name, userId, userName }) => {
 
         <div className="ActivityHeader-host-by">
           <p className="ActivityHeader-host-by-text">Organisée par</p>
-          <Link to={`/user/${userId}`}>
+          <Link to={`/users/${userId}`}>
             <p className="ActivityHeader-host-by-name">{userName}</p>
           </Link>
         </div>

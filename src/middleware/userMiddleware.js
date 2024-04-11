@@ -7,6 +7,8 @@ import {
   handleSuccessLogin,
   setLoginErrorMessage,
   resetLoginForm,
+  FETCH_USER_WITH_ID,
+  handleFetchUserWithId,
 } from '../actions/userActions';
 import {
   writePopUpMessage,
@@ -100,6 +102,33 @@ const userMiddleware = (store) => (next) => (action) => {
             error
           );
           store.dispatch(setLoginErrorMessage(error.message));
+        })
+        .finally(() => {});
+      break;
+    }
+    case FETCH_USER_WITH_ID: {
+      fetch(
+        `https://melvinleroux-server.eddi.cloud/api/v1/users/${action.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.loggedData.token}`,
+          },
+        }
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          store.dispatch(handleFetchUserWithId(data));
+        })
+        .catch((error) => {
+          console.error(
+            'There has been a problem with your fetch operation:',
+            error
+          );
         })
         .finally(() => {});
       break;

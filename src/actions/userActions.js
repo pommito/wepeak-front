@@ -8,6 +8,8 @@ export const HANDLE_SUCCESS_LOGIN = 'HANDLE_SUCCESS_LOGIN';
 export const SET_LOGIN_ERROR_MESSAGE = 'SET_LOGIN_ERROR_MESSAGE';
 export const LOGOUT = 'LOGOUT';
 export const RESET_LOGIN_FORM = 'RESET_LOGIN_FORM';
+export const FETCH_USER_WITH_ID = 'FETCH_USER_WITH_ID';
+export const HANDLE_FETCH_USER_WITH_ID = 'HANDLE_FETCH_USER_WITH_ID';
 
 export const getUserPosition = () => ({
   type: GET_USER_POSITION,
@@ -54,4 +56,14 @@ export const logout = () => ({
 
 export const resetLoginForm = () => ({
   type: RESET_LOGIN_FORM,
+});
+
+export const fetchUserWithId = (id) => ({
+  type: FETCH_USER_WITH_ID,
+  id,
+});
+
+export const handleFetchUserWithId = (user) => ({
+  type: HANDLE_FETCH_USER_WITH_ID,
+  user,
 });

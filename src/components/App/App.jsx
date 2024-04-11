@@ -37,7 +37,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<ProfileEdition />} />
-        <Route path="/user/:slug" element={<UserPage />} />
+        <Route path="/users/:slug" element={<UserPage />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       {!isExcludedPath && <Footer />}

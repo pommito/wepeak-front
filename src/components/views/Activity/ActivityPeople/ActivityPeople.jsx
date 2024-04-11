@@ -14,7 +14,7 @@ const ActivityPeople = ({ people, groupSize }) => {
       </h3>
       <div className="ActivityPeople-cards">
         {people1.map((person) => (
-          <Link to={`/user/${person.user.id}`} key={person.id}>
+          <Link to={`/users/${person.user.id}`} key={person.id}>
             <div className="ActivityPeople-cards-card">
               <div className="ActivityPeople-cards-card-imgContainer">
                 {/* TODO Dynamisation of user picture when available in API */}
@@ -36,7 +36,7 @@ const ActivityPeople = ({ people, groupSize }) => {
       )}
       <div className="ActivityPeople-cards waiting">
         {people0.map((person) => (
-          <Link to={`/user/${person.user.id}`} key={person.id}>
+          <Link to={`/users/${person.user.id}`} key={person.id}>
             <div className="ActivityPeople-cards-card">
               <div className="ActivityPeople-cards-card-imgContainer">
                 {/* TODO Dynamisation of user picture when available in API */}

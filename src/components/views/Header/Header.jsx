@@ -246,7 +246,13 @@ const Header = () => {
         <div
           className={isProfileOpen ? 'Header-profile' : 'Header-profile closed'}
         >
-          <Link to="/profile" className="Header-profile-profileLink">
+          <Link
+            to="/profile"
+            className="Header-profile-profileLink"
+            onClick={() => {
+              handleProfileClick();
+            }}
+          >
             <LuUser />
             <p>Afficher mon profil</p>
           </Link>
