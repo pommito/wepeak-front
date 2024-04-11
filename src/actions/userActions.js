@@ -7,6 +7,7 @@ export const POST_LOGIN_FORM = 'POST_LOGIN_FORM';
 export const HANDLE_SUCCESS_LOGIN = 'HANDLE_SUCCESS_LOGIN';
 export const SET_LOGIN_ERROR_MESSAGE = 'SET_LOGIN_ERROR_MESSAGE';
 export const LOGOUT = 'LOGOUT';
+export const RESET_LOGIN_FORM = 'RESET_LOGIN_FORM';
 
 export const getUserPosition = () => ({
   type: GET_USER_POSITION,
@@ -49,4 +50,8 @@ export const setLoginErrorMessage = (message) => ({
 
 export const logout = () => ({
   type: LOGOUT,
+});
+
+export const resetLoginForm = () => ({
+  type: RESET_LOGIN_FORM,
 });

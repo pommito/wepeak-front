@@ -6,7 +6,12 @@ import {
   POST_LOGIN_FORM,
   handleSuccessLogin,
   setLoginErrorMessage,
+  resetLoginForm,
 } from '../actions/userActions';
+import {
+  writePopUpMessage,
+  removePopUpMessage,
+} from '../actions/globalActions';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -76,6 +81,17 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .then((data) => {
           store.dispatch(handleSuccessLogin(data));
+          store.dispatch(
+            writePopUpMessage(
+              `Bienvenue ${data.user.firstname} ${data.user.lastname} !`
+            )
+          );
+          setTimeout(() => {
+            store.dispatch(removePopUpMessage());
+          }, 5000);
+          action.navigate('/');
+          store.dispatch(resetLoginForm());
+          store.dispatch(setLoginErrorMessage(''));
           action.navigate('/');
         })
         .catch((error) => {

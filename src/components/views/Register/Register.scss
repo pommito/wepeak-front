@@ -72,6 +72,18 @@
         border-radius: v.$borderRadius;
       }
 
+      &-error {
+        background-color: rgb(224, 199, 199);
+        border-radius: v.$borderRadius;
+        color: red;
+        font-size: v.$textSize;
+        font-weight: 500;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        text-align: center;
+        width: 100%;
+      }
+
       button {
         padding: 0.5rem;
         border: none;
