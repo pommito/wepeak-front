@@ -39,7 +39,10 @@ const Activity = () => {
   useEffect(() => {
     if (!activity.lat || !activity.lng) return;
     dispatch(
-      fetchAdressFromCoordinates({ lat: activity.lat, lng: activity.lng })
+      fetchAdressFromCoordinates(
+        { lat: activity.lat, lng: activity.lng },
+        'Activity'
+      )
     );
   }, [activity.lat, activity.lng, dispatch]);
 

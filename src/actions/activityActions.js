@@ -101,10 +101,11 @@ export const handleFetchActivity = (activity) => {
   };
 };
 
-export const fetchAdressFromCoordinates = (coordinates) => {
+export const fetchAdressFromCoordinates = (coordinates, identifier) => {
   return {
     type: FETCH_ADRESS_FROM_COORDINATES,
     coordinates,
+    identifier,
   };
 };
 

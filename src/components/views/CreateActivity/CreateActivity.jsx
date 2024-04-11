@@ -13,7 +13,7 @@ import Map from './Map/Map';
 
 import './CreateActivity.scss';
 import imageByDefault from '../../../assets/images/image_placeholder.png';
-import InputSearch from './Map/InputSearch/InputSearch';
+import InputSearch from './InputSearch/InputSearch';
 
 const CreateActivity = () => {
   const [image, setImage] = useState(null);

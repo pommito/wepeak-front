@@ -2,6 +2,7 @@ export const CHANGE_INPUT_SEARCH = 'CHANGE_INPUT_SEARCH';
 export const CHANGE_INPUT_SEARCH_VALUE = 'CHANGE_INPUT_SEARCH_VALUE';
 export const FETCH_CITIES_SEARCH = 'FETCH_CITIES_SEARCH';
 export const HANDLE_FETCH_CITIES_SEARCH = 'HANDLE_FETCH_CITIES_SEARCH';
+export const HANDLE_CLICK_ON_CITY_RESULT = 'HANDLE_CLICK_ON_CITY_RESULT';
 export const RESET_SEARCH = 'RESET_SEARCH';
 
 export const changeInputSearch = (input) => ({
@@ -18,6 +19,13 @@ export const fetchCitiesSearch = (identifier) => ({
   type: FETCH_CITIES_SEARCH,
   identifier,
 });
+
+export const handleClickOnCityResult = (city) => {
+  return {
+    type: HANDLE_CLICK_ON_CITY_RESULT,
+    city,
+  };
+};
 
 export const handleFetchCitiesSearch = (data) => {
   // transform data to remove duplicates in coordinates and keep only postalCode and placeName in objects

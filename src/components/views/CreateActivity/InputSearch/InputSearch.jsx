@@ -6,9 +6,10 @@ import {
   changeInputSearch,
   changeInputSearchValue,
   fetchCitiesSearch,
+  handleClickOnCityResult,
   resetSearch,
-} from '../../../../../actions/searchActions';
-import { fetchActivitiesFromCity } from '../../../../../actions/activityActions';
+} from '../../../../actions/searchActions';
+import { fetchActivitiesFromCity } from '../../../../actions/activityActions';
 
 import './InputSearch.scss';
 
@@ -72,12 +73,7 @@ const InputSearch = ({ id }) => {
               type="button"
               className="InputSearch-dropdown-item"
               onClick={() => {
-                dispatch(
-                  fetchActivitiesFromCity(
-                    { lat: city.lat, lng: city.lng },
-                    city.placeName
-                  )
-                );
+                dispatch(handleClickOnCityResult(city));
               }}
             >
               <MdPlace className="InputSearch-dropdown-item-icon" />
