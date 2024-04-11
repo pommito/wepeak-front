@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { LuSearch, LuSearchX } from 'react-icons/lu';
+import { LuSearch, LuSearchX, LuUser, LuLogOut } from 'react-icons/lu';
 import {
   IoIosAddCircleOutline,
   IoIosArrowDown,
@@ -247,7 +247,8 @@ const Header = () => {
           className={isProfileOpen ? 'Header-profile' : 'Header-profile closed'}
         >
           <Link to="/profile" className="Header-profile-profileLink">
-            Afficher mon profil
+            <LuUser />
+            <p>Afficher mon profil</p>
           </Link>
           <button
             type="button"
@@ -256,7 +257,8 @@ const Header = () => {
               handleClickLogoutBtn();
             }}
           >
-            Se déconnecter
+            <LuLogOut />
+            <p>Se déconnecter</p>
           </button>
         </div>
       )}

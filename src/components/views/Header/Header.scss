@@ -251,7 +251,11 @@
 
     &-profileLink,
     &-logout {
+      align-items: center;
+      display: flex;
       font-size: v.$textSize;
+      gap: 1rem;
+      justify-content: space-between;
       padding: 0.5rem 0.75rem;
 
       &:hover {
