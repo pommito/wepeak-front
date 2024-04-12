@@ -1,3 +1,5 @@
+// Import necessary libraries
+import { useSelector } from 'react-redux';
 import { IconContext } from 'react-icons';
 import { FaLinkedin } from 'react-icons/fa';
 import {
@@ -5,15 +7,15 @@ import {
   FaSquareXTwitter,
   FaSquareInstagram,
 } from 'react-icons/fa6';
-
 import { Link } from 'react-router-dom';
 
+// Import stylesheet and assets
 import Logo_BW from '../../../assets/Logo_BW.svg';
-
 import './Footer.scss';
 
 const Footer = () => {
-  const isLogged = false;
+  const loggedData = useSelector((state) => state.user.loggedData);
+  const isLogged = loggedData.token !== undefined;
 
   return (
     <footer className="Footer">

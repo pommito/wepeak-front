@@ -9,7 +9,9 @@ import {
   IoIosArrowUp,
 } from 'react-icons/io';
 
+// Import images
 import Logo_BW from '../../../assets/Logo_BW.svg';
+import avatar from '../../../assets/avatar.svg';
 
 // Import actions
 import {
@@ -32,8 +34,7 @@ const Header = () => {
   const isLogged = loggedData.token !== undefined;
 
   // Set default user picture
-  let userPictureUrl =
-    'https://www.svgrepo.com/show/420334/avatar-bad-breaking.svg';
+  let userPictureUrl = avatar;
   // If user is logged and has a thumbnail, we set userPictureUrl with the thumbnail
   if (isLogged && loggedData.user.thumbnail) {
     userPictureUrl = loggedData.user.thumbnail;

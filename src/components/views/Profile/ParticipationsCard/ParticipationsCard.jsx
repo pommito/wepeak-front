@@ -26,7 +26,13 @@ const ParticipationsCard = ({ title, participations }) => {
                 {participation.activity.sports[0].name}
               </p>
               <p className="ParticipationsCard-list-item-content-locationAndDate">
-                {`Seignosse, ${participation.activity.date}`}
+                {`${participation.activity.city}, ${new Date(
+                  participation.activity.date
+                ).toLocaleDateString('fr-FR', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}`}
               </p>
             </div>
           </div>
