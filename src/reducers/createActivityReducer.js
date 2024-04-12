@@ -7,9 +7,6 @@ import {
 export const initialState = {
   titleInput: '',
   descriptionInput: '',
-  areaInput: '',
-  latInput: '',
-  lngInput: '',
   dateInput: '',
   timeInput: '',
   groupSizeInput: '',
