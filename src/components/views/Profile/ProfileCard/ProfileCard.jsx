@@ -13,6 +13,8 @@ const ProfileCard = ({
   city,
   memberSince,
   thumbnail,
+  bio,
+  participations,
 }) => {
   return (
     <div className="ProfileCard">
@@ -57,22 +59,31 @@ const ProfileCard = ({
       </div>
       <div className="ProfileCard-bio">
         <h4 className="ProfileCard-bio-title">Bio</h4>
-        <p className="ProfileCard-bio-text">
-          Salut les girls, moi c'est Tom, un bogoss du 40. J'aime le surf et la
-          plage. Kiss kiss.
-        </p>
+        <p className="ProfileCard-bio-text">{bio}</p>
       </div>
     </div>
   );
 };
 
 ProfileCard.propTypes = {
-  firstname: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  memberSince: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string.isRequired,
+  firstname: PropTypes.string,
+  lastname: PropTypes.string,
+  email: PropTypes.string,
+  city: PropTypes.string,
+  memberSince: PropTypes.string,
+  thumbnail: PropTypes.string,
+  bio: PropTypes.string,
+  participations: PropTypes.arrayOf(PropTypes.shape).isRequired,
+};
+
+ProfileCard.defaultProps = {
+  firstname: '',
+  lastname: '',
+  email: '',
+  city: '',
+  memberSince: '',
+  thumbnail: '',
+  bio: '',
 };
 
 export default ProfileCard;

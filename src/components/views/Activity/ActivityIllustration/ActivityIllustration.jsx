@@ -73,13 +73,17 @@ const ActivityIllustration = ({
 
 ActivityIllustration.propTypes = {
   date: PropTypes.string.isRequired,
-  adressNumber: PropTypes.string.isRequired,
+  adressNumber: PropTypes.string,
   adressRoad: PropTypes.string.isRequired,
   adressPostcode: PropTypes.string.isRequired,
   adressCity: PropTypes.string.isRequired,
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
+};
+
+ActivityIllustration.defaultProps = {
+  adressNumber: '',
 };
 
 export default ActivityIllustration;

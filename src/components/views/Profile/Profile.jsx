@@ -40,8 +40,15 @@ const Profile = () => {
           city={user.city}
           memberSince={user.createdAt}
           thumbnail={user.thumbnail}
+          bio={user.description}
+          participations={user.participations}
         />
-        <EditProfile className="Profile-left-editProfile" />
+        <EditProfile
+          className="Profile-left-editProfile"
+          firstname={user.firstname}
+          lastname={user.lastname}
+          thumbnail={user.thumbnail}
+        />
       </div>
       <div className="Profile-right">
         <SportsCard className="Profile-right-sportsCard" />
