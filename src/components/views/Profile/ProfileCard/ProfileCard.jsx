@@ -14,7 +14,9 @@ const ProfileCard = ({
   memberSince,
   thumbnail,
   bio,
-  participations,
+  sportsNumber,
+  subscriptionsNumber,
+  pastActivitiesNumber,
 }) => {
   return (
     <div className="ProfileCard">
@@ -43,15 +45,17 @@ const ProfileCard = ({
       </div>
       <div className="ProfileCard-stats">
         <div className="ProfileCard-stats-stat left">
-          <p className="ProfileCard-stats-stat-number">4</p>
+          <p className="ProfileCard-stats-stat-number">{sportsNumber}</p>
           <p className="ProfileCard-stats-stat-name">Sports</p>
         </div>
         <div className="ProfileCard-stats-stat center">
-          <p className="ProfileCard-stats-stat-number">3</p>
+          <p className="ProfileCard-stats-stat-number">{subscriptionsNumber}</p>
           <p className="ProfileCard-stats-stat-name">Inscriptions</p>
         </div>
         <div className="ProfileCard-stats-stat right">
-          <p className="ProfileCard-stats-stat-number">8</p>
+          <p className="ProfileCard-stats-stat-number">
+            {pastActivitiesNumber}
+          </p>
           <p className="ProfileCard-stats-stat-name">
             Activités <br /> passées
           </p>
@@ -73,7 +77,9 @@ ProfileCard.propTypes = {
   memberSince: PropTypes.string,
   thumbnail: PropTypes.string,
   bio: PropTypes.string,
-  participations: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  sportsNumber: PropTypes.number,
+  subscriptionsNumber: PropTypes.number,
+  pastActivitiesNumber: PropTypes.number,
 };
 
 ProfileCard.defaultProps = {
@@ -84,6 +90,9 @@ ProfileCard.defaultProps = {
   memberSince: '',
   thumbnail: '',
   bio: '',
+  sportsNumber: 0,
+  subscriptionsNumber: 0,
+  pastActivitiesNumber: 0,
 };
 
 export default ProfileCard;

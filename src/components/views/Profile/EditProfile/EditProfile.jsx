@@ -26,9 +26,15 @@ const EditProfile = ({ firstname, lastname, thumbnail }) => {
 };
 
 EditProfile.propTypes = {
-  firstname: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string.isRequired,
+  firstname: PropTypes.string,
+  lastname: PropTypes.string,
+  thumbnail: PropTypes.string,
+};
+
+EditProfile.defaultProps = {
+  firstname: '',
+  lastname: '',
+  thumbnail: '',
 };
 
 export default EditProfile;

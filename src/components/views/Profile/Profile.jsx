@@ -29,6 +29,22 @@ const Profile = () => {
 
   const user = useSelector((state) => state.user.currentUser);
 
+  // if user is not yet available, return null
+  if (!user.Sports) return null;
+
+  // we keep only the validated participations
+  const validatedParticipations = user.participations.filter(
+    (participation) => participation.status === 1
+  );
+
+  const currentDate = new Date();
+  const pastActivities = validatedParticipations.filter(
+    (participation) => new Date(participation.activity.date) < currentDate
+  );
+  const futureActivities = validatedParticipations.filter(
+    (participation) => new Date(participation.activity.date) >= currentDate
+  );
+
   return (
     <main className="Profile">
       <div className="Profile-left">
@@ -41,7 +57,9 @@ const Profile = () => {
           memberSince={user.createdAt}
           thumbnail={user.thumbnail}
           bio={user.description}
-          participations={user.participations}
+          sportsNumber={user.Sports.length}
+          subscriptionsNumber={futureActivities.length}
+          pastActivitiesNumber={pastActivities.length}
         />
         <EditProfile
           className="Profile-left-editProfile"
