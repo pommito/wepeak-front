@@ -7,7 +7,7 @@ export const initialState = {
   popUpMessage: '',
 };
 
-const userReducer = (state = initialState, action = {}) => {
+const globalReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case WRITE_POPUP_MESSAGE:
       return {
@@ -24,4 +24,4 @@ const userReducer = (state = initialState, action = {}) => {
   }
 };
 
-export default userReducer;
+export default globalReducer;
