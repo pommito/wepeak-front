@@ -23,11 +23,27 @@ const Profile = () => {
   useEffect(() => {
     // If userId is not null, fetch the user with the id
     if (userId) {
-      dispatch(fetchUserWithId(userId));
+      dispatch(fetchUserWithId(userId, 'current'));
     }
   }, [userId, dispatch]);
 
   const user = useSelector((state) => state.user.currentUser);
+
+  // if user is not yet available, return null
+  if (!user.Sports) return null;
+
+  // we keep only the validated participations
+  const validatedParticipations = user.participations.filter(
+    (participation) => participation.status === 1
+  );
+
+  const currentDate = new Date();
+  const pastActivities = validatedParticipations.filter(
+    (participation) => new Date(participation.activity.date) < currentDate
+  );
+  const futureActivities = validatedParticipations.filter(
+    (participation) => new Date(participation.activity.date) >= currentDate
+  );
 
   return (
     <main className="Profile">
@@ -40,20 +56,29 @@ const Profile = () => {
           city={user.city}
           memberSince={user.createdAt}
           thumbnail={user.thumbnail}
+          bio={user.description}
+          sportsNumber={user.Sports.length}
+          subscriptionsNumber={futureActivities.length}
+          pastActivitiesNumber={pastActivities.length}
         />
-        <EditProfile className="Profile-left-editProfile" />
+        <EditProfile
+          className="Profile-left-editProfile"
+          firstname={user.firstname}
+          lastname={user.lastname}
+          thumbnail={user.thumbnail}
+        />
       </div>
       <div className="Profile-right">
-        <SportsCard className="Profile-right-sportsCard" />
+        <SportsCard className="Profile-right-sportsCard" sports={user.Sports} />
         <ParticipationsCard
           className="Profile-right-subscriptionCard"
           title="Mes inscriptions"
-          number="3"
+          participations={futureActivities}
         />
         <ParticipationsCard
           className="Profile-right-pastActivitiesCard"
           title="Mes activités passées"
-          number="8"
+          participations={pastActivities}
         />
       </div>
     </main>

@@ -140,11 +140,6 @@
         color: v.$textColor;
         font-size: 1.25rem;
       }
-
-      // commented while submit button is not working
-      // &:hover {
-      //   background-color: v.$primaryColorDark;
-      // }
     }
   }
 
@@ -201,6 +196,7 @@
           img {
             height: 100%;
             width: 100%;
+            object-fit: cover;
           }
         }
 

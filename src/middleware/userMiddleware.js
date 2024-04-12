@@ -8,7 +8,8 @@ import {
   setLoginErrorMessage,
   resetLoginForm,
   FETCH_USER_WITH_ID,
-  handleFetchUserWithId,
+  handleFetchCurrentUserWithId,
+  handleFetchVisitedUserWithId,
 } from '../actions/userActions';
 import {
   writePopUpMessage,
@@ -122,7 +123,12 @@ const userMiddleware = (store) => (next) => (action) => {
           return response.json();
         })
         .then((data) => {
-          store.dispatch(handleFetchUserWithId(data));
+          if (action.specifier === 'visited') {
+            store.dispatch(handleFetchVisitedUserWithId(data));
+          }
+          if (action.specifier === 'current') {
+            store.dispatch(handleFetchCurrentUserWithId(data));
+          }
         })
         .catch((error) => {
           console.error(

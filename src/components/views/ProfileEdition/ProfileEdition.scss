@@ -21,6 +21,10 @@
     padding: 1.5rem;
     width: 70%;
 
+    @media (max-width: v.$mobile) {
+      width: 90%;
+    }
+
     &-picture {
       align-items: center;
       display: flex;

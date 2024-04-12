@@ -6,7 +6,8 @@ import {
   SET_LOGIN_ERROR_MESSAGE,
   LOGOUT,
   RESET_LOGIN_FORM,
-  HANDLE_FETCH_USER_WITH_ID,
+  HANDLE_FETCH_CURRENT_USER_WITH_ID,
+  HANDLE_FETCH_VISITED_USER_WITH_ID,
 } from '../actions/userActions';
 
 export const initialState = {
@@ -17,6 +18,7 @@ export const initialState = {
   loggedData: {},
   loginErrorMessage: '',
   currentUser: {},
+  visitedUser: {},
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -60,10 +62,15 @@ const userReducer = (state = initialState, action = {}) => {
         emailInputLogin: '',
         passwordInputLogin: '',
       };
-    case HANDLE_FETCH_USER_WITH_ID:
+    case HANDLE_FETCH_CURRENT_USER_WITH_ID:
       return {
         ...state,
         currentUser: action.user,
+      };
+    case HANDLE_FETCH_VISITED_USER_WITH_ID:
+      return {
+        ...state,
+        visitedUser: action.user,
       };
     default:
       return state;

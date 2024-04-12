@@ -30,6 +30,7 @@ const ActivityGrid = ({ userPositionName }) => {
             difficulty={activity['0'].difficulty.label}
             slug={activity['0'].id}
             sport={activity['0'].sports[0].label}
+            thumbnail={activity['0'].thumbnail}
           />
         ))}
       </div>

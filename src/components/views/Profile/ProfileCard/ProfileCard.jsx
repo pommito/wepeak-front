@@ -13,6 +13,10 @@ const ProfileCard = ({
   city,
   memberSince,
   thumbnail,
+  bio,
+  sportsNumber,
+  subscriptionsNumber,
+  pastActivitiesNumber,
 }) => {
   return (
     <div className="ProfileCard">
@@ -22,7 +26,7 @@ const ProfileCard = ({
           <h3>
             {firstname} {lastname}
           </h3>
-          <p>{email}</p>
+          {email && <p>{email}</p>}
           <div className="ProfileCard-imgContainer-userData-city">
             <HiLocationMarker />
             <p>{city}</p>
@@ -41,15 +45,17 @@ const ProfileCard = ({
       </div>
       <div className="ProfileCard-stats">
         <div className="ProfileCard-stats-stat left">
-          <p className="ProfileCard-stats-stat-number">4</p>
+          <p className="ProfileCard-stats-stat-number">{sportsNumber}</p>
           <p className="ProfileCard-stats-stat-name">Sports</p>
         </div>
         <div className="ProfileCard-stats-stat center">
-          <p className="ProfileCard-stats-stat-number">3</p>
+          <p className="ProfileCard-stats-stat-number">{subscriptionsNumber}</p>
           <p className="ProfileCard-stats-stat-name">Inscriptions</p>
         </div>
         <div className="ProfileCard-stats-stat right">
-          <p className="ProfileCard-stats-stat-number">8</p>
+          <p className="ProfileCard-stats-stat-number">
+            {pastActivitiesNumber}
+          </p>
           <p className="ProfileCard-stats-stat-name">
             Activités <br /> passées
           </p>
@@ -57,22 +63,36 @@ const ProfileCard = ({
       </div>
       <div className="ProfileCard-bio">
         <h4 className="ProfileCard-bio-title">Bio</h4>
-        <p className="ProfileCard-bio-text">
-          Salut les girls, moi c'est Tom, un bogoss du 40. J'aime le surf et la
-          plage. Kiss kiss.
-        </p>
+        <p className="ProfileCard-bio-text">{bio}</p>
       </div>
     </div>
   );
 };
 
 ProfileCard.propTypes = {
-  firstname: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  memberSince: PropTypes.string.isRequired,
-  thumbnail: PropTypes.string.isRequired,
+  firstname: PropTypes.string,
+  lastname: PropTypes.string,
+  email: PropTypes.string,
+  city: PropTypes.string,
+  memberSince: PropTypes.string,
+  thumbnail: PropTypes.string,
+  bio: PropTypes.string,
+  sportsNumber: PropTypes.number,
+  subscriptionsNumber: PropTypes.number,
+  pastActivitiesNumber: PropTypes.number,
+};
+
+ProfileCard.defaultProps = {
+  firstname: '',
+  lastname: '',
+  email: '',
+  city: '',
+  memberSince: '',
+  thumbnail: '',
+  bio: '',
+  sportsNumber: 0,
+  subscriptionsNumber: 0,
+  pastActivitiesNumber: 0,
 };
 
 export default ProfileCard;
