@@ -6,6 +6,10 @@ export const CHANGE_LOGIN_INPUT = 'CHANGE_LOGIN_INPUT';
 export const POST_LOGIN_FORM = 'POST_LOGIN_FORM';
 export const HANDLE_SUCCESS_LOGIN = 'HANDLE_SUCCESS_LOGIN';
 export const SET_LOGIN_ERROR_MESSAGE = 'SET_LOGIN_ERROR_MESSAGE';
+export const LOGOUT = 'LOGOUT';
+export const RESET_LOGIN_FORM = 'RESET_LOGIN_FORM';
+export const FETCH_USER_WITH_ID = 'FETCH_USER_WITH_ID';
+export const HANDLE_FETCH_USER_WITH_ID = 'HANDLE_FETCH_USER_WITH_ID';
 
 export const getUserPosition = () => ({
   type: GET_USER_POSITION,
@@ -44,4 +48,22 @@ export const handleSuccessLogin = (loggedData) => ({
 export const setLoginErrorMessage = (message) => ({
   type: SET_LOGIN_ERROR_MESSAGE,
   message,
+});
+
+export const logout = () => ({
+  type: LOGOUT,
+});
+
+export const resetLoginForm = () => ({
+  type: RESET_LOGIN_FORM,
+});
+
+export const fetchUserWithId = (id) => ({
+  type: FETCH_USER_WITH_ID,
+  id,
+});
+
+export const handleFetchUserWithId = (user) => ({
+  type: HANDLE_FETCH_USER_WITH_ID,
+  user,
 });

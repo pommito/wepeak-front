@@ -1,7 +1,7 @@
 // Import necessary librairies
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiEye, FiEyeOff, FiArrowUpRight } from 'react-icons/fi';
 
 // Import actions
@@ -15,8 +15,11 @@ import './Register.scss';
 import logo from '../../../assets/favicon.png';
 
 const Register = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isVisibile, setIsVisible] = useState(false);
+
+  const errorMessage = useSelector((state) => state.register.errorMessage);
 
   const date = new Date();
 
@@ -28,7 +31,7 @@ const Register = () => {
         </Link>
         <h1 className="Register-content-title">Inscription</h1>
         <p className="Register-content-register">
-          Vous avez déjà un compte ?
+          Vous avez déjà un compte ?{' '}
           <Link to="/login" className="Register-content-register-link">
             Se connecter
           </Link>
@@ -37,7 +40,7 @@ const Register = () => {
           className="Register-content-form"
           onSubmit={(e) => {
             e.preventDefault();
-            dispatch(postRegisterForm());
+            dispatch(postRegisterForm(navigate));
           }}
         >
           <div className="Register-content-form-wrapper">
@@ -157,7 +160,9 @@ const Register = () => {
               </label>
             </div>
           </fieldset>
-
+          {errorMessage.length > 0 && (
+            <div className="Register-content-form-error"> {errorMessage} </div>
+          )}
           <button type="submit">S&apos;inscrire</button>
         </form>
       </div>

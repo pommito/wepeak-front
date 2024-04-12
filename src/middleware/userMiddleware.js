@@ -6,7 +6,14 @@ import {
   POST_LOGIN_FORM,
   handleSuccessLogin,
   setLoginErrorMessage,
+  resetLoginForm,
+  FETCH_USER_WITH_ID,
+  handleFetchUserWithId,
 } from '../actions/userActions';
+import {
+  writePopUpMessage,
+  removePopUpMessage,
+} from '../actions/globalActions';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -76,6 +83,17 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .then((data) => {
           store.dispatch(handleSuccessLogin(data));
+          store.dispatch(
+            writePopUpMessage(
+              `Bienvenue ${data.user.firstname} ${data.user.lastname} !`
+            )
+          );
+          setTimeout(() => {
+            store.dispatch(removePopUpMessage());
+          }, 5000);
+          action.navigate('/');
+          store.dispatch(resetLoginForm());
+          store.dispatch(setLoginErrorMessage(''));
           action.navigate('/');
         })
         .catch((error) => {
@@ -84,6 +102,33 @@ const userMiddleware = (store) => (next) => (action) => {
             error
           );
           store.dispatch(setLoginErrorMessage(error.message));
+        })
+        .finally(() => {});
+      break;
+    }
+    case FETCH_USER_WITH_ID: {
+      fetch(
+        `https://melvinleroux-server.eddi.cloud/api/v1/users/${action.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.loggedData.token}`,
+          },
+        }
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          store.dispatch(handleFetchUserWithId(data));
+        })
+        .catch((error) => {
+          console.error(
+            'There has been a problem with your fetch operation:',
+            error
+          );
         })
         .finally(() => {});
       break;

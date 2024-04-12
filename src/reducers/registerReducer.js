@@ -1,8 +1,7 @@
 import {
   CHANGE_REGISTER_INPUT,
-  // SET_ERROR_MESSAGE,
-  // SET_SUCCESS_MESSAGE,
-  // RESET_REGISTER_FORM,
+  SET_ERROR_MESSAGE,
+  RESET_REGISTER_FORM,
 } from '../actions/registerActions';
 
 export const initialState = {
@@ -14,8 +13,7 @@ export const initialState = {
   cityInput: '',
   birthdateInput: '',
   ageInput: false,
-  // errorMessage: '',
-  // successMessage: '',
+  errorMessage: '',
 };
 
 const contactReducer = (state = initialState, action = {}) => {
@@ -25,20 +23,15 @@ const contactReducer = (state = initialState, action = {}) => {
         ...state,
         [action.identifier]: action.value,
       };
-    // case SET_ERROR_MESSAGE:
-    //   return {
-    //     ...state,
-    //     errorMessage: action.message,
-    //   };
-    // case SET_SUCCESS_MESSAGE:
-    //   return {
-    //     ...state,
-    //     successMessage: action.message,
-    //   };
-    // case RESET_REGISTER_FORM:
-    //   return {
-    //     ...initialState,
-    //   };
+    case SET_ERROR_MESSAGE:
+      return {
+        ...state,
+        errorMessage: action.message,
+      };
+    case RESET_REGISTER_FORM:
+      return {
+        ...initialState,
+      };
     default:
       return state;
   }

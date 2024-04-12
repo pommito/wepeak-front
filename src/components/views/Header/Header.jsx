@@ -2,8 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { LuSearch, LuSearchX } from 'react-icons/lu';
-import { IoIosAddCircleOutline } from 'react-icons/io';
+import { LuSearch, LuSearchX, LuUser, LuLogOut } from 'react-icons/lu';
+import {
+  IoIosAddCircleOutline,
+  IoIosArrowDown,
+  IoIosArrowUp,
+} from 'react-icons/io';
 
 import Logo_BW from '../../../assets/Logo_BW.svg';
 
@@ -15,6 +19,7 @@ import {
   resetSearch,
 } from '../../../actions/searchActions';
 import { fetchActivitiesFromCity } from '../../../actions/activityActions';
+import { logout } from '../../../actions/userActions';
 
 // Import stylesheet
 import './Header.scss';
@@ -26,6 +31,14 @@ const Header = () => {
 
   const loggedData = useSelector((state) => state.user.loggedData);
   const isLogged = loggedData.token !== undefined;
+
+  // Set default user picture
+  let userPictureUrl =
+    'https://www.svgrepo.com/show/420334/avatar-bad-breaking.svg';
+  // If user is logged and has a thumbnail, we set userPictureUrl with the thumbnail
+  if (isLogged && loggedData.user.thumbnail) {
+    userPictureUrl = loggedData.user.thumbnail;
+  }
 
   // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS
   const input = useSelector((state) => state.search.input);
@@ -98,6 +111,18 @@ const Header = () => {
       window.removeEventListener('resize', handleResize);
     };
   });
+
+  // THIS CODE-BLOCK HANDLE LOGOUT
+  const handleClickLogoutBtn = () => {
+    dispatch(logout());
+    navigate('/');
+  };
+
+  // THIS CODE-BLOCK HANDLE PROFILE DROPDOWN
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const handleProfileClick = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
 
   return (
     <header className={`Header ${isScrolled ? 'scrolled' : ''}`}>
@@ -196,26 +221,54 @@ const Header = () => {
           </ul>
         )}
         {isLogged && (
-          <ul className="Header-nav-links">
-            <li className="Header-nav-link create">
+          <div className="Header-nav-links">
+            <div className="Header-nav-link create">
               <NavLink to="/activities/create">
                 <IoIosAddCircleOutline className="create-icon" />
                 <p>Créer une activité</p>
               </NavLink>
-            </li>
-            <li className="Header-nav-link profile">
-              <NavLink to="/profile">
-                <div className="profile-picture-container">
-                  <img
-                    src="https://ca.slack-edge.com/T060RPZMDH6-U061SDTH4TF-c278721b6e6d-512"
-                    alt=""
-                  />
-                </div>
-              </NavLink>
-            </li>
-          </ul>
+            </div>
+            <button
+              type="button"
+              className="Header-nav-link profile"
+              onClick={() => {
+                handleProfileClick();
+              }}
+            >
+              <div className="profile-picture-container">
+                <img src={userPictureUrl} alt="" />
+              </div>
+              {isProfileOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+            </button>
+          </div>
         )}
       </nav>
+      {isLogged && (
+        <div
+          className={isProfileOpen ? 'Header-profile' : 'Header-profile closed'}
+        >
+          <Link
+            to="/profile"
+            className="Header-profile-profileLink"
+            onClick={() => {
+              handleProfileClick();
+            }}
+          >
+            <LuUser />
+            <p>Afficher mon profil</p>
+          </Link>
+          <button
+            type="button"
+            className="Header-profile-logout"
+            onClick={() => {
+              handleClickLogoutBtn();
+            }}
+          >
+            <LuLogOut />
+            <p>Se déconnecter</p>
+          </button>
+        </div>
+      )}
     </header>
   );
 };

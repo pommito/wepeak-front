@@ -71,6 +71,7 @@ const Activity = () => {
         }
         lat={activity.lat}
         lng={activity.lng}
+        thumbnail={activity.thumbnail}
       />
       <ActivityDetailApply description={activity.description} />
       <ActivityPeople

@@ -1,9 +1,16 @@
-import { POST_REGISTER_FORM } from '../actions/registerActions';
+import {
+  writePopUpMessage,
+  removePopUpMessage,
+} from '../actions/globalActions';
+import {
+  POST_REGISTER_FORM,
+  setErrorMessage,
+  resetRegisterForm,
+} from '../actions/registerActions';
 
 const registerMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case POST_REGISTER_FORM: {
-      console.log('coucou');
       fetch('https://melvinleroux-server.eddi.cloud/api/v1/users', {
         method: 'POST',
         headers: {
@@ -17,22 +24,37 @@ const registerMiddleware = (store) => (next) => (action) => {
           password: store.getState().register.passwordInput,
           city: store.getState().register.cityInput,
           birthdate: store.getState().register.birthdateInput,
-          // age: store.getState().register.ageInput,
+          age: store.getState().register.ageInput,
         }),
       })
         .then((response) => {
           if (!response.ok) {
             return response.json().then((error) => {
-              throw new Error(error.errors || 'Network response was not ok');
+              throw new Error(error.error || 'Network response was not ok');
             });
           }
           return response.json();
         })
-        .then((message) => {
-          console.log(message);
+        .then(() => {
+          // Handle here the success case with message to user and redirection
+          store.dispatch(
+            writePopUpMessage(
+              "Votre demande d'inscription a bien été envoyée. Un email de confirmation vous a été envoyé. Merci pour votre intérêt."
+            )
+          );
+          setTimeout(() => {
+            store.dispatch(removePopUpMessage());
+          }, 5000);
+          action.navigate('/login');
+          store.dispatch(resetRegisterForm());
+          store.dispatch(setErrorMessage(''));
         })
         .catch((error) => {
-          console.error('There was an error with your fetch operation:', error);
+          console.error(
+            'There was an error with your fetch operation:',
+            error.message
+          );
+          store.dispatch(setErrorMessage(error.message));
         })
         .finally(() => {});
       break;

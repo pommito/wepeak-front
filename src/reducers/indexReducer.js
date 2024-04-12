@@ -5,6 +5,7 @@ import searchReducer from './searchReducer';
 import activityReducer from './activityReducer';
 import contactReducer from './contactReducer';
 import registerReducer from './registerReducer';
+import globalReducer from './globalReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   activity: activityReducer,
   contact: contactReducer,
   register: registerReducer,
+  global: globalReducer,
 });
 
 export default rootReducer;

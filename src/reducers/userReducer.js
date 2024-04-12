@@ -4,6 +4,9 @@ import {
   CHANGE_LOGIN_INPUT,
   HANDLE_SUCCESS_LOGIN,
   SET_LOGIN_ERROR_MESSAGE,
+  LOGOUT,
+  RESET_LOGIN_FORM,
+  HANDLE_FETCH_USER_WITH_ID,
 } from '../actions/userActions';
 
 export const initialState = {
@@ -13,6 +16,7 @@ export const initialState = {
   passwordInputLogin: '',
   loggedData: {},
   loginErrorMessage: '',
+  currentUser: {},
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -36,11 +40,30 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         loggedData: action.loggedData,
+        passwordInputLogin: '',
+        emailInputLogin: '',
+        loginErrorMessage: '',
       };
     case SET_LOGIN_ERROR_MESSAGE:
       return {
         ...state,
         loginErrorMessage: action.message,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        loggedData: {},
+      };
+    case RESET_LOGIN_FORM:
+      return {
+        ...state,
+        emailInputLogin: '',
+        passwordInputLogin: '',
+      };
+    case HANDLE_FETCH_USER_WITH_ID:
+      return {
+        ...state,
+        currentUser: action.user,
       };
     default:
       return state;

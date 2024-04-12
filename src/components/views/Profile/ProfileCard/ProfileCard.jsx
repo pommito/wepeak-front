@@ -1,27 +1,41 @@
+// Import necessary libraries
+import PropTypes from 'prop-types';
 import { HiLocationMarker } from 'react-icons/hi';
 import { FaCalendarMinus } from 'react-icons/fa6';
 
+// Import stylesheet
 import './ProfileCard.scss';
 
-const ProfileCard = () => {
+const ProfileCard = ({
+  firstname,
+  lastname,
+  email,
+  city,
+  memberSince,
+  thumbnail,
+}) => {
   return (
     <div className="ProfileCard">
       <div className="ProfileCard-imgContainer">
-        <img
-          className="ProfileCard-imgContainer-img"
-          src="https://ca.slack-edge.com/T060RPZMDH6-U061SDTH4TF-c278721b6e6d-512"
-          alt=""
-        />
+        <img className="ProfileCard-imgContainer-img" src={thumbnail} alt="" />
         <div className="ProfileCard-imgContainer-userData">
-          <h3>Tom Fourage</h3>
-          <p>tom.fourage.dev@gmail.com</p>
+          <h3>
+            {firstname} {lastname}
+          </h3>
+          <p>{email}</p>
           <div className="ProfileCard-imgContainer-userData-city">
             <HiLocationMarker />
-            <p>Seignosse</p>
+            <p>{city}</p>
           </div>
           <div className="ProfileCard-imgContainer-userData-date">
             <FaCalendarMinus />
-            <p>Membre WePeak depuis : avri. 2024</p>
+            <p>
+              Membre WePeak depuis{' '}
+              {new Date(memberSince).toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'long',
+              })}
+            </p>
           </div>
         </div>
       </div>
@@ -50,6 +64,15 @@ const ProfileCard = () => {
       </div>
     </div>
   );
+};
+
+ProfileCard.propTypes = {
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  memberSince: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
 };
 
 export default ProfileCard;
