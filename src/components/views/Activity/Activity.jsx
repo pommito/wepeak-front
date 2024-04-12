@@ -34,6 +34,7 @@ const Activity = () => {
   }, []);
 
   const activity = useSelector((state) => state.activity.activity);
+  console.log(activity);
 
   // fetch address from coordinates only if they are available
   useEffect(() => {
