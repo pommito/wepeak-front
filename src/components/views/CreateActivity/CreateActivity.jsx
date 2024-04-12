@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { RiImageAddFill } from 'react-icons/ri';
 import { FaTrashAlt } from 'react-icons/fa';
 
@@ -16,16 +17,44 @@ import './CreateActivity.scss';
 import imageByDefault from '../../../assets/images/image_placeholder.png';
 import InputSearch from './InputSearch/InputSearch';
 import { fetchSports } from '../../../actions/sportsActions';
+import {
+  changeInputValue,
+  postActivityForm,
+} from '../../../actions/createActivityActions';
 
 const CreateActivity = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
   const sports = useSelector((state) => state.sports.sports);
   const [selectedSport, setSelectedSport] = useState(null);
+  const titleInput = useSelector((state) => state.createActivity.titleInput);
+  const descriptionInput = useSelector(
+    (state) => state.createActivity.descriptionInput
+  );
+  const dateInput = useSelector((state) => state.createActivity.dateInput);
+  const timeInput = useSelector((state) => state.createActivity.timeInput);
+  const groupSizeInput = useSelector(
+    (state) => state.createActivity.groupSizeInput
+  );
+  const sportInput = useSelector((state) => state.createActivity.sportInput);
+  const difficultyInput = useSelector(
+    (state) => state.createActivity.difficultyInput
+  );
 
   const positionFromMarker = useSelector(
     (state) => state.activity.activityAdress.address
   );
+
+  function transformerDate(date) {
+    // Diviser la date en un tableau [année, mois, jour]
+    const parties = date.split('-');
+    // Réorganiser les parties pour obtenir le format MM-DD-YYYY
+    const dateReorganisee = `${parties[1]}-${parties[2]}-${parties[0]}`;
+    // Remplacer les tirets par des slashes
+    return dateReorganisee.replace(/-/g, '/');
+  }
+
   const today = new Date().toISOString().split('T')[0];
 
   useEffect(() => {
@@ -65,10 +94,27 @@ const CreateActivity = () => {
   return (
     <main className="CreateActivity">
       <h1 className="CreateActivity-title">Création d&apos;une activité</h1>
-      <form action="" className="CreateActivity-form">
+      <form
+        action=""
+        className="CreateActivity-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(changeInputValue(transformerDate(dateInput), 'dateInput'));
+          dispatch(postActivityForm(navigate));
+        }}
+      >
         <div className="CreateActivity-form-left">
           <label htmlFor="title">Titre</label>
-          <input type="text" id="title" name="title" required />
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={titleInput}
+            onChange={(e) => {
+              dispatch(changeInputValue(e.target.value, 'titleInput'));
+            }}
+            required
+          />
           <div className="CreateActivity-form-left-thumbnail">
             {!image ? (
               <img src={imageByDefault} alt="par défaut" />
@@ -105,10 +151,12 @@ const CreateActivity = () => {
               <select
                 id="sport"
                 name="sport"
+                value={sportInput}
                 onChange={(e) => {
                   setSelectedSport(
                     sports.find((sport) => sport.id == e.target.value)
                   );
+                  dispatch(changeInputValue(e.target.value, 'sportInput'));
                 }}
                 required
               >
@@ -128,6 +176,10 @@ const CreateActivity = () => {
             id="description"
             name="description"
             rows="10"
+            value={descriptionInput}
+            onChange={(e) => {
+              dispatch(changeInputValue(e.target.value, 'descriptionInput'));
+            }}
             maxLength="1000"
             minLength="100"
             required
@@ -149,28 +201,56 @@ const CreateActivity = () => {
                 id="date"
                 name="date"
                 min={today}
-                value={today}
+                value={dateInput}
+                onChange={(e) => {
+                  dispatch(changeInputValue(e.target.value, 'dateInput'));
+                }}
                 required
               />
             </div>
             <div className="CreateActivity-form-left-wrapper-row">
               <label htmlFor="time">Heure de départ</label>
-              <input type="time" id="time" name="time" required />
+              <input
+                type="time"
+                id="time"
+                name="time"
+                value={timeInput}
+                onChange={(e) => {
+                  dispatch(changeInputValue(e.target.value, 'timeInput'));
+                }}
+                required
+              />
             </div>
           </div>
           <div className="CreateActivity-form-left-wrapper">
             <div className="CreateActivity-form-left-wrapper-row">
               <label htmlFor="groupSize">Taille du groupe</label>
-              <select id="groupSize" name="groupSize" required>
+              <select
+                id="groupSize"
+                name="groupSize"
+                value={groupSizeInput}
+                onChange={(e) => {
+                  dispatch(changeInputValue(e.target.value, 'groupSizeInput'));
+                }}
+                required
+              >
                 <option value="0">Selectionner...</option>
-                <option value="2-5">Moins de 5 personnes</option>
-                <option value="6-10">Moins de 10 personnes</option>
+                <option value="5">Moins de 5 personnes</option>
+                <option value="10">Moins de 10 personnes</option>
                 <option value="11+">Plus de 10 personnes</option>
               </select>
             </div>
             <div className="CreateActivity-form-left-wrapper-row">
               <label htmlFor="difficulty">Niveau de difficulté</label>
-              <select id="difficulty" name="difficulty" required>
+              <select
+                id="difficulty"
+                name="difficulty"
+                value={difficultyInput}
+                onChange={(e) => {
+                  dispatch(changeInputValue(e.target.value, 'difficultyInput'));
+                }}
+                required
+              >
                 <option value="0">Selectionner...</option>
                 {selectedSport &&
                   selectedSport.difficulties.map((difficulty) => (

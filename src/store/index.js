@@ -5,6 +5,7 @@ import reducer from '../reducers/indexReducer';
 
 import searchMiddleware from '../middleware/searchMiddleware';
 import activityMiddleware from '../middleware/activityMiddleware';
+import createActivityMiddleware from '../middleware/createActivityMiddleware';
 import contactMiddleware from '../middleware/contactMiddleware';
 import userMiddleware from '../middleware/userMiddleware';
 import registerMiddleware from '../middleware/registerMiddleware';
@@ -14,6 +15,7 @@ const enhancers = composeWithDevTools(
   applyMiddleware(
     searchMiddleware,
     activityMiddleware,
+    createActivityMiddleware,
     contactMiddleware,
     userMiddleware,
     registerMiddleware,

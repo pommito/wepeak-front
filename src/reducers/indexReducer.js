@@ -7,11 +7,13 @@ import contactReducer from './contactReducer';
 import registerReducer from './registerReducer';
 import globalReducer from './globalReducer';
 import sportsReducer from './sportsReducer';
+import createActivityReducer from './createActivityReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
   search: searchReducer,
   activity: activityReducer,
+  createActivity: createActivityReducer,
   contact: contactReducer,
   register: registerReducer,
   sports: sportsReducer,
