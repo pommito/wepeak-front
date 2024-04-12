@@ -50,7 +50,7 @@ const Activity = () => {
   const activityAdress = useSelector((state) => state.activity.activityAdress);
 
   // if activity and activityAdress are not yet available, return null
-  if (!activity.createdBy || !activityAdress.road) return null;
+  if (!activity.createdBy || !activityAdress.address.road) return null;
 
   return (
     <main className="Activity">
@@ -65,11 +65,13 @@ const Activity = () => {
       <ActivityIllustration
         picture={activity.thumbnail}
         date={activity.date}
-        adressNumber={activityAdress.house_number}
-        adressRoad={activityAdress.road}
-        adressPostcode={activityAdress.postcode}
+        adressNumber={activityAdress.address.house_number}
+        adressRoad={activityAdress.address.road}
+        adressPostcode={activityAdress.address.postcode}
         adressCity={
-          activityAdress.village || activityAdress.city || activityAdress.town
+          activityAdress.address.village ||
+          activityAdress.address.city ||
+          activityAdress.address.town
         }
         lat={activity.lat}
         lng={activity.lng}

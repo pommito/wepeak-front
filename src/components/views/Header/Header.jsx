@@ -16,7 +16,6 @@ import avatar from '../../../assets/avatar.svg';
 // Import actions
 import {
   changeInputSearch,
-  changeInputSearchValue,
   fetchCitiesSearch,
   resetSearch,
 } from '../../../actions/searchActions';
