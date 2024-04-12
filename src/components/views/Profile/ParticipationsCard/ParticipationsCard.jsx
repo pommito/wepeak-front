@@ -31,24 +31,6 @@ const ParticipationsCard = ({ title, participations }) => {
             </div>
           </div>
         ))}
-
-        <div className="ParticipationsCard-list-item">
-          <div className="ParticipationsCard-list-item-imgContainer">
-            <img
-              src="https://www.guide-des-landes.com/_bibli/articlesPage/108/images/spots-de-surf-dans-les-landes.jpg?v=ficheArticle&width=772&height=540&pixelRatio=1.0000"
-              alt=""
-            />
-          </div>
-          <div className="ParticipationsCard-list-item-content">
-            <p className="ParticipationsCard-list-item-content-name">
-              Session surf aux Bourdaines
-            </p>
-            <p className="ParticipationsCard-list-item-content-sport">Surf</p>
-            <p className="ParticipationsCard-list-item-content-locationAndDate">
-              Seignosse, 4 mai 2024
-            </p>
-          </div>
-        </div>
       </div>
       {participations.length > 3 && (
         <button type="button" className="ParticipationsCard-more">

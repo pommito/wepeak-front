@@ -47,7 +47,7 @@ const UserPage = () => {
           className="UserPage-left-profileCard"
           firstname={user.firstname}
           lastname={user.lastname}
-          email={user.email}
+          email=""
           city={user.city}
           memberSince={user.createdAt}
           thumbnail={user.thumbnail}
@@ -55,6 +55,22 @@ const UserPage = () => {
           sportsNumber={user.Sports.length}
           subscriptionsNumber={futureActivities.length}
           pastActivitiesNumber={pastActivities.length}
+        />
+      </div>
+      <div className="UserPage-right">
+        <SportsCard
+          className="UserPage-right-sportsCard"
+          sports={user.Sports}
+        />
+        <ParticipationsCard
+          className="UserPage-right-subscriptionCard"
+          title="Mes inscriptions"
+          participations={futureActivities}
+        />
+        <ParticipationsCard
+          className="UserPage-right-pastActivitiesCard"
+          title="Mes activités passées"
+          participations={pastActivities}
         />
       </div>
     </main>

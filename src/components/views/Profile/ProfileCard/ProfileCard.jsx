@@ -26,7 +26,7 @@ const ProfileCard = ({
           <h3>
             {firstname} {lastname}
           </h3>
-          <p>{email}</p>
+          {email && <p>{email}</p>}
           <div className="ProfileCard-imgContainer-userData-city">
             <HiLocationMarker />
             <p>{city}</p>
