@@ -1,6 +1,7 @@
 import {
   POST_ACTIVITY_FORM,
   setErrorMessage,
+  resetActivityForm,
 } from '../actions/createActivityActions';
 
 import {
@@ -54,14 +55,13 @@ const createActivityMiddleware = (store) => (next) => (action) => {
         .then(() => {
           // Handle here the success case with message to user and redirection
           store.dispatch(
-            writePopUpMessage(
-              'Votre message a bien été envoyé ! Merci pour votre intérêt.'
-            )
+            writePopUpMessage('Votre activité a été mise en ligne !')
           );
           setTimeout(() => {
             store.dispatch(removePopUpMessage());
           }, 5000);
           action.navigate('/');
+          store.dispatch(resetActivityForm());
           store.dispatch(setErrorMessage(''));
         })
         .catch((error) => {
