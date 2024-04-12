@@ -3,50 +3,35 @@ import PropTypes from 'prop-types';
 
 import './ParticipationsCard.scss';
 
-const ParticipationsCard = ({ title, number }) => {
+const ParticipationsCard = ({ title, participations }) => {
   return (
     <div className="ParticipationsCard">
       <h4 className="ParticipationsCard-title">
-        {title} ({number})
+        {`${title} (${participations.length})`}
       </h4>
       <div className="ParticipationsCard-list">
-        <div className="ParticipationsCard-list-item">
-          <div className="ParticipationsCard-list-item-imgContainer">
-            <img
-              src="https://www.guide-des-landes.com/_bibli/articlesPage/108/images/spots-de-surf-dans-les-landes.jpg?v=ficheArticle&width=772&height=540&pixelRatio=1.0000"
-              alt=""
-            />
+        {participations.map((participation) => (
+          <div
+            className="ParticipationsCard-list-item"
+            key={participation.activity.id}
+          >
+            <div className="ParticipationsCard-list-item-imgContainer">
+              <img src={participation.activity.thumbnail} alt="" />
+            </div>
+            <div className="ParticipationsCard-list-item-content">
+              <p className="ParticipationsCard-list-item-content-name">
+                {participation.activity.name}
+              </p>
+              <p className="ParticipationsCard-list-item-content-sport">
+                {participation.activity.sports[0].name}
+              </p>
+              <p className="ParticipationsCard-list-item-content-locationAndDate">
+                {`Seignosse, ${participation.activity.date}`}
+              </p>
+            </div>
           </div>
-          <div className="ParticipationsCard-list-item-content">
-            <p className="ParticipationsCard-list-item-content-name">
-              Session surf aux Bourdaines
-            </p>
-            <p className="ParticipationsCard-list-item-content-sport">Surf</p>
-            <p className="ParticipationsCard-list-item-content-locationAndDate">
-              Seignosse, 4 mai 2024
-            </p>
-          </div>
-        </div>
+        ))}
 
-        <div className="ParticipationsCard-list-item">
-          <div className="ParticipationsCard-list-item-imgContainer">
-            <img
-              src="https://res.cloudinary.com/easymountain/image/upload/v1690203967/do-web/prod/randonnee_rhune_cd9c2a1388.jpg"
-              alt=""
-            />
-          </div>
-          <div className="ParticipationsCard-list-item-content">
-            <p className="ParticipationsCard-list-item-content-name">
-              La Rhune depuis Ascain
-            </p>
-            <p className="ParticipationsCard-list-item-content-sport">
-              Randonnée
-            </p>
-            <p className="ParticipationsCard-list-item-content-locationAndDate">
-              Ascain, 26 mai 2024
-            </p>
-          </div>
-        </div>
         <div className="ParticipationsCard-list-item">
           <div className="ParticipationsCard-list-item-imgContainer">
             <img
@@ -65,7 +50,7 @@ const ParticipationsCard = ({ title, number }) => {
           </div>
         </div>
       </div>
-      {number > 3 && (
+      {participations.length > 3 && (
         <button type="button" className="ParticipationsCard-more">
           <IoIosMore />
         </button>
@@ -76,7 +61,22 @@ const ParticipationsCard = ({ title, number }) => {
 
 ParticipationsCard.propTypes = {
   title: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  participations: PropTypes.arrayOf(
+    PropTypes.shape({
+      activity: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        thumbnail: PropTypes.string.isRequired,
+        sports: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+          })
+        ).isRequired,
+      }).isRequired,
+    })
+  ).isRequired,
 };
 
 export default ParticipationsCard;

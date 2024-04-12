@@ -26,7 +26,7 @@ const SportsCard = ({ sports }) => {
 SportsCard.propTypes = {
   sports: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
     })
   ),

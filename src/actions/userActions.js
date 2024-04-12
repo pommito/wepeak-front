@@ -9,7 +9,10 @@ export const SET_LOGIN_ERROR_MESSAGE = 'SET_LOGIN_ERROR_MESSAGE';
 export const LOGOUT = 'LOGOUT';
 export const RESET_LOGIN_FORM = 'RESET_LOGIN_FORM';
 export const FETCH_USER_WITH_ID = 'FETCH_USER_WITH_ID';
-export const HANDLE_FETCH_USER_WITH_ID = 'HANDLE_FETCH_USER_WITH_ID';
+export const HANDLE_FETCH_CURRENT_USER_WITH_ID =
+  'HANDLE_FETCH_CURRENT_USER_WITH_ID';
+export const HANDLE_FETCH_VISITED_USER_WITH_ID =
+  'HANDLE_FETCH_VISITED_USER_WITH_ID';
 
 export const getUserPosition = () => ({
   type: GET_USER_POSITION,
@@ -58,12 +61,21 @@ export const resetLoginForm = () => ({
   type: RESET_LOGIN_FORM,
 });
 
-export const fetchUserWithId = (id) => ({
+export const fetchUserWithId = (id, specifier) => ({
   type: FETCH_USER_WITH_ID,
   id,
+  // specifier is used to call the good handle function in the middleware
+  specifier,
 });
 
-export const handleFetchUserWithId = (user) => ({
-  type: HANDLE_FETCH_USER_WITH_ID,
+// Current user is the logged user
+export const handleFetchCurrentUserWithId = (user) => ({
+  type: HANDLE_FETCH_CURRENT_USER_WITH_ID,
+  user,
+});
+
+// Visited user is the user we are looking at
+export const handleFetchVisitedUserWithId = (user) => ({
+  type: HANDLE_FETCH_VISITED_USER_WITH_ID,
   user,
 });

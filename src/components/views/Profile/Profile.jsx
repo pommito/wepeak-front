@@ -23,7 +23,7 @@ const Profile = () => {
   useEffect(() => {
     // If userId is not null, fetch the user with the id
     if (userId) {
-      dispatch(fetchUserWithId(userId));
+      dispatch(fetchUserWithId(userId, 'current'));
     }
   }, [userId, dispatch]);
 
@@ -69,16 +69,16 @@ const Profile = () => {
         />
       </div>
       <div className="Profile-right">
-        <SportsCard className="Profile-right-sportsCard" />
+        <SportsCard className="Profile-right-sportsCard" sports={user.Sports} />
         <ParticipationsCard
           className="Profile-right-subscriptionCard"
           title="Mes inscriptions"
-          number="3"
+          participations={futureActivities}
         />
         <ParticipationsCard
           className="Profile-right-pastActivitiesCard"
           title="Mes activités passées"
-          number="8"
+          participations={pastActivities}
         />
       </div>
     </main>
