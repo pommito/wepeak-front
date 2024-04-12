@@ -6,6 +6,7 @@ import activityReducer from './activityReducer';
 import contactReducer from './contactReducer';
 import registerReducer from './registerReducer';
 import globalReducer from './globalReducer';
+import sportsReducer from './sportsReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   activity: activityReducer,
   contact: contactReducer,
   register: registerReducer,
+  sports: sportsReducer,
   global: globalReducer,
 });
 

@@ -15,14 +15,22 @@ import Map from './Map/Map';
 import './CreateActivity.scss';
 import imageByDefault from '../../../assets/images/image_placeholder.png';
 import InputSearch from './InputSearch/InputSearch';
+import { fetchSports } from '../../../actions/sportsActions';
 
 const CreateActivity = () => {
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
+  const sports = useSelector((state) => state.sports.sports);
+  const [selectedSport, setSelectedSport] = useState(null);
+
   const positionFromMarker = useSelector(
     (state) => state.activity.activityAdress.address
   );
   const today = new Date().toISOString().split('T')[0];
+
+  useEffect(() => {
+    dispatch(fetchSports());
+  }, [dispatch]);
 
   // Handle the formating of the address from the marker
   const formatAddress = ({ house_number, road, city, postcode }) => {
@@ -94,11 +102,23 @@ const CreateActivity = () => {
             </div>
             <div className="CreateActivity-form-left-wrapper-row">
               <label htmlFor="sport">Sport</label>
-              <select id="sport" name="sport" required>
-                <option value="0">Selectionner</option>
-                <option value="1">Sport 1</option>
-                <option value="2">Sport 2</option>
-                <option value="3">Sport 3</option>
+              <select
+                id="sport"
+                name="sport"
+                onChange={(e) => {
+                  setSelectedSport(
+                    sports.find((sport) => sport.id == e.target.value)
+                  );
+                }}
+                required
+              >
+                <option value="">Selectionner</option>
+                {sports &&
+                  sports.map((sport) => (
+                    <option key={sport.id} value={sport.id}>
+                      {sport.name}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
@@ -152,9 +172,12 @@ const CreateActivity = () => {
               <label htmlFor="difficulty">Niveau de difficulté</label>
               <select id="difficulty" name="difficulty" required>
                 <option value="0">Selectionner...</option>
-                <option value="1">Facile</option>
-                <option value="2">Moyen</option>
-                <option value="3">Difficile</option>
+                {selectedSport &&
+                  selectedSport.difficulties.map((difficulty) => (
+                    <option key={difficulty.label} value={difficulty.id}>
+                      {difficulty.label}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>

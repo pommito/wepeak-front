@@ -16,8 +16,6 @@ const Map = () => {
     markerPosition[2] || searchedCity.lng,
   ];
 
-  console.log(markerCoordinates);
-
   const ChangeView = ({ center, zoom }) => {
     const map = useMap();
     map.setView(center, zoom);
