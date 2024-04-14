@@ -16,6 +16,7 @@ const ProfileEdition = () => {
       reader.onloadend = () => {
         // reader.result contains the file content in a data URL format (base64)
         setImage(reader.result);
+        console.log(reader.result);
       };
       // readAsDataURL will read the file and transform it to a data URL.
       // At the end, the onloadend event will be triggered.
