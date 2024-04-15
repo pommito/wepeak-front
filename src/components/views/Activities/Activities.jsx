@@ -16,9 +16,17 @@ import Calendar from './Calendar/Calendar';
 
 const Activities = () => {
   const activityList = useSelector((state) => state.activity.activities);
-  const lastSearchedCity = useSelector(
+
+  let lastSearchedCity = useSelector(
     (state) => state.activity.lastSearchedCity
   );
+
+  // If user has not searched for a city, we set the lastSearchedCity to the user's position
+  const userPositionName = useSelector((state) => state.user.userPositionName);
+  if (!lastSearchedCity.name) {
+    lastSearchedCity.name = userPositionName;
+  }
+
   const [isFilterActive, setIsFilterActive] = useState(null);
 
   useEffect(() => {

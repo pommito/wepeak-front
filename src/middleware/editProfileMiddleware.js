@@ -13,7 +13,7 @@ import {
 const editProfileMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case POST_EDIT_PROFILE_FORM: {
-      console.log('POST_EDIT_PROFILE_FORM');
+      console.log(store.getState().editProfile.base64Image);
       if (!store.getState().user.loggedData.token) {
         store.dispatch(
           writePopUpMessage(
@@ -43,6 +43,7 @@ const editProfileMiddleware = (store) => (next) => (action) => {
             city: store.getState().editProfile.cityInput,
             birthdate: store.getState().editProfile.birthdateInput,
             description: store.getState().editProfile.bioInput,
+            thumbnail: store.getState().editProfile.base64Image,
             oldPassword: store.getState().editProfile.oldPasswordInput,
             newPassword: store.getState().editProfile.newPasswordInput,
             confirmNewPassword:
@@ -68,7 +69,6 @@ const editProfileMiddleware = (store) => (next) => (action) => {
           action.navigate('/profile');
           store.dispatch(resetEditProfileForm());
           store.dispatch(setErrorMessage(''));
-          store.dispatch(logout());
         })
         .catch((error) => {
           console.error('There was an error with your fetch operation:', error);
@@ -97,7 +97,7 @@ const editProfileMiddleware = (store) => (next) => (action) => {
         {
           method: 'DELETE',
           headers: {
-            Authorization: `Bearer ${store.getState().auth.token}`,
+            Authorization: `Bearer ${store.getState().user.loggedData.token}`,
           },
         }
       )
@@ -117,6 +117,9 @@ const editProfileMiddleware = (store) => (next) => (action) => {
             store.dispatch(removePopUpMessage());
           }, 5000);
           action.navigate('/');
+          store.dispatch(resetEditProfileForm());
+          store.dispatch(setErrorMessage(''));
+          store.dispatch(logout());
         })
         .catch((error) => {
           console.error('There was an error with your fetch operation:', error);
