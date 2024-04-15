@@ -85,7 +85,6 @@ const ProfileEdition = () => {
         className="ProfileEdition-form"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log('submit');
           dispatch(postEditProfileForm(profileId, navigate));
         }}
       >
@@ -272,18 +271,19 @@ const ProfileEdition = () => {
           className="ProfileEdition-form-delete"
           onClick={() => {
             // dispatch(deleteProfile(profileId, navigate));
-            setDeleteOpenings(!deleteOpenings);
+            setDeleteOpenings(true);
           }}
         >
           Supprimer mon profil
         </button>
         {deleteOpenings && (
-          <div className="ProfileEdition-form-delete-confirm">
+          <div className="ProfileEdition-form-delete-window">
             <p>
               Êtes-vous sûr de vouloir supprimer votre profil ? Cette action est
               irréversible.
             </p>
             <button
+              className="confirm"
               type="button"
               onClick={() => {
                 // console.log('delete');
@@ -293,9 +293,10 @@ const ProfileEdition = () => {
               Oui, je veux supprimer mon profil
             </button>
             <button
+              className="delete"
               type="button"
               onClick={() => {
-                setDeleteOpenings(!deleteOpenings);
+                setDeleteOpenings(false);
               }}
             >
               Annuler

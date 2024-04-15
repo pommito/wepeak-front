@@ -55,7 +55,7 @@ const createActivityMiddleware = (store) => (next) => (action) => {
         .then(() => {
           // Handle here the success case with message to user and redirection
           store.dispatch(
-            writePopUpMessage('Votre activité a été mise en ligne !')
+            writePopUpMessage('Votre activité a été mise en ligne !', 'success')
           );
           setTimeout(() => {
             store.dispatch(removePopUpMessage());

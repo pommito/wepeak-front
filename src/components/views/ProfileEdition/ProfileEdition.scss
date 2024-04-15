@@ -18,6 +18,7 @@
     gap: 1.2rem;
     justify-content: space-around;
     margin: auto;
+    position: relative;
     padding: 1.5rem;
     width: 70%;
 
@@ -195,6 +196,54 @@
 
       &:hover {
         color: rgb(136, 31, 31);
+      }
+    }
+
+    &-delete-window {
+      background-color: rgb(255, 204, 204);
+      border: rgb(253, 182, 182) 1px solid;
+      border-radius: calc(v.$borderRadius * 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      position: absolute;
+      bottom: -9.5rem;
+      right: 0.5rem;
+      width: 18rem;
+
+      p {
+        color: rgb(211, 29, 29);
+        font-size: v.$textSize;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      button {
+        border: none;
+        border-radius: v.$borderRadius;
+        font-family: v.$textFont;
+        font-size: v.$textSize;
+        padding: 0.5rem;
+        width: 100%;
+
+        &.delete {
+          background-color: v.$primaryColor;
+          color: v.$backgroundColor;
+
+          &:hover {
+            background-color: v.$primaryColorDark;
+          }
+        }
+
+        &.confirm {
+          background-color: rgb(211, 29, 29);
+          color: v.$backgroundColor;
+
+          &:hover {
+            background-color: rgb(136, 31, 31);
+          }
+        }
       }
     }
   }

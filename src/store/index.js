@@ -10,7 +10,7 @@ import contactMiddleware from '../middleware/contactMiddleware';
 import userMiddleware from '../middleware/userMiddleware';
 import registerMiddleware from '../middleware/registerMiddleware';
 import editProfileMiddleware from '../middleware/editProfileMiddleware';
-import sportMiddleware from '../middleware/sportsMiddleware';
+import sportsMiddleware from '../middleware/sportsMiddleware';
 
 const enhancers = composeWithDevTools(
   applyMiddleware(
@@ -20,7 +20,8 @@ const enhancers = composeWithDevTools(
     contactMiddleware,
     userMiddleware,
     registerMiddleware,
-    editProfileMiddleware
+    editProfileMiddleware,
+    sportsMiddleware
   )
 );
 
