@@ -25,7 +25,7 @@ const UserPage = () => {
   const user = useSelector((state) => state.user.visitedUser);
 
   // if user is not yet available, return null
-  if (!user.Sports) return null;
+  if (!user.sports) return null;
 
   // we keep only the validated participations
   const validatedParticipations = user.participations.filter(
@@ -52,7 +52,7 @@ const UserPage = () => {
           memberSince={user.createdAt}
           thumbnail={user.thumbnail}
           bio={user.description}
-          sportsNumber={user.Sports.length}
+          sportsNumber={user.sports.length}
           subscriptionsNumber={futureActivities.length}
           pastActivitiesNumber={pastActivities.length}
         />
@@ -60,7 +60,7 @@ const UserPage = () => {
       <div className="UserPage-right">
         <SportsCard
           className="UserPage-right-sportsCard"
-          sports={user.Sports}
+          sports={user.sports}
         />
         <ParticipationsCard
           className="UserPage-right-subscriptionCard"

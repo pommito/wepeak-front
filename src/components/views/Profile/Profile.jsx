@@ -30,7 +30,7 @@ const Profile = () => {
   const user = useSelector((state) => state.user.currentUser);
 
   // if user is not yet available, return null
-  if (!user.Sports) return null;
+  if (!user.sports) return null;
 
   // we keep only the validated participations
   const validatedParticipations = user.participations.filter(
@@ -57,7 +57,7 @@ const Profile = () => {
           memberSince={user.createdAt}
           thumbnail={user.thumbnail}
           bio={user.description}
-          sportsNumber={user.Sports.length}
+          sportsNumber={user.sports.length}
           subscriptionsNumber={futureActivities.length}
           pastActivitiesNumber={pastActivities.length}
         />
@@ -69,7 +69,7 @@ const Profile = () => {
         />
       </div>
       <div className="Profile-right">
-        <SportsCard className="Profile-right-sportsCard" sports={user.Sports} />
+        <SportsCard className="Profile-right-sportsCard" sports={user.sports} />
         <ParticipationsCard
           className="Profile-right-subscriptionCard"
           title="Mes inscriptions"
