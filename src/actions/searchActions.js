@@ -10,6 +10,7 @@ export const changeInputSearch = (input) => ({
   input,
 });
 
+// handle the value of the input search from createActivity page
 export const changeInputSearchValue = (value) => ({
   type: CHANGE_INPUT_SEARCH_VALUE,
   value,
@@ -20,6 +21,7 @@ export const fetchCitiesSearch = (identifier) => ({
   identifier,
 });
 
+// handle the click of the input search from createActivity page
 export const handleClickOnCityResult = (city) => {
   return {
     type: HANDLE_CLICK_ON_CITY_RESULT,
