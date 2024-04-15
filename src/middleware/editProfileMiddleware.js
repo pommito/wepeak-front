@@ -13,7 +13,6 @@ import {
 const editProfileMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case POST_EDIT_PROFILE_FORM: {
-      console.log(store.getState().editProfile.base64Image);
       if (!store.getState().user.loggedData.token) {
         store.dispatch(
           writePopUpMessage(
@@ -78,7 +77,6 @@ const editProfileMiddleware = (store) => (next) => (action) => {
       break;
     }
     case DELETE_PROFILE: {
-      console.log('DELETE_PROFILE');
       if (!store.getState().user.loggedData.token) {
         store.dispatch(
           writePopUpMessage(

@@ -321,7 +321,6 @@ const ProfileEdition = () => {
               className="confirm"
               type="button"
               onClick={() => {
-                // console.log('delete');
                 dispatch(deleteProfile(profileId, navigate));
               }}
             >
