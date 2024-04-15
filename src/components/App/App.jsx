@@ -6,6 +6,7 @@ import PopUp from '../utils/PopUp/PopUp';
 import Home from '../views/Home/Home';
 import Activities from '../views/Activities/Activities';
 import Activity from '../views/Activity/Activity';
+import CreateActivity from '../views/CreateActivity/CreateActivity';
 import Contact from '../views/Contact/Contact';
 import Login from '../views/Login/Login';
 import Register from '../views/Register/Register';
@@ -33,6 +34,8 @@ const App = () => {
         <Route path="/activities" element={<Activities />} />
         <Route path="/activities/:slug" element={<Activity />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/activities/create" element={<CreateActivity />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
