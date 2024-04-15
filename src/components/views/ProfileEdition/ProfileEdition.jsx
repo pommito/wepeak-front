@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   changeEditProfileInput,
   postEditProfileForm,
+  deleteProfile,
 } from '../../../actions/editProfileActions';
 
 // Import stylesheet
@@ -50,12 +51,13 @@ const ProfileEdition = () => {
   const currentBirthdate = useSelector(
     (state) => state.user.currentUser.birthdate
   );
-  const currentBio = useSelector((state) => state.user.currentUser.bio);
+  const currentBio = useSelector((state) => state.user.currentUser.description);
 
   const profileId = useSelector((state) => state.user.currentUser.id);
   const errorMessage = useSelector((state) => state.editProfile.errorMessage);
 
   const [image, setImage] = useState(null);
+  const [deleteOpenings, setDeleteOpenings] = useState(false);
 
   const handleImageChange = (e) => {
     // we get the first file selected by the user from the input
@@ -83,6 +85,7 @@ const ProfileEdition = () => {
         className="ProfileEdition-form"
         onSubmit={(e) => {
           e.preventDefault();
+          console.log('submit');
           dispatch(postEditProfileForm(profileId, navigate));
         }}
       >
@@ -223,7 +226,6 @@ const ProfileEdition = () => {
                 changeEditProfileInput(e.target.value, 'oldPasswordInput')
               );
             }}
-            required
           />
         </div>
         <div className="ProfileEdition-form-newPassword">
@@ -265,9 +267,41 @@ const ProfileEdition = () => {
         <button type="submit" className="ProfileEdition-form-submit">
           Enregistrer les modifications
         </button>
-        <button type="button" className="ProfileEdition-form-delete">
+        <button
+          type="button"
+          className="ProfileEdition-form-delete"
+          onClick={() => {
+            // dispatch(deleteProfile(profileId, navigate));
+            setDeleteOpenings(!deleteOpenings);
+          }}
+        >
           Supprimer mon profil
         </button>
+        {deleteOpenings && (
+          <div className="ProfileEdition-form-delete-confirm">
+            <p>
+              Êtes-vous sûr de vouloir supprimer votre profil ? Cette action est
+              irréversible.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                // console.log('delete');
+                dispatch(deleteProfile(profileId, navigate));
+              }}
+            >
+              Oui, je veux supprimer mon profil
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setDeleteOpenings(!deleteOpenings);
+              }}
+            >
+              Annuler
+            </button>
+          </div>
+        )}
       </form>
     </main>
   );

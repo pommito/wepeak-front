@@ -39,7 +39,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case GET_USER_POSITION_NAME: {
       const { userPosition } = store.getState().user;
       fetch(
-        `https://secure.geonames.org/findNearbyPostalCodesJSON?lat=${userPosition.lat}&lng=${userPosition.lng}&username=pommito`
+        `https://secure.geonames.org/findNearbyPostalCodesJSON?lat=${userPosition.lat}&lng=${userPosition.lng}&username=nicolaschambon`
       )
         .then((response) => {
           if (!response.ok) {
@@ -119,7 +119,7 @@ const userMiddleware = (store) => (next) => (action) => {
         setTimeout(() => {
           store.dispatch(removePopUpMessage());
         }, 5000);
-        action.navigate('/');
+        action.navigate('/login');
         return;
       }
       fetch(

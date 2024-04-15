@@ -8,6 +8,7 @@ import activityMiddleware from '../middleware/activityMiddleware';
 import contactMiddleware from '../middleware/contactMiddleware';
 import userMiddleware from '../middleware/userMiddleware';
 import registerMiddleware from '../middleware/registerMiddleware';
+import editProfileMiddleware from '../middleware/editProfileMiddleware';
 
 const enhancers = composeWithDevTools(
   applyMiddleware(
@@ -15,7 +16,8 @@ const enhancers = composeWithDevTools(
     activityMiddleware,
     contactMiddleware,
     userMiddleware,
-    registerMiddleware
+    registerMiddleware,
+    editProfileMiddleware
   )
 );
 
