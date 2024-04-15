@@ -1,8 +1,12 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import './ActivityDetailApply.scss';
+import { handleClickOnButton } from '../../../../actions/participationsActions';
 
 const ActivityDetailApply = ({ description }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="Activity-detailsAndApply">
       <div className="Activity-detailsAndApply-description">
@@ -10,7 +14,13 @@ const ActivityDetailApply = ({ description }) => {
         <p>{description}</p>
       </div>
 
-      <button type="button" className="Activity-detailsAndApply-apply">
+      <button
+        type="button"
+        className="Activity-detailsAndApply-apply"
+        onClick={() => {
+          dispatch(handleClickOnButton());
+        }}
+      >
         Participer
       </button>
     </div>
