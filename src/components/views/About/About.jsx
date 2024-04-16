@@ -2,6 +2,7 @@ import './About.scss';
 
 import tomPicture from '../../../assets/images/tom.avif';
 import victorPicture from '../../../assets/images/victor.avif';
+import nicolasPicture from '../../../assets/images/nicolas.avif';
 
 const About = () => {
   return (
@@ -38,6 +39,10 @@ const About = () => {
             <div className="About-team-members-member-imgContainer">
               <img src={tomPicture} alt="" />
             </div>
+            <p className="About-team-members-member-role">
+              Développeur extrémité arrière
+            </p>
+            <p className="About-team-members-member-sport">VTTiste et skieur</p>
           </div>
           <div className="About-team-members-member">
             <p className="About-team-members-member-name">Melvin</p>
@@ -47,18 +52,36 @@ const About = () => {
                 alt=""
               />
             </div>
+            <p className="About-team-members-member-role">
+              Développeur extrémité arrière
+            </p>
+            <p className="About-team-members-member-sport">
+              VTTiste et skateur
+            </p>
           </div>
           <div className="About-team-members-member">
             <p className="About-team-members-member-name">Victor</p>
             <div className="About-team-members-member-imgContainer">
               <img src={victorPicture} alt="" />
             </div>
+            <p className="About-team-members-member-role">
+              Développeur extrémité avant
+            </p>
+            <p className="About-team-members-member-sport">
+              Skieur et radonneur
+            </p>
           </div>
           <div className="About-team-members-member">
             <p className="About-team-members-member-name">Nicolas</p>
             <div className="About-team-members-member-imgContainer">
-              <img src="" alt="" />
+              <img src={nicolasPicture} alt="" />
             </div>
+            <p className="About-team-members-member-role">
+              Développeur extrémité avant
+            </p>
+            <p className="About-team-members-member-sport">
+              Traileur et cycliste
+            </p>
           </div>
         </div>
       </div>
