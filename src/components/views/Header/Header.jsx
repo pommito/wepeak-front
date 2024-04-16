@@ -11,7 +11,6 @@ import {
 
 // Import images
 import Logo_BW from '../../../assets/Logo_BW.svg';
-import avatar from '../../../assets/avatar.svg';
 
 // Import actions
 import {
@@ -21,6 +20,9 @@ import {
 } from '../../../actions/searchActions';
 import { fetchActivitiesFromCity } from '../../../actions/activityActions';
 import { logout } from '../../../actions/userActions';
+
+// Import utils
+import rewriteImagePath from '../../../utils/rewriteImagePath';
 
 // Import stylesheet
 import './Header.scss';
@@ -33,11 +35,9 @@ const Header = () => {
   const loggedData = useSelector((state) => state.user.loggedData);
   const isLogged = loggedData.token !== undefined;
 
-  // Set default user picture
-  let userPictureUrl = avatar;
-  // If user is logged and has a thumbnail, we set userPictureUrl with the thumbnail
+  let userPictureUrl = '';
   if (isLogged && loggedData.user.thumbnail) {
-    userPictureUrl = loggedData.user.thumbnail;
+    userPictureUrl = rewriteImagePath(loggedData.user.thumbnail);
   }
 
   // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS

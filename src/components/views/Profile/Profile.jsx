@@ -12,6 +12,9 @@ import EditProfile from './EditProfile/EditProfile';
 import SportsCard from './SportsCard/SportsCard';
 import ParticipationsCard from './ParticipationsCard/ParticipationsCard';
 
+// Import utils
+import rewriteImagePath from '../../../utils/rewriteImagePath';
+
 // Import stylesheet
 import './Profile.scss';
 
@@ -57,7 +60,7 @@ const Profile = () => {
           email={user.email}
           city={user.city}
           memberSince={user.createdAt}
-          thumbnail={user.thumbnail}
+          thumbnail={rewriteImagePath(user.thumbnail)}
           bio={user.description}
           sportsNumber={user.sports.length}
           subscriptionsNumber={futureActivities.length}
@@ -67,7 +70,7 @@ const Profile = () => {
           className="Profile-left-editProfile"
           firstname={user.firstname}
           lastname={user.lastname}
-          thumbnail={user.thumbnail}
+          thumbnail={rewriteImagePath(user.thumbnail)}
         />
       </div>
       <div className="Profile-right">

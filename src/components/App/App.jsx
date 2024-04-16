@@ -13,6 +13,7 @@ import Register from '../views/Register/Register';
 import Profile from '../views/Profile/Profile';
 import ProfileEdition from '../views/ProfileEdition/ProfileEdition';
 import UserPage from '../views/UserPage/UserPage';
+import About from '../views/About/About';
 import Error404 from '../views/Error404/Error404';
 import Footer from '../views/Footer/Footer';
 
@@ -31,15 +32,15 @@ const App = () => {
       {message && <PopUp />}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/activities" element={<Activities />} />
         <Route path="/activities/:slug" element={<Activity />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/activities" element={<Activities />} />
         <Route path="/activities/create" element={<CreateActivity />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<ProfileEdition />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/users/:slug" element={<UserPage />} />
         <Route path="*" element={<Error404 />} />
       </Routes>

@@ -1,12 +1,67 @@
 import './About.scss';
 
+import tomPicture from '../../../assets/images/tom.avif';
+import victorPicture from '../../../assets/images/victor.avif';
+
 const About = () => {
   return (
     <main className="About">
-      <h1 className="About-title">Bienvenue sur WePeak !</h1>
-      <p className="About-text">
-        WePeak est bien plus qu'une simple plateforme
-      </p>
+      <div className="About-welcome">
+        <h2 className="About-welcome-title">Bienvenue sur WePeak !</h2>
+        <p className="About-welcome-text">
+          WePeak est bien plus qu'une simple plateforme de mise en relation pour
+          les passionnés de sports outdoor. Nous sommes une communauté dynamique
+          et diversifiée, unissant les amateurs d'outdoor autour de leur passion
+          commune pour l'aventure à travers un désir de partage.
+          <br />
+          <br />
+          Notre mission est de faciliter les rencontres entre les sportifs de
+          tous niveaux et de toutes disciplines, afin qu'ils puissent partager
+          des moments inoubliables et repousser leurs limites ensemble. Que vous
+          soyez un randonneur passionné, un skieur fougueux, un surfeur
+          intrépide ou tout simplement à la recherche de nouvelles expériences
+          en plein air, WePeak est l'endroit idéal pour vous.
+          <br />
+          <br />
+          Rejoignez-nous dès aujourd'hui et découvrez une nouvelle façon de
+          pratiquer vos sports préférés, de rencontrer de nouvelles personnes et
+          de vivre des aventures inoubliables. WePeak est votre plateforme
+          d'échange et de partage pour tous les sports outdoor. À bientôt sur
+          les sommets !
+        </p>
+      </div>
+      <div className="About-team">
+        <h3 className="About-team-title">Notre équipe</h3>
+        <div className="About-team-members">
+          <div className="About-team-members-member">
+            <p className="About-team-members-member-name">Tom</p>
+            <div className="About-team-members-member-imgContainer">
+              <img src={tomPicture} alt="" />
+            </div>
+          </div>
+          <div className="About-team-members-member">
+            <p className="About-team-members-member-name">Melvin</p>
+            <div className="About-team-members-member-imgContainer">
+              <img
+                src="https://ca.slack-edge.com/T060RPZMDH6-U06160CTFNZ-5a4cda8a8782-512"
+                alt=""
+              />
+            </div>
+          </div>
+          <div className="About-team-members-member">
+            <p className="About-team-members-member-name">Victor</p>
+            <div className="About-team-members-member-imgContainer">
+              <img src={victorPicture} alt="" />
+            </div>
+          </div>
+          <div className="About-team-members-member">
+            <p className="About-team-members-member-name">Nicolas</p>
+            <div className="About-team-members-member-imgContainer">
+              <img src="" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 };

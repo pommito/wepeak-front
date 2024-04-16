@@ -1,0 +1,52 @@
+@use '/src/styles/variables' as v;
+
+.About {
+  margin: 2rem auto;
+  width: 70%;
+
+  &-welcome {
+    margin-bottom: 2rem;
+    &-title {
+      font-family: v.$titleFont;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    &-text {
+      line-height: 2ch;
+    }
+  }
+  &-team {
+    &-title {
+      font-family: v.$titleFont;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    &-members {
+      display: flex;
+      justify-content: space-between;
+      &-member {
+        &-name {
+          font-family: v.$titleFont;
+          font-size: 1.15rem;
+          font-weight: 500;
+          margin-bottom: 0.5rem;
+        }
+        &-imgContainer {
+          border: 1px solid v.$secondaryColor;
+          border-radius: v.$borderRadius;
+          height: 10rem;
+          overflow: hidden;
+          width: 10rem;
+
+          img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
