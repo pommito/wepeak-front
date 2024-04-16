@@ -97,7 +97,7 @@ const Footer = () => {
               <Link to="/contact">Nous contacter</Link>
             </li>
             <li>
-              <Link to="/legal-notices">Mentions légales</Link>
+              <Link to="/legal">Mentions légales</Link>
             </li>
             <li>
               <Link to="/privacy">Confidentialité</Link>
