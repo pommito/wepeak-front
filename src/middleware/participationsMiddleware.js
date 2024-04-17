@@ -66,7 +66,6 @@ const participationsMiddleware = (store) => (next) => (action) => {
         }
       )
         .then((response) => {
-          console.log(response);
           if (!response.ok) {
             // If the response is not ok, we parse the response body as JSON.
             return response.json().then((error) => {
@@ -78,7 +77,6 @@ const participationsMiddleware = (store) => (next) => (action) => {
           return response;
         })
         .then(() => {
-          console.log('ici');
           // Handle here the success case with message to user and redirection
           store.dispatch(fetchActivity(store.getState().activity.activity.id));
           store.dispatch(
