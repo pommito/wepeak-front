@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
+import {
+  handleClickOnSignInButton,
+  handleClickOnSignOffButton,
+} from '../../../../actions/participationsActions';
 import './ActivityDetailApply.scss';
-import { handleClickOnButton } from '../../../../actions/participationsActions';
 
 const ActivityDetailApply = ({
   description,
@@ -16,6 +19,11 @@ const ActivityDetailApply = ({
 
   const isUserOrganizer = user === createdBy;
   const isUserParticipating = people.some((person) => person.user.id === user);
+  let userParticipation = {};
+
+  if (isUserParticipating) {
+    userParticipation = people.find((person) => person.user.id === user);
+  }
 
   return (
     <div className="Activity-detailsAndApply">
@@ -27,9 +35,9 @@ const ActivityDetailApply = ({
       {!isUserParticipating && (
         <button
           type="button"
-          className="Activity-detailsAndApply-apply"
+          className="Activity-detailsAndApply-button sign-in"
           onClick={() => {
-            dispatch(handleClickOnButton());
+            dispatch(handleClickOnSignInButton());
           }}
         >
           Participer
@@ -37,29 +45,18 @@ const ActivityDetailApply = ({
       )}
 
       {isUserParticipating && !isUserOrganizer && (
-        <>
-          <p className="Activity-detailsAndApply-text">
-            Vous êtes déjà inscrit
-          </p>
-          <button
-            type="button"
-            className="Activity-detailsAndApply-apply"
-            onClick={() => {
-              dispatch(handleClickOnButton());
-            }}
-          >
-            Se desinscrire
-          </button>
-        </>
-      )}
-      {isUserOrganizer && (
         <button
           type="button"
-          className="Activity-detailsAndApply-apply"
+          className="Activity-detailsAndApply-button sign-off"
           onClick={() => {
-            dispatch(handleClickOnButton());
+            dispatch(handleClickOnSignOffButton(userParticipation.id));
           }}
         >
+          Se desinscrire
+        </button>
+      )}
+      {isUserOrganizer && (
+        <button type="button" className="Activity-detailsAndApply-button edit">
           Modifier mon activité
         </button>
       )}
