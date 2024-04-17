@@ -141,6 +141,7 @@ const activityMiddleware = (store) => (next) => (action) => {
           return response.json();
         })
         .then((data) => {
+          console.log(data);
           store.dispatch(handleFetchAdress(data.address, data.boundingbox));
         })
         .catch((error) => {

@@ -16,6 +16,18 @@ const createActivityMiddleware = (store) => (next) => (action) => {
       const time = store.getState().createActivity.timeInput;
       const dateTime = `${date}-${time}`;
 
+      if (store.getState().activity.activityAdress.address === '') {
+        store.dispatch(
+          setErrorMessage('Veuillez renseigner une ville pour votre activité')
+        );
+        return next(action);
+      }
+
+      const city =
+        store.getState().activity.activityAdress.address.town ||
+        store.getState().activity.activityAdress.address.city ||
+        store.getState().activity.activityAdress.address.village;
+
       fetch('https://melvinleroux-server.eddi.cloud/api/v1/activities', {
         method: 'POST',
         headers: {
@@ -27,7 +39,7 @@ const createActivityMiddleware = (store) => (next) => (action) => {
           description: store.getState().createActivity.descriptionInput,
           date: dateTime,
           createdBy: store.getState().user.loggedData.user.id,
-          city: store.getState().search.searchedCity.name,
+          city,
           lat: Number(store.getState().search.searchedCity.lat),
           lng: Number(store.getState().search.searchedCity.lng),
           groupSize: Number(store.getState().createActivity.groupSizeInput),
