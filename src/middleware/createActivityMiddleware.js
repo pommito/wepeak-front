@@ -64,7 +64,8 @@ const createActivityMiddleware = (store) => (next) => (action) => {
           }
           return response.json();
         })
-        .then(() => {
+        .then((data) => {
+          const newId = data.id;
           // Handle here the success case with message to user and redirection
           store.dispatch(
             writePopUpMessage('Votre activité a été mise en ligne !', 'success')
@@ -72,7 +73,7 @@ const createActivityMiddleware = (store) => (next) => (action) => {
           setTimeout(() => {
             store.dispatch(removePopUpMessage());
           }, 5000);
-          action.navigate('/');
+          action.navigate(`/activities/${newId}`);
           store.dispatch(resetActivityForm());
           store.dispatch(setErrorMessage(''));
         })
