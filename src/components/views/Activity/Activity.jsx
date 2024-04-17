@@ -80,7 +80,7 @@ const Activity = () => {
         people={activity.participations}
         groupSize={activity.groupSize}
       />
-      <ActivityPictures />
+      <ActivityPictures pictures={activity.pictures} />
     </main>
   );
 };

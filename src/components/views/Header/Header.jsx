@@ -32,12 +32,14 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const loggedData = useSelector((state) => state.user.loggedData);
-  const isLogged = loggedData.token !== undefined;
+  const token = JSON.parse(localStorage.getItem('token'));
+  const thumbnail = JSON.parse(localStorage.getItem('thumbnail'));
+
+  const isLogged = token !== null;
 
   let userPictureUrl = '';
-  if (isLogged && loggedData.user.thumbnail) {
-    userPictureUrl = rewriteImagePath(loggedData.user.thumbnail);
+  if (isLogged && thumbnail) {
+    userPictureUrl = rewriteImagePath(thumbnail);
   }
 
   // THIS CODE-BLOCK HANDLE SEARCH INPUT WITH CITIES SUGGESTIONS

@@ -11,9 +11,6 @@ import {
   deleteProfile,
 } from '../../../actions/editProfileActions';
 
-// Importe utils
-import rewriteImagePath from '../../../utils/rewriteImagePath';
-
 // Import stylesheet
 import './ProfileEdition.scss';
 

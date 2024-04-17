@@ -9,7 +9,6 @@ import {
   FETCH_ADRESS_FROM_COORDINATES,
   handleFetchAdress,
   handleFetchActivitiesWithFilter,
-  handleFetchAddressFromMarker,
 } from '../actions/activityActions';
 import { resetSearch } from '../actions/searchActions';
 import { getUserPositionName } from '../actions/userActions';

@@ -22,15 +22,14 @@ const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const userState = useSelector((state) => state.user);
-  const userId = userState.loggedData?.user.id;
+  const userId = JSON.parse(localStorage.getItem('id'));
 
   useEffect(() => {
     // If userId is not null, fetch the user with the id
     if (userId) {
       dispatch(fetchUserWithId(userId, 'current', navigate));
     }
-  }, [userId, dispatch]);
+  }, []);
 
   const user = useSelector((state) => state.user.currentUser);
 

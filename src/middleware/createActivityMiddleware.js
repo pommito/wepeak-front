@@ -32,13 +32,13 @@ const createActivityMiddleware = (store) => (next) => (action) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${store.getState().user.loggedData.token}`,
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
         },
         body: JSON.stringify({
           name: store.getState().createActivity.titleInput,
           description: store.getState().createActivity.descriptionInput,
           date: dateTime,
-          createdBy: store.getState().user.loggedData.user.id,
+          createdBy: JSON.parse(localStorage.getItem('id')),
           city,
           lat: Number(store.getState().search.searchedCity.lat),
           lng: Number(store.getState().search.searchedCity.lng),
