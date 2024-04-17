@@ -13,6 +13,7 @@ const ActivityDetailApply = ({
   people,
   groupSize,
   createdBy,
+  clickTracker,
 }) => {
   console.log(people, groupSize, user, createdBy);
   const dispatch = useDispatch();
