@@ -4,8 +4,18 @@ import { useDispatch } from 'react-redux';
 import './ActivityDetailApply.scss';
 import { handleClickOnButton } from '../../../../actions/participationsActions';
 
-const ActivityDetailApply = ({ description }) => {
+const ActivityDetailApply = ({
+  description,
+  user = {},
+  people,
+  groupSize,
+  createdBy,
+}) => {
+  console.log(people, groupSize, user, createdBy);
   const dispatch = useDispatch();
+
+  const isUserOrganizer = user === createdBy;
+  const isUserParticipating = people.some((person) => person.user.id === user);
 
   return (
     <div className="Activity-detailsAndApply">
@@ -14,15 +24,45 @@ const ActivityDetailApply = ({ description }) => {
         <p>{description}</p>
       </div>
 
-      <button
-        type="button"
-        className="Activity-detailsAndApply-apply"
-        onClick={() => {
-          dispatch(handleClickOnButton());
-        }}
-      >
-        Participer
-      </button>
+      {!isUserParticipating && (
+        <button
+          type="button"
+          className="Activity-detailsAndApply-apply"
+          onClick={() => {
+            dispatch(handleClickOnButton());
+          }}
+        >
+          Participer
+        </button>
+      )}
+
+      {isUserParticipating && !isUserOrganizer && (
+        <>
+          <p className="Activity-detailsAndApply-text">
+            Vous êtes déjà inscrit
+          </p>
+          <button
+            type="button"
+            className="Activity-detailsAndApply-apply"
+            onClick={() => {
+              dispatch(handleClickOnButton());
+            }}
+          >
+            Se desinscrire
+          </button>
+        </>
+      )}
+      {isUserOrganizer && (
+        <button
+          type="button"
+          className="Activity-detailsAndApply-apply"
+          onClick={() => {
+            dispatch(handleClickOnButton());
+          }}
+        >
+          Modifier mon activité
+        </button>
+      )}
     </div>
   );
 };

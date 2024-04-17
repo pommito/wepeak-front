@@ -34,7 +34,7 @@ const Activity = () => {
   }, []);
 
   const activity = useSelector((state) => state.activity.activity);
-  console.log(activity);
+  const userId = useSelector((state) => state.user.loggedData.user.id) || null;
 
   // fetch address from coordinates only if they are available
   useEffect(() => {
@@ -77,7 +77,13 @@ const Activity = () => {
         lng={activity.lng}
         thumbnail={activity.thumbnail}
       />
-      <ActivityDetailApply description={activity.description} />
+      <ActivityDetailApply
+        description={activity.description}
+        user={userId}
+        createdBy={activity.createdBy.id}
+        people={activity.participations}
+        groupSize={activity.groupSize}
+      />
       <ActivityPeople
         people={activity.participations}
         groupSize={activity.groupSize}
