@@ -47,7 +47,7 @@ const createActivityMiddleware = (store) => (next) => (action) => {
             return response.json().then((error) => {
               // throw is used to stop the promise chain and trigger the catch block.
               // if error.errors (which normaly contains specific messages) is not defined, we throw a generic error message.
-              throw new Error(error.errors || 'Network response was not ok');
+              throw new Error(error.error || 'Network response was not ok');
             });
           }
           return response.json();
@@ -65,7 +65,10 @@ const createActivityMiddleware = (store) => (next) => (action) => {
           store.dispatch(setErrorMessage(''));
         })
         .catch((error) => {
-          console.error('There was an error with your fetch operation:', error);
+          console.error(
+            'There was an error with your fetch operation:',
+            error.message
+          );
           store.dispatch(setErrorMessage(error.message));
         })
         .finally(() => {});

@@ -71,6 +71,7 @@ const Activities = () => {
           <EventCard
             key={activity['0'].id}
             title={activity['0'].name}
+            city={activity['0'].city}
             date={activity['0'].date}
             difficulty={activity['0'].difficulty.label}
             slug={activity['0'].id}

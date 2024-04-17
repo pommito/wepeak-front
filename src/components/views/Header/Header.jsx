@@ -183,6 +183,7 @@ const Header = () => {
                       type="button"
                       className="Header-form-search-cities-city"
                       onClick={() => {
+                        handleSearchButtonClick();
                         dispatch(
                           fetchActivitiesFromCity(
                             { lat: city.lat, lng: city.lng },
