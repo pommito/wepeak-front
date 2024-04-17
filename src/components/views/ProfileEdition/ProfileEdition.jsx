@@ -82,11 +82,7 @@ const ProfileEdition = () => {
   const confirmNewPasswordInput = useSelector(
     (state) => state.editProfile.confirmNewPasswordInput
   );
-  const imageInput = rewriteImagePath(
-    useSelector((state) => state.editProfile.base64Image)
-  );
-
-  console.log('imageInput', imageInput);
+  const imageInput = useSelector((state) => state.editProfile.base64Image);
 
   // we get the image to display in the form
   let image = '';

@@ -60,7 +60,7 @@ ParticipationsCard.propTypes = {
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
-        thumbnail: PropTypes.string.isRequired,
+        thumbnail: PropTypes.string,
         sports: PropTypes.arrayOf(
           PropTypes.shape({
             id: PropTypes.number.isRequired,
