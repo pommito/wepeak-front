@@ -25,6 +25,7 @@ import {
 const CreateActivity = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const errorMessage = useSelector((state) => state.register.errorMessage);
   const [image, setImage] = useState(null);
   const sports = useSelector((state) => state.sports.sports);
   const [selectedSport, setSelectedSport] = useState(null);
@@ -264,6 +265,9 @@ const CreateActivity = () => {
           <button type="submit" className="CreateActivity-form-button">
             Créer mon activité
           </button>
+          {errorMessage.length > 0 && (
+            <div className="CreateActivity-form-error"> {errorMessage} </div>
+          )}
         </div>
       </form>
     </main>

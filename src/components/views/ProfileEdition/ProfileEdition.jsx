@@ -11,6 +11,9 @@ import {
   deleteProfile,
 } from '../../../actions/editProfileActions';
 
+// Importe utils
+import rewriteImagePath from '../../../utils/rewriteImagePath';
+
 // Import stylesheet
 import './ProfileEdition.scss';
 
@@ -79,7 +82,11 @@ const ProfileEdition = () => {
   const confirmNewPasswordInput = useSelector(
     (state) => state.editProfile.confirmNewPasswordInput
   );
-  const imageInput = useSelector((state) => state.editProfile.base64Image);
+  const imageInput = rewriteImagePath(
+    useSelector((state) => state.editProfile.base64Image)
+  );
+
+  console.log('imageInput', imageInput);
 
   // we get the image to display in the form
   let image = '';

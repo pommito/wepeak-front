@@ -68,7 +68,7 @@ const About = () => {
               Développeur extrémité avant
             </p>
             <p className="About-team-members-member-sport">
-              Skieur et radonneur
+              Skieur et randonneur
             </p>
           </div>
           <div className="About-team-members-member">
