@@ -6,10 +6,7 @@ import { FiEye, FiEyeOff, FiArrowUpRight } from 'react-icons/fi';
 
 // Import actions
 import { changeLoginInput, postLoginForm } from '../../../actions/userActions';
-import {
-  writePopUpMessage,
-  removePopUpMessage,
-} from '../../../actions/globalActions';
+import { writePopUpMessage } from '../../../actions/globalActions';
 
 // Import stylesheet and logo
 import './Login.scss';
