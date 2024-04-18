@@ -25,6 +25,11 @@ import {
 const CreateActivity = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const errorMessage = useSelector((state) => state.register.errorMessage);
   const [image, setImage] = useState(null);
   const sports = useSelector((state) => state.sports.sports);
