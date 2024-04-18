@@ -63,6 +63,7 @@ const Activities = () => {
             onClick={() => {
               handleClickOnFilter(item.title.label);
             }}
+            resetActive={() => setIsFilterActive(null)}
             active={isFilterActive === item.title.label}
           />
         ))}

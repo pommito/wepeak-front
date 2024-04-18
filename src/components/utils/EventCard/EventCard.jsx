@@ -21,10 +21,8 @@ const EventCard = ({
         <img src={thumbnail} alt="" className="EventCard-image" />
       </Link>
       <div className="EventCard-content">
-        <span className="EventCard-content-category">{sport}</span>
-        <span className={`EventCard-content-category ${difficulty}`}>
-          {difficulty}
-        </span>
+        <span className={`EventCard-content-category ${sport}`}>{sport}</span>
+        <span className="EventCard-content-category">{difficulty}</span>
         <time dateTime={date} className="EventCard-content-date">
           {new Date(date).toLocaleDateString('fr-FR', {
             year: 'numeric',

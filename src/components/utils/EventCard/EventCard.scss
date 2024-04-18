@@ -28,16 +28,20 @@
       padding: 0.2rem 0.4rem;
       margin-right: 0.5rem;
 
-      &.facile {
+      &.Escalade {
         background-color: green;
       }
 
-      &.moyen {
-        background-color: orange;
+      &.Surf {
+        background-color: rgb(111, 193, 210);
       }
 
-      &.difficile {
-        background-color: red;
+      &.Ski {
+        background-color: rgb(112, 145, 151);
+      }
+
+      &.Randonnée {
+        background-color: rgb(208, 164, 89);
       }
     }
 
