@@ -19,7 +19,7 @@ const participationsMiddleware = (store) => (next) => (action) => {
         },
         body: JSON.stringify({
           user: {
-            id: store.getState().user.loggedData.user.id,
+            id: JSON.parse(localStorage.getItem('id')),
           },
           activity: {
             id: store.getState().activity.activity.id,
@@ -64,7 +64,9 @@ const participationsMiddleware = (store) => (next) => (action) => {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${store.getState().user.loggedData.token}`,
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem('token')
+            )}`,
           },
         }
       )
