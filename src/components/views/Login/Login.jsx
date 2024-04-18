@@ -1,6 +1,6 @@
 // Import necessary librairies
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink, Link, useNavigate, useParams } from 'react-router-dom';
 import { FiEye, FiEyeOff, FiArrowUpRight } from 'react-icons/fi';
 
@@ -21,18 +21,21 @@ const Login = () => {
   const [isVisibile, setIsVisible] = useState(false);
 
   const { slug } = useParams();
-  if (slug === 'first-time') {
-    // we display a message to inform the user that he has successfully registered
-    dispatch(
-      writePopUpMessage(
-        'Votre compte a bien été créé, vous pouvez maintenant vous connecter',
-        'success'
-      )
-    );
-    setTimeout(() => {
-      dispatch(writePopUpMessage(''));
-    }, 5000);
-  }
+
+  useEffect(() => {
+    if (slug === 'first-time') {
+      // we display a message to inform the user that he has successfully registered
+      dispatch(
+        writePopUpMessage(
+          'Votre compte a bien été créé, vous pouvez maintenant vous connecter',
+          'success'
+        )
+      );
+      setTimeout(() => {
+        dispatch(writePopUpMessage(''));
+      }, 5000);
+    }
+  }, [slug, dispatch]);
 
   const errorMessage = useSelector((state) => state.user.loginErrorMessage);
 
