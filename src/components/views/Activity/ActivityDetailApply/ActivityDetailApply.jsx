@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import {
   handleClickOnSignInButton,
@@ -7,16 +8,9 @@ import {
 } from '../../../../actions/participationsActions';
 import './ActivityDetailApply.scss';
 
-const ActivityDetailApply = ({
-  description,
-  user = {},
-  people,
-  groupSize,
-  createdBy,
-  clickTracker,
-}) => {
-  console.log(people, groupSize, user, createdBy);
+const ActivityDetailApply = ({ description, user, people, createdBy }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const isUserOrganizer = user === createdBy;
   const isUserParticipating = people.some((person) => person.user.id === user);
@@ -38,7 +32,10 @@ const ActivityDetailApply = ({
           type="button"
           className="Activity-detailsAndApply-button sign-in"
           onClick={() => {
-            dispatch(handleClickOnSignInButton());
+            if (user === null) {
+              navigate('/login');
+            }
+            return dispatch(handleClickOnSignInButton());
           }}
         >
           Participer
@@ -67,6 +64,10 @@ const ActivityDetailApply = ({
 
 ActivityDetailApply.propTypes = {
   description: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  user: PropTypes.number,
+  people: PropTypes.arrayOf(PropTypes.object).isRequired,
+  createdBy: PropTypes.number.isRequired,
 };
 
 export default ActivityDetailApply;

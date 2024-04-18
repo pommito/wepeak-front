@@ -41,7 +41,10 @@ const participationsMiddleware = (store) => (next) => (action) => {
         .then(() => {
           store.dispatch(fetchActivity(store.getState().activity.activity.id));
           store.dispatch(
-            writePopUpMessage('Votre inscription a bien été prise en compte !')
+            writePopUpMessage(
+              'Votre inscription a bien été prise en compte !',
+              'success'
+            )
           );
           setTimeout(() => {
             store.dispatch(removePopUpMessage());
@@ -80,7 +83,10 @@ const participationsMiddleware = (store) => (next) => (action) => {
           // Handle here the success case with message to user and redirection
           store.dispatch(fetchActivity(store.getState().activity.activity.id));
           store.dispatch(
-            writePopUpMessage('Vous êtes désinscrit de cette activité')
+            writePopUpMessage(
+              'Vous êtes désinscrit de cette activité',
+              'success'
+            )
           );
           setTimeout(() => {
             store.dispatch(removePopUpMessage());

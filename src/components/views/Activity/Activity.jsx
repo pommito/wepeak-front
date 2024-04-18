@@ -33,7 +33,6 @@ const Activity = () => {
   const [buttonClickTracker, setButtonClickTracker] = useState(0);
 
   const handleButtonClickTracker = () => {
-    console.log('marche');
     setButtonClickTracker(
       (prevButtonClickTracker) => prevButtonClickTracker + 1
     );
@@ -44,7 +43,13 @@ const Activity = () => {
   }, [buttonClickTracker]);
 
   const activity = useSelector((state) => state.activity.activity);
-  const userId = useSelector((state) => state.user.loggedData.user.id) || null;
+  // const userId = useSelector((state) => state.user.loggedData.user.id);
+  const userId = useSelector((state) =>
+    state.user && state.user.loggedData && state.user.loggedData.user
+      ? state.user.loggedData.user.id
+      : null
+  );
+  console.log(userId);
 
   // fetch address from coordinates only if they are available
   useEffect(() => {
