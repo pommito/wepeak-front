@@ -1,5 +1,5 @@
 // Import necessary libraries
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,16 +25,31 @@ const Activity = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
 
   const dispatch = useDispatch();
 
+  // This tracker handle the re-fetch of the activity when the user click on the "Participer" button
+  const [buttonClickTracker, setButtonClickTracker] = useState(0);
+
+  const handleButtonClickTracker = () => {
+    setButtonClickTracker(
+      (prevButtonClickTracker) => prevButtonClickTracker + 1
+    );
+  };
+
   useEffect(() => {
     dispatch(fetchActivity(slug));
-  }, []);
+  }, [buttonClickTracker]);
 
   const activity = useSelector((state) => state.activity.activity);
-  console.log(activity);
+  // const userId = useSelector((state) => state.user.loggedData.user.id);
+  const userId = useSelector((state) =>
+    state.user && state.user.loggedData && state.user.loggedData.user
+      ? state.user.loggedData.user.id
+      : null
+  );
+  console.log(userId);
 
   // fetch address from coordinates only if they are available
   useEffect(() => {
@@ -77,7 +92,14 @@ const Activity = () => {
         lng={activity.lng}
         thumbnail={activity.thumbnail}
       />
-      <ActivityDetailApply description={activity.description} />
+      <ActivityDetailApply
+        description={activity.description}
+        user={userId}
+        createdBy={activity.createdBy.id}
+        people={activity.participations}
+        groupSize={activity.groupSize}
+        clickTracker={handleButtonClickTracker}
+      />
       <ActivityPeople
         people={activity.participations}
         groupSize={activity.groupSize}
