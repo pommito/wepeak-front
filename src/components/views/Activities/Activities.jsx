@@ -13,7 +13,6 @@ import data from '/src/filtersData';
 // Import stylesheet
 import './Activities.scss';
 import Calendar from './Calendar/Calendar';
-import { fetchSports } from '../../../actions/sportsActions';
 
 const Activities = () => {
   const dispatch = useDispatch();
