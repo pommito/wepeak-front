@@ -1,6 +1,6 @@
 // Import necessary librairies
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // Import components
 import Button from '../../utils/Button/Button';
@@ -15,7 +15,12 @@ import './Activities.scss';
 import Calendar from './Calendar/Calendar';
 
 const Activities = () => {
+  const dispatch = useDispatch();
   const activityList = useSelector((state) => state.activity.activities);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const lastSearchedCity = useSelector(
     (state) => state.activity.lastSearchedCity
@@ -28,10 +33,6 @@ const Activities = () => {
   }
 
   const [isFilterActive, setIsFilterActive] = useState(null);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
 
   const handleClickOnFilter = (title) => {
     setIsFilterActive(isFilterActive === title ? null : title);
@@ -61,6 +62,7 @@ const Activities = () => {
             onClick={() => {
               handleClickOnFilter(item.title.label);
             }}
+            resetActive={() => setIsFilterActive(null)}
             active={isFilterActive === item.title.label}
           />
         ))}
