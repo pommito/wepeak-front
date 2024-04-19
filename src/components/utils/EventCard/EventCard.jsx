@@ -23,7 +23,6 @@ const EventCard = ({
   // const maxLength = 30;
   // const foratedTitle = titleLength > maxLength ? title.slice(0, maxLength) + '...' : title;
   const formatedTitle = title.length > 30 ? `${title.slice(0, 30)} ...` : title;
-  console.log(formatedTitle);
 
   return (
     <article className="EventCard">
