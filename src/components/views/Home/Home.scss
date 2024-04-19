@@ -9,4 +9,11 @@
   gap: 5rem;
   margin-bottom: 5rem;
   overflow-x: hidden;
+  overflow-y: auto;
+}
+
+@media (min-width: 1600px) {
+  .Home {
+    overflow-x: visible;
+  }
 }
