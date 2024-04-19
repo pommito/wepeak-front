@@ -13,6 +13,7 @@ import rewriteImagePath from '../../../utils/rewriteImagePath';
 import ProfileCard from '../Profile/ProfileCard/ProfileCard';
 import SportsCard from '../Profile/SportsCard/SportsCard';
 import ParticipationsCard from '../Profile/ParticipationsCard/ParticipationsCard';
+import EditProfile from '../Profile/EditProfile/EditProfile';
 
 // Import stylesheet
 import './UserPage.scss';
@@ -21,6 +22,8 @@ const UserPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { slug } = useParams();
+
+  const userId = JSON.parse(localStorage.getItem('id'));
 
   useEffect(() => {
     dispatch(fetchUserWithId(slug, 'visited', navigate));
@@ -60,6 +63,14 @@ const UserPage = () => {
           subscriptionsNumber={futureActivities.length}
           pastActivitiesNumber={pastActivities.length}
         />
+        {userId === user.id && (
+          <EditProfile
+            className="Profile-left-editProfile"
+            firstname={user.firstname}
+            lastname={user.lastname}
+            thumbnail={rewriteImagePath(user.thumbnail)}
+          />
+        )}
       </div>
       <div className="UserPage-right">
         <SportsCard
