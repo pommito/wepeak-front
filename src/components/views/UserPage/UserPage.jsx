@@ -6,6 +6,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 // Import actions
 import { fetchUserWithId } from '../../../actions/userActions';
 
+// Import utils
+import rewriteImagePath from '../../../utils/rewriteImagePath';
+
 // Import sub-components
 import ProfileCard from '../Profile/ProfileCard/ProfileCard';
 import SportsCard from '../Profile/SportsCard/SportsCard';
@@ -51,7 +54,7 @@ const UserPage = () => {
           email=""
           city={user.city}
           memberSince={user.createdAt}
-          thumbnail={user.thumbnail}
+          thumbnail={rewriteImagePath(user.thumbnail)}
           bio={user.description}
           sportsNumber={user.sports.length}
           subscriptionsNumber={futureActivities.length}
