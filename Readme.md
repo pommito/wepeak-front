@@ -1,6 +1,6 @@
 # projet-06-we-peak-front
 
-This repo is the frontend application of WePeak project.
+This repo is a copy from the private repo of the frontend part of WePeak.
 
 WePeak is a networking platform where people can create outdoor sport sessions that other users can sign up for and take part in. The main goal is to create a new platform where people can link up and find some new buddies to enjoy outdoor activities.
 
