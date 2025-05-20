@@ -12,7 +12,7 @@ To install and run the project in local, do the following steps to properly laun
 
 ### Step 1 : Clone the repository
 
-`git clone git@github.com:O-clock-Jelly/projet-06-we-peak-front.git`
+`git clone git@github.com:pommito/wepeak-front.git`
 
 ### Step 2 : Install dependencies
 
